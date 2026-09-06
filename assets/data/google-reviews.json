@@ -1,0 +1,27 @@
+{
+  "source": "google-business-profile",
+  "placeId": "ChIJFZL8h9QeWRMRqfUtw2YM0Ac",
+  "syncedAt": null,
+  "averageRating": null,
+  "totalReviewCount": null,
+  "reviews": [
+    {
+      "reviewId": "seed-efi",
+      "reviewer": "Έφη.",
+      "starRating": null,
+      "comment": "Εξαιρετικά προγράμματα, στοχευμένα στις ανάγκες κάθε αθλούμενου. Έμπειροι γυμναστές, ευχάριστο περιβάλλον, ευγένεια, καθαρός χώρος.",
+      "createTime": null,
+      "updateTime": null,
+      "seed": true
+    },
+    {
+      "reviewId": "seed-eleni",
+      "reviewer": "Ελένη Τ.",
+      "starRating": null,
+      "comment": "Τέλειο περιβάλλον, πολλά προγράμματα, άψογη υποστήριξη ειδικών σε κάθε πρόγραμμα.",
+      "createTime": null,
+      "updateTime": null,
+      "seed": true
+    }
+  ]
+}
