@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Athletico Admin</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">ATHLETICO <span>ADMIN</span></div>
+      <nav>
+        <button class="nav-item active" data-panel="content">Περιεχόμενο</button>
+        <button class="nav-item" data-panel="media">Φωτογραφίες</button>
+        <button class="nav-item" data-panel="style">Εμφάνιση</button>
+      </nav>
+      <div class="sidebar-footer">Draft mode</div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="device-switcher" aria-label="Προεπισκόπηση συσκευής">
+          <button class="device active" data-device="mobile">Κινητό</button>
+          <button class="device" data-device="tablet">Tablet</button>
+          <button class="device" data-device="laptop">Laptop</button>
+          <button class="device" data-device="desktop">Desktop</button>
+        </div>
+        <div class="actions">
+          <button id="saveDraft" class="secondary">Αποθήκευση draft</button>
+          <button id="publish" class="primary" disabled title="Θα ενεργοποιηθεί όταν συνδεθεί το CMS με το live site">Publish</button>
+        </div>
+      </header>
+
+      <section class="editor-layout">
+        <div class="controls">
+          <section class="panel active" id="panel-content">
+            <h2>Περιεχόμενο</h2>
+            <label>Κύριος τίτλος<input id="heroTitle" type="text" value="Η εμπειρία Athletico." /></label>
+            <label>Κείμενο<textarea id="heroText" rows="5">Premium personal training, EMS και wellness εμπειρία στο κέντρο των Τρικάλων.</textarea></label>
+            <label>Κείμενο κουμπιού<input id="ctaText" type="text" value="Κλείσε ραντεβού" /></label>
+          </section>
+
+          <section class="panel" id="panel-media">
+            <h2>Φωτογραφίες</h2>
+            <label class="upload-box">
+              <span>Αλλαγή κεντρικής φωτογραφίας</span>
+              <input id="heroImageInput" type="file" accept="image/*" />
+            </label>
+            <div id="imageMeta" class="image-meta">Δεν έχει επιλεγεί νέα φωτογραφία.</div>
+            <label>Εστίαση εικόνας
+              <input id="imagePosition" type="range" min="0" max="100" value="50" />
+            </label>
+          </section>
+
+          <section class="panel" id="panel-style">
+            <h2>Εμφάνιση</h2>
+            <label>Γραμματοσειρά
+              <select id="fontFamily">
+                <option value="Arial, sans-serif">Arial</option>
+                <option value="Georgia, serif">Georgia</option>
+                <option value="'Trebuchet MS', sans-serif">Trebuchet</option>
+                <option value="system-ui, sans-serif" selected>System</option>
+              </select>
+            </label>
+            <label>Μέγεθος τίτλου <span id="fontSizeValue">54px</span>
+              <input id="fontSize" type="range" min="28" max="96" value="54" />
+            </label>
+            <label>Βάρος τίτλου
+              <select id="fontWeight">
+                <option value="300">Light</option>
+                <option value="400" selected>Regular</option>
+                <option value="500">Medium</option>
+                <option value="600">Semi Bold</option>
+                <option value="700">Bold</option>
+              </select>
+            </label>
+            <label>Στοίχιση
+              <select id="textAlign">
+                <option value="left" selected>Αριστερά</option>
+                <option value="center">Κέντρο</option>
+                <option value="right">Δεξιά</option>
+              </select>
+            </label>
+          </section>
+        </div>
+
+        <div class="preview-area">
+          <div class="preview-toolbar">
+            <span>LIVE PREVIEW</span>
+            <span id="viewportLabel">390 × 844</span>
+          </div>
+          <div id="deviceFrame" class="device-frame mobile">
+            <article class="site-preview">
+              <div id="heroImage" class="hero-image"></div>
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <div class="eyebrow">ATHLETICO FITNESS BOUTIQUE</div>
+                <h1 id="previewTitle">Η εμπειρία Athletico.</h1>
+                <p id="previewText">Premium personal training, EMS και wellness εμπειρία στο κέντρο των Τρικάλων.</p>
+                <button id="previewCta">Κλείσε ραντεβού</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
