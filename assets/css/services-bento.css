@@ -58,9 +58,10 @@
   height:100%;
   max-width:none;
   object-fit:cover;
-  transform:scale(1);
+  scale:1;
   filter:saturate(.9) contrast(1.03);
-  transition:transform 600ms ease-out,filter 600ms ease-out;
+  transition:scale 600ms ease-out,filter 600ms ease-out;
+  will-change:scale;
 }
 
 .home-services .service-card--contain .service-card-bg,
@@ -154,13 +155,19 @@
 
 .home-services .service-card:hover .service-card-bg,
 .services-clean .service-card:hover .service-media img{
-  transform:scale(1.05);
+  scale:1.05;
   filter:saturate(.98) contrast(1.05);
 }
 
 .home-services .service-card:hover::before,
 .services-clean .service-card:hover::before{
   background:linear-gradient(to top,rgba(0,0,0,.68) 0%,rgba(0,0,0,.34) 40%,rgba(0,0,0,.06) 70%,rgba(0,0,0,0) 100%);
+}
+
+.home-services .service-card:focus-visible,
+.services-clean .service-card:focus-visible{
+  outline:2px solid rgba(255,255,255,.9);
+  outline-offset:4px;
 }
 
 @media(max-width:1199px){
@@ -215,6 +222,6 @@
 
   .home-services .service-card:hover .service-card-bg,
   .services-clean .service-card:hover .service-media img{
-    transform:none;
+    scale:1;
   }
 }
