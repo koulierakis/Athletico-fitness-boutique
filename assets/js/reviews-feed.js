@@ -1,9 +1,22 @@
 (() => {
-  const feed = document.querySelector('[data-google-reviews-feed]');
+  if (window.__ATHLETICO_REVIEWS_FEED__) return;
+  window.__ATHLETICO_REVIEWS_FEED__ = true;
+
+  let feed = document.querySelector('[data-google-reviews-feed]');
+  let limit = 0;
+
+  if (!feed) {
+    const homeKicker = [...document.querySelectorAll('.kicker')]
+      .find((node) => node.textContent.trim().toLowerCase() === 'google reviews');
+    const homeSection = homeKicker?.closest('.section');
+    feed = homeSection?.querySelector('.team-grid') || null;
+    if (feed) limit = 2;
+  }
+
   if (!feed) return;
 
   const source = feed.dataset.source || 'assets/data/google-reviews.json';
-  const limit = Number(feed.dataset.limit || 0);
+  limit = Number(feed.dataset.limit || limit || 0);
   const status = document.querySelector('[data-google-reviews-status]');
 
   const escapeHtml = (value = '') => String(value)
