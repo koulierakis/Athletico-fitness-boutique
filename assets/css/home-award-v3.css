@@ -1,0 +1,132 @@
+/* ATHLETICO — Home Award V3
+   Real-photo editorial art direction. No card UI, no synthetic visuals. */
+:root{--ath-bg:#0d0f12;--ath-bg-deep:#090b0e;--ath-ivory:#f3f1ec;--ath-gold:#c5a880;--ath-muted:#9da3a9;--ath-serif:"Cormorant Garamond",Georgia,serif;--ath-sans:"Inter",Arial,sans-serif}
+
+/* HERO — magazine-cover restraint */
+body.home-award-v3 .hero.luxury-split{min-height:100svh!important;padding:138px clamp(22px,5vw,78px) 72px!important;background:var(--ath-bg-deep)!important}
+body.home-award-v3 .luxury-hero-shell{max-width:1460px!important;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr)!important;gap:clamp(48px,6vw,98px)!important;align-items:center!important}
+body.home-award-v3 .luxury-hero-copy{max-width:560px!important;padding:16px 0 20px!important}
+body.home-award-v3 .luxury-hero-kicker{font-family:var(--ath-sans);font-size:.61rem!important;letter-spacing:.34em!important;color:var(--ath-gold)!important;margin-bottom:30px!important}
+body.home-award-v3 .hero.luxury-split h1{font-family:var(--ath-serif)!important;font-size:clamp(4rem,6.6vw,7.4rem)!important;line-height:.9!important;font-weight:400!important;letter-spacing:-.05em!important;max-width:7.8ch!important}
+body.home-award-v3 .hero.luxury-split h1 span{display:block;color:var(--ath-ivory)!important}
+body.home-award-v3 .luxury-hero-copy p{font-family:var(--ath-sans);font-size:clamp(1rem,1.25vw,1.17rem)!important;line-height:1.82!important;color:#c7cbd0!important;max-width:52ch!important}
+body.home-award-v3 .hero-secondary{margin-top:18px!important;color:#8c9298!important;font-size:.86rem!important;line-height:1.7!important;max-width:52ch!important}
+body.home-award-v3 .luxury-hero-visual{aspect-ratio:1.36/1!important;min-height:0!important;height:auto!important;border-radius:0!important;box-shadow:none!important;background:#101318!important;overflow:hidden!important}
+body.home-award-v3 .luxury-hero-visual:after{display:none!important}
+body.home-award-v3 .luxury-hero-visual img[data-static-asset]{inset:-2% 0!important;height:104%!important;object-position:50% 49%!important;filter:brightness(.76) contrast(1.09) saturate(.7) sepia(.035)!important;transform:translate3d(0,var(--hero-drift,0),0) scale(1.028)!important}
+body.home-award-v3 .luxury-hero-caption{right:24px!important;bottom:20px!important;color:rgba(243,241,236,.58)!important}
+body.home-award-v3 .luxury-hero-meta{margin-top:38px!important}
+
+/* PHILOSOPHY + MANIFESTO */
+body.home-award-v3 #philosophy{padding:clamp(150px,15vw,220px) clamp(22px,5vw,78px)!important;background:var(--ath-bg)!important}
+body.home-award-v3 #philosophy .container{max-width:1380px!important}
+body.home-award-v3 #philosophy .split{grid-template-columns:.9fr 1.1fr!important;gap:clamp(56px,8vw,140px)!important;align-items:start!important}
+body.home-award-v3 #philosophy h2{font-family:var(--ath-serif)!important;font-size:clamp(3.2rem,5.6vw,6.1rem)!important;line-height:.95!important;max-width:11ch!important}
+body.home-award-v3 #philosophy .concept-copy{max-width:660px}
+body.home-award-v3 #philosophy .concept-copy p{margin:0 0 18px;color:#aeb4ba;font-size:clamp(1rem,1.18vw,1.13rem);line-height:1.82;font-weight:300}
+body.home-award-v3 #philosophy .concept-copy .concept-lead{font-family:var(--ath-serif);font-size:clamp(1.7rem,2.7vw,2.8rem);line-height:1.2;color:var(--ath-ivory);margin-bottom:34px}
+body.home-award-v3 #philosophy .concept-signature{margin-top:42px;color:var(--ath-gold);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase}
+body.home-award-v3 .award-manifesto{padding:clamp(150px,16vw,230px) clamp(22px,5vw,78px)!important;background:#0a0c0f!important}
+body.home-award-v3 .award-manifesto:before{content:"2000 — 2026"!important;right:-.02em!important;top:-.16em!important;font-size:clamp(8rem,18vw,22rem)!important;color:rgba(243,241,236,.022)!important;white-space:nowrap}
+body.home-award-v3 .award-manifesto-copy h2{max-width:970px;font-size:clamp(3.1rem,5.8vw,6.2rem)!important;line-height:.95!important}
+body.home-award-v3 .award-manifesto-copy p{font-size:clamp(1.02rem,1.3vw,1.16rem)!important;line-height:1.88!important}
+
+/* SEVEN SIGNATURE EXPERIENCES — editorial index, never cards */
+body.home-award-v3 .luxury-services{padding:clamp(150px,16vw,230px) clamp(22px,5vw,78px)!important;background:#0b0d10!important;overflow:visible!important}
+body.home-award-v3 .luxury-services .section-title{text-align:left!important;max-width:1380px!important;margin:0 auto clamp(90px,10vw,150px)!important;display:grid;grid-template-columns:.38fr 1fr;column-gap:clamp(40px,7vw,120px);align-items:start}
+body.home-award-v3 .luxury-services .section-title>span{grid-column:1;font-size:.62rem!important;letter-spacing:.32em!important;color:var(--ath-gold)!important;padding-top:16px}
+body.home-award-v3 .luxury-services .section-title .experience-intro{grid-column:2}
+body.home-award-v3 .luxury-services .section-title h2{font-family:var(--ath-serif)!important;font-size:clamp(3.8rem,6.5vw,7rem)!important;line-height:.9!important;letter-spacing:-.05em!important;margin:0 0 28px!important;max-width:10ch}
+body.home-award-v3 .luxury-services .section-title p{margin:0;color:#9fa5ab;max-width:58ch;font-size:1rem;line-height:1.8}
+body.home-award-v3 .bento-grid{display:block!important;max-width:1380px!important;margin:0 auto!important}
+body.home-award-v3 .bento-item{display:grid!important;grid-template-columns:minmax(180px,.28fr) minmax(0,.72fr)!important;gap:clamp(32px,6vw,110px)!important;align-items:center!important;min-height:auto!important;aspect-ratio:auto!important;position:relative!important;overflow:visible!important;padding:clamp(44px,6vw,86px) 0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;isolation:visible!important;transition:none!important}
+body.home-award-v3 .bento-item:nth-child(even){grid-template-columns:minmax(0,.72fr) minmax(180px,.28fr)!important}
+body.home-award-v3 .bento-item:before,body.home-award-v3 .bento-item:after{display:none!important}
+body.home-award-v3 .bento-item>img{position:relative!important;inset:auto!important;z-index:1!important;width:100%!important;height:auto!important;object-fit:cover!important;border:0!important;border-radius:0!important;box-shadow:0 28px 90px rgba(0,0,0,.2)!important;filter:brightness(.76) contrast(1.09) saturate(.68) sepia(.035)!important;transform:translate3d(0,var(--experience-drift,0),0) scale(1)!important;transition:transform 1.25s cubic-bezier(.16,1,.3,1),filter .9s ease,clip-path 1s cubic-bezier(.16,1,.3,1)!important;clip-path:inset(0 0 0 0)!important}
+body.home-award-v3 .bento-item:nth-child(even)>img{grid-column:1;grid-row:1}
+body.home-award-v3 .bento-item:nth-child(odd)>img{grid-column:2;grid-row:1}
+body.home-award-v3 .bento-item:nth-child(1)>img,body.home-award-v3 .bento-item:nth-child(3)>img,body.home-award-v3 .bento-item:nth-child(4)>img{aspect-ratio:16/9!important}
+body.home-award-v3 .bento-item:nth-child(2)>img,body.home-award-v3 .bento-item:nth-child(5)>img,body.home-award-v3 .bento-item:nth-child(6)>img{aspect-ratio:1/1!important;max-width:620px}
+body.home-award-v3 .bento-item:nth-child(7)>img{aspect-ratio:4/5!important;max-width:540px}
+body.home-award-v3 .bento-item:nth-child(2)>img,body.home-award-v3 .bento-item:nth-child(6)>img{justify-self:start}
+body.home-award-v3 .bento-item:nth-child(5)>img,body.home-award-v3 .bento-item:nth-child(7)>img{justify-self:end}
+body.home-award-v3 .bento-content{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;z-index:2!important;padding:0!important;max-width:460px!important;transform:none!important;color:var(--ath-ivory)!important}
+body.home-award-v3 .bento-item:nth-child(odd) .bento-content{grid-column:1;grid-row:1}
+body.home-award-v3 .bento-item:nth-child(even) .bento-content{grid-column:2;grid-row:1}
+body.home-award-v3 .bento-number{font-size:.58rem!important;letter-spacing:.3em!important;color:var(--ath-gold)!important;margin-bottom:18px!important}
+body.home-award-v3 .bento-content .ritual{display:block;margin-bottom:13px;color:#7f858b;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase}
+body.home-award-v3 .bento-content h3{font-family:var(--ath-serif)!important;font-size:clamp(2.7rem,4.5vw,5.3rem)!important;line-height:.92!important;font-weight:400!important;letter-spacing:-.045em!important;margin:0 0 18px!important}
+body.home-award-v3 .bento-content .experience-title{font-family:var(--ath-serif);font-size:clamp(1.35rem,2vw,2.15rem);line-height:1.1;color:#d9d6d0;margin:0 0 18px}
+body.home-award-v3 .bento-content p{display:block!important;font-size:.94rem!important;line-height:1.78!important;color:#969ca2!important;max-width:45ch!important;opacity:1!important}
+body.home-award-v3 .bento-content .experience-open{display:inline-flex;margin-top:24px;color:var(--ath-gold);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase}
+body.home-award-v3 .bento-item:hover>img,body.home-award-v3 .bento-item:focus-visible>img{transform:translate3d(0,var(--experience-drift,0),0) scale(1.025)!important;filter:brightness(.84) contrast(1.07) saturate(.78) sepia(.025)!important}
+body.home-award-v3 .bento-item.is-active>img{transform:translate3d(0,var(--experience-drift,0),0) scale(1.018)!important;filter:brightness(.82) contrast(1.07) saturate(.76) sepia(.025)!important}
+body.home-award-v3 .bento-item+.bento-item{border-top:1px solid rgba(255,255,255,.055)!important}
+
+/* remove legacy interruptions from homepage flow */
+body.home-award-v3 .luxury-parallax,body.home-award-v3 .legacy-why-section{display:none!important}
+
+/* TEAM — Sofia left, Giannis right */
+body.home-award-v3 .home-team-editorial{padding:clamp(150px,16vw,220px) clamp(22px,5vw,78px)!important;background:#0c0f13!important}
+body.home-award-v3 .home-team-editorial .container{max-width:1380px!important}
+body.home-award-v3 .home-team-editorial .team-intro{display:grid;grid-template-columns:.36fr 1fr;gap:clamp(40px,7vw,120px);margin-bottom:82px}
+body.home-award-v3 .home-team-editorial .team-intro .kicker{padding-top:14px}
+body.home-award-v3 .home-team-editorial .team-intro-copy h2{font-family:var(--ath-serif)!important;font-size:clamp(3.5rem,6vw,6.5rem)!important;line-height:.92!important;max-width:10ch;margin:0 0 34px!important}
+body.home-award-v3 .home-team-editorial .team-intro-copy p{max-width:64ch;color:#a9afb5;line-height:1.82;margin:0 0 16px;font-size:1rem}
+body.home-award-v3 .home-team-editorial .team-brand-line{margin-top:34px;color:var(--ath-gold);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;line-height:1.8}
+body.home-award-v3 .home-team-editorial .team-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:clamp(26px,5vw,78px)!important;align-items:start!important;margin-top:0!important}
+body.home-award-v3 .home-team-editorial .profile-card{background:transparent!important;border:0!important;padding:0!important;margin:0!important}
+body.home-award-v3 .home-team-editorial .profile-card:nth-child(2){margin-top:clamp(62px,7vw,110px)!important}
+body.home-award-v3 .home-team-editorial .profile-photo{aspect-ratio:4/5!important;height:auto!important;border:0!important;overflow:hidden!important;background:#11151a!important}
+body.home-award-v3 .home-team-editorial .profile-photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 22%!important;filter:brightness(.79) contrast(1.06) saturate(.72) sepia(.025)!important;transform:scale(1)!important;transition:transform 1.25s cubic-bezier(.16,1,.3,1),filter .9s ease!important}
+body.home-award-v3 .home-team-editorial .profile-card:hover .profile-photo img{transform:scale(1.015)!important;filter:brightness(.86) contrast(1.04) saturate(.8) sepia(.02)!important}
+body.home-award-v3 .home-team-editorial .profile-card>h3{font-family:var(--ath-serif)!important;font-size:clamp(2.4rem,3.7vw,4.3rem)!important;line-height:.95!important;margin:18px 0 8px!important}
+body.home-award-v3 .home-team-editorial .profile-card>p{margin:0!important;color:#969ca2!important;font-size:.76rem!important;letter-spacing:.12em!important;text-transform:uppercase!important}
+body.home-award-v3 .home-team-editorial .editorial-index{margin-top:22px!important}
+
+/* PRIVATE INVITATION */
+body.home-award-v3 .private-invitation{position:relative;overflow:hidden;padding:clamp(150px,17vw,240px) clamp(22px,5vw,78px);background:#090b0e;border-top:1px solid rgba(255,255,255,.055)}
+body.home-award-v3 .private-invitation:before{content:"ATHLETICO";position:absolute;right:-.02em;bottom:-.28em;font-family:var(--ath-serif);font-size:clamp(10rem,24vw,29rem);line-height:1;color:rgba(243,241,236,.018);pointer-events:none}
+body.home-award-v3 .private-invitation-inner{position:relative;z-index:1;max-width:1380px;margin:auto;display:grid;grid-template-columns:.34fr 1fr;gap:clamp(40px,8vw,130px)}
+body.home-award-v3 .private-invitation-copy h2{font-family:var(--ath-serif);font-size:clamp(4rem,8vw,8.5rem);line-height:.84;font-weight:400;letter-spacing:-.055em;margin:0 0 44px;color:var(--ath-ivory)}
+body.home-award-v3 .private-invitation-copy h2 span{display:block;color:var(--ath-gold)}
+body.home-award-v3 .private-invitation-copy .btn{margin-top:8px}
+
+/* Slow reveal + mask */
+body.home-award-v3 .home-v3-reveal{opacity:0;transform:translateY(24px);transition:opacity .95s cubic-bezier(.16,1,.3,1),transform 1.05s cubic-bezier(.16,1,.3,1)}
+body.home-award-v3 .home-v3-reveal.is-visible{opacity:1;transform:none}
+
+@media(max-width:980px){
+  body.home-award-v3 .luxury-hero-shell{grid-template-columns:1fr!important}
+  body.home-award-v3 .luxury-hero-visual{aspect-ratio:16/10!important}
+  body.home-award-v3 #philosophy .split,body.home-award-v3 .luxury-services .section-title,body.home-award-v3 .home-team-editorial .team-intro,body.home-award-v3 .private-invitation-inner{grid-template-columns:1fr!important}
+  body.home-award-v3 .luxury-services .section-title>span,body.home-award-v3 .luxury-services .section-title .experience-intro{grid-column:1!important}
+  body.home-award-v3 .luxury-services .section-title>span{margin-bottom:32px}
+  body.home-award-v3 .bento-item,body.home-award-v3 .bento-item:nth-child(even){grid-template-columns:1fr 1fr!important;gap:34px!important}
+  body.home-award-v3 .bento-content h3{font-size:clamp(2.3rem,5vw,4.2rem)!important}
+}
+
+@media(max-width:680px){
+  body.home-award-v3 .hero.luxury-split{padding:108px 20px 54px!important}
+  body.home-award-v3 .hero.luxury-split h1{font-size:clamp(3.25rem,15vw,5rem)!important;max-width:8ch!important}
+  body.home-award-v3 .luxury-hero-visual{aspect-ratio:4/5!important}
+  body.home-award-v3 .luxury-hero-visual img[data-static-asset]{inset:0!important;height:100%!important;object-position:50% 46%!important;transform:scale(1.015)!important}
+  body.home-award-v3 #philosophy,body.home-award-v3 .award-manifesto,body.home-award-v3 .luxury-services,body.home-award-v3 .home-team-editorial,body.home-award-v3 .private-invitation{padding-left:20px!important;padding-right:20px!important}
+  body.home-award-v3 .luxury-services .section-title{margin-bottom:58px!important}
+  body.home-award-v3 .luxury-services .section-title h2{font-size:clamp(3.1rem,14vw,4.6rem)!important}
+  body.home-award-v3 .bento-item,body.home-award-v3 .bento-item:nth-child(even){display:flex!important;flex-direction:column!important;gap:26px!important;padding:50px 0!important}
+  body.home-award-v3 .bento-item:nth-child(even)>img,body.home-award-v3 .bento-item:nth-child(odd)>img{order:1;grid-column:auto!important;grid-row:auto!important;width:100%!important;max-width:none!important;aspect-ratio:4/3!important}
+  body.home-award-v3 .bento-item:nth-child(2)>img,body.home-award-v3 .bento-item:nth-child(5)>img,body.home-award-v3 .bento-item:nth-child(6)>img{aspect-ratio:1/1!important;width:82%!important}
+  body.home-award-v3 .bento-item:nth-child(7)>img{aspect-ratio:4/5!important;width:72%!important;align-self:flex-end}
+  body.home-award-v3 .bento-content{order:2!important;max-width:100%!important}
+  body.home-award-v3 .bento-content h3{font-size:clamp(2.7rem,13vw,4rem)!important}
+  body.home-award-v3 .home-team-editorial .team-grid{grid-template-columns:1fr!important;gap:64px!important}
+  body.home-award-v3 .home-team-editorial .profile-card:nth-child(2){margin-top:0!important}
+  body.home-award-v3 .home-team-editorial .profile-photo{aspect-ratio:4/5!important}
+  body.home-award-v3 .private-invitation-copy h2{font-size:clamp(4rem,18vw,6rem)!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.home-award-v3 .home-v3-reveal{opacity:1!important;transform:none!important;transition:none!important}
+  body.home-award-v3 .bento-item>img,body.home-award-v3 .profile-photo img,body.home-award-v3 .luxury-hero-visual img[data-static-asset]{transform:none!important;transition:none!important}
+}
