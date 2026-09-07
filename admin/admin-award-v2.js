@@ -1,4 +1,13 @@
 /* Athletico award rebuild admin map — keeps the visual editor aligned with the live editorial structure. */
+const hasSavedAwardCms=Boolean(localStorage.getItem(KEY)||localStorage.getItem(LEGACY));
+if(!hasSavedAwardCms){
+  state.design.heroFrameRadius=0;
+  state.design.cardRadius=0;
+  state.design.contentMaxWidth=1380;
+  document.querySelector('[data-global="heroFrameRadius"]')?.setAttribute('value','0');
+  document.querySelector('[data-global="cardRadius"]')?.setAttribute('value','0');
+  document.querySelector('[data-global="contentMaxWidth"]')?.setAttribute('value','1380');
+}
 sectionMap['index.html']=[
   ['header','Κεφαλίδα / Menu'],
   ['.hero','Hero · reception & τίτλος'],
@@ -25,4 +34,9 @@ pages.filter(p=>p[0].startsWith('services/')).forEach(p=>sectionMap[p[0]]=[
   ['main .section','Αναλυτικό κείμενο'],
   ['.award-experience-nav','Προηγούμενη / επόμενη εμπειρία']
 ]);
+if(!hasSavedAwardCms){
+  document.querySelector('[data-global="heroFrameRadius"]')?.value=0;
+  document.querySelector('[data-global="cardRadius"]')?.value=0;
+  document.querySelector('[data-global="contentMaxWidth"]')?.value=1380;
+}
 pagesUI();
