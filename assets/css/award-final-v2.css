@@ -1,13 +1,15 @@
 /* ATHLETICO Awards Rebuild V2 — final art-direction layer */
 :root{--award-bg:#0d0f12;--award-ink:#f3f1ec;--award-gold:#c5a880}
-.luxury-hero-visual{background:#11151a!important;box-shadow:0 32px 80px rgba(0,0,0,.24)!important}
+.luxury-hero-visual{background:#11151a!important;box-shadow:0 32px 80px rgba(0,0,0,.24)!important;border-radius:0!important}
+.luxury-hero-visual:after{border-radius:0!important}
 .luxury-hero-visual img[data-static-asset]{display:block!important;position:absolute!important;inset:-3% 0!important;width:100%!important;height:106%!important;object-fit:cover!important;object-position:50% 48%!important;filter:brightness(.72) contrast(1.08) saturate(.72) sepia(.04)!important;transform:translate3d(0,var(--hero-drift,0),0) scale(1.035)!important;transition:filter 1.2s ease,transform .1s linear!important}
 .luxury-hero-visual:hover img[data-static-asset]{filter:brightness(.79) contrast(1.06) saturate(.8) sepia(.03)!important}
 .luxury-hero-visual:before{background:linear-gradient(90deg,rgba(7,9,12,.12),transparent 42%),linear-gradient(180deg,rgba(7,9,12,.02),transparent 54%,rgba(7,9,12,.32))!important}
 .hero.luxury-split h1 span{color:var(--award-gold)!important}
 .award-manifesto-copy h2 em{color:var(--award-gold);font-style:italic;font-weight:400}
 .luxury-services .bento-grid{display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;grid-template-columns:none!important;grid-auto-rows:auto!important}
-.luxury-services .bento-item{min-height:0!important}
+.luxury-services .bento-item{min-height:0!important;border-radius:0!important;box-shadow:none!important}
+.luxury-services .bento-item:after{border-radius:0!important}
 .luxury-services .bento-item:nth-child(1),.luxury-services .bento-item:nth-child(3),.luxury-services .bento-item:nth-child(4){flex-basis:calc(33.333% - 12px)!important;aspect-ratio:16/10!important}
 .luxury-services .bento-item:nth-child(2),.luxury-services .bento-item:nth-child(5),.luxury-services .bento-item:nth-child(6){flex-basis:calc(25% - 13.5px)!important;aspect-ratio:1/1!important}
 .luxury-services .bento-item:nth-child(7){flex-basis:calc(25% - 13.5px)!important;aspect-ratio:3/4!important}
@@ -37,6 +39,7 @@
 .heritage-copy p{margin:0;color:#a9afb5;font-size:clamp(1rem,1.25vw,1.13rem);line-height:1.85;font-weight:300}
 .home-team-editorial{display:block!important;background:#0d1014!important;padding-top:clamp(110px,13vw,180px)!important;padding-bottom:clamp(110px,13vw,180px)!important}
 .home-team-editorial .team-grid{margin-top:70px!important;align-items:start}
+.home-team-editorial .profile-card,.team-section .profile-card{border:0!important;background:transparent!important;padding:0 0 36px!important}
 .home-team-editorial .profile-card:nth-child(2){margin-top:clamp(70px,8vw,130px)}
 .home-team-editorial .profile-photo{height:auto!important;aspect-ratio:4/5;overflow:hidden}
 .home-team-editorial .profile-photo img{width:100%;height:100%;object-fit:cover}
@@ -69,7 +72,7 @@
 @media(max-width:620px){
   .hero.luxury-split{min-height:auto!important;padding-bottom:48px!important}
   .luxury-hero-copy{padding-bottom:12px}
-  .luxury-hero-visual{aspect-ratio:4/5!important}
+  .luxury-hero-visual{aspect-ratio:4/5!important;border-radius:0!important}
   .luxury-hero-visual img[data-static-asset]{inset:0!important;height:100%!important;object-position:50% 46%!important;transform:scale(1.02)!important;transition:filter .8s ease!important}
   .luxury-services .bento-grid{gap:10px!important}
   .luxury-services .bento-item:nth-child(n){flex-basis:calc(50% - 5px)!important}
