@@ -1,0 +1,117 @@
+/* ATHLETICO visual stability fixes — 2026-09-07 */
+
+/* Hero: restore the refined, smaller editorial title and protect the reception image
+   from stale local CMS/browser overrides. */
+.hero.luxury-split h1{
+  font-size:clamp(3rem,4.6vw,4.6rem)!important;
+  line-height:.98!important;
+  max-width:10.5ch!important;
+}
+.luxury-hero-visual img[data-static-asset]{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-width:none!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  object-fit:cover!important;
+  object-position:61% center!important;
+  filter:none!important;
+  transform:none!important;
+  z-index:1!important;
+}
+
+/* Services: Personal, Core, Pilates Harmony and Circuit are horizontal. */
+.luxury-services .bento-grid{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  gap:24px!important;
+  max-width:1300px!important;
+  margin:0 auto!important;
+}
+.luxury-services .bento-item:nth-child(n){
+  grid-column:auto!important;
+  grid-row:auto!important;
+  min-height:0!important;
+}
+.luxury-services .bento-item:nth-child(1),
+.luxury-services .bento-item:nth-child(2),
+.luxury-services .bento-item:nth-child(3),
+.luxury-services .bento-item:nth-child(4){
+  flex:0 0 calc(50% - 12px)!important;
+  aspect-ratio:16/9!important;
+}
+.luxury-services .bento-item:nth-child(1){order:1!important}
+.luxury-services .bento-item:nth-child(3){order:2!important}
+.luxury-services .bento-item:nth-child(4){order:3!important}
+.luxury-services .bento-item:nth-child(2){order:4!important}
+
+/* Vacu and AQ8 stay square. */
+.luxury-services .bento-item:nth-child(5),
+.luxury-services .bento-item:nth-child(6){
+  flex:0 0 min(31%,360px)!important;
+  aspect-ratio:1/1!important;
+}
+.luxury-services .bento-item:nth-child(5){order:5!important}
+.luxury-services .bento-item:nth-child(6){order:6!important}
+
+/* Solarium remains portrait. */
+.luxury-services .bento-item:nth-child(7){
+  order:7!important;
+  flex:0 0 min(27%,310px)!important;
+  aspect-ratio:3/4!important;
+  min-height:0!important;
+}
+
+/* Service detail pages: image always fills the visual panel. */
+.detail-photo.has-image{
+  position:relative!important;
+  display:block!important;
+  min-height:520px!important;
+  overflow:hidden!important;
+}
+.detail-photo.has-image:before{display:none!important}
+.detail-photo.has-image img[data-static-asset]{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-width:none!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  filter:none!important;
+  transform:none!important;
+}
+
+@media(max-width:900px){
+  .hero.luxury-split h1{font-size:clamp(2.8rem,8.5vw,4rem)!important}
+  .luxury-services .bento-item:nth-child(1),
+  .luxury-services .bento-item:nth-child(2),
+  .luxury-services .bento-item:nth-child(3),
+  .luxury-services .bento-item:nth-child(4){flex-basis:100%!important;aspect-ratio:16/9!important}
+  .luxury-services .bento-item:nth-child(5),
+  .luxury-services .bento-item:nth-child(6){flex-basis:calc(50% - 12px)!important}
+  .luxury-services .bento-item:nth-child(7){flex-basis:min(48%,320px)!important}
+}
+
+@media(max-width:620px){
+  .hero.luxury-split h1{font-size:clamp(2.45rem,11.5vw,3.35rem)!important;line-height:1!important}
+  .luxury-services .bento-grid{gap:14px!important}
+  .luxury-services .bento-item:nth-child(1),
+  .luxury-services .bento-item:nth-child(2),
+  .luxury-services .bento-item:nth-child(3),
+  .luxury-services .bento-item:nth-child(4){flex-basis:100%!important;aspect-ratio:16/9!important}
+  .luxury-services .bento-item:nth-child(5),
+  .luxury-services .bento-item:nth-child(6){flex-basis:calc(50% - 7px)!important;aspect-ratio:1/1!important}
+  .luxury-services .bento-item:nth-child(7){flex-basis:calc(50% - 7px)!important;aspect-ratio:3/4!important}
+  .detail-photo.has-image{min-height:50svh!important}
+}
