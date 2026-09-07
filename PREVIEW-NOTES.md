@@ -1,30 +1,38 @@
-# ATHLETICO luxury rebuild — review notes
+# ATHLETICO awards rebuild v2 — review notes
 
-Branch: `work/athletico-luxury-rebuild`
+Branch: `work/athletico-awards-rebuild-v2`
 
-This branch is for review only. Do not merge or change production deployment without owner approval.
+This branch is for review only. Do not merge, deploy to production, or change DNS/domain without owner approval.
 
 ## Temporary development preview
 
-https://raw.githack.com/koulierakis/Athletico-fitness-boutique/work/athletico-luxury-rebuild/index.html
+https://raw.githack.com/koulierakis/Athletico-fitness-boutique/work/athletico-awards-rebuild-v2/index.html
 
-This preview reads the public GitHub branch directly. It does not change GitHub Pages, `main`, DNS, or `athletico.gr`.
+Admin preview:
 
-## Review focus
+https://raw.githack.com/koulierakis/Athletico-fitness-boutique/work/athletico-awards-rebuild-v2/admin/index.html
 
-- Premium editorial visual direction and fullscreen menu.
-- Homepage hierarchy and authentic cleaned Reception hero.
-- Seven real Athletico service routes only.
-- Authentic team and contact information.
-- Real GoogleMap review content only.
-- Authentic Reception, Pilates Reformer, Functional/Core, Cardio/Vacu and Solarium photography.
-- Responsive and keyboard-accessible navigation.
+The preview reads the public GitHub branch directly. It does not change GitHub Pages, `main`, DNS, or `athletico.gr`.
 
-## Remaining before production
+## Current review focus
 
-- Final browser QA on desktop, laptop, tablet and mobile.
-- Final verification of contact details and Google Business review state.
-- Decide production contact form transport.
-- Decide whether locker photography improves the final editorial flow.
+- ATHLETICO positioned as Wellness Center · Trikala · Since 2000.
+- Award-level dark editorial system with Cormorant Garamond + Inter.
+- Split hero using the approved Athletico reception asset from the repository.
+- Seven Athletico Experiences with required horizontal / square / portrait ratios.
+- Vacu Move locked to the approved repository asset across home, Experiences and detail navigation.
+- Wireless EMS — AQ8 kept on the approved AQ8 visual route.
+- Heritage 2000 → 2026 as open editorial composition, not cards.
+- Team presented as large editorial portraits.
+- Google Reviews presented as magazine-style quotations.
+- Interactive Google Map retained with restrained premium treatment.
+- Mobile-specific responsive rules and reduced-motion behavior.
+- Visual Admin aligned with the new page structure.
 
-Hard rule: never restore the obsolete floor-area figure.
+## Still requiring owner-side factual confirmation before production
+
+- Final opening hours, if they are to be published.
+- Final Google Business Profile automatic review-sync access.
+- Final decision on production form transport if Formspree is not retained.
+
+Hard rules retained: no production deployment, no domain changes, no invented certifications/medical claims, and no obsolete floor-area figure.
