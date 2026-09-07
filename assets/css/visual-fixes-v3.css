@@ -91,6 +91,66 @@
   min-height:0!important;
 }
 
+/* Homepage + Services page: borderless editorial photography with text over image. */
+.luxury-services .bento-item{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:28px!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  isolation:isolate!important;
+}
+.luxury-services .bento-item:after{
+  display:none!important;
+  content:none!important;
+  border:0!important;
+}
+.luxury-services .bento-item:before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:-1!important;
+  background:linear-gradient(to top,rgba(5,7,9,.90) 0%,rgba(5,7,9,.68) 24%,rgba(5,7,9,.24) 58%,rgba(5,7,9,0) 82%)!important;
+  pointer-events:none!important;
+}
+.luxury-services .bento-item>img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  z-index:-2!important;
+}
+.luxury-services .bento-content{
+  position:relative!important;
+  z-index:2!important;
+  align-self:flex-end!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:#fff!important;
+}
+.luxury-services .bento-content h3,
+.luxury-services .bento-content p,
+.luxury-services .bento-number{
+  position:relative!important;
+  z-index:2!important;
+}
+.luxury-services .bento-item:hover{
+  box-shadow:none!important;
+}
+
 /* Service detail pages: image always fills the visual panel. */
 .detail-photo.has-image{
   position:relative!important;
@@ -137,6 +197,7 @@
   .luxury-hero-visual{border-radius:20px!important;box-shadow:0 24px 52px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.28)!important}
   .luxury-hero-visual:after{border-radius:13px!important}
   .luxury-services .bento-grid{gap:14px!important}
+  .luxury-services .bento-item{padding:18px!important}
   .luxury-services .bento-item:nth-child(1),
   .luxury-services .bento-item:nth-child(2),
   .luxury-services .bento-item:nth-child(3),
