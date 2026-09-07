@@ -1,5 +1,7 @@
 /* Athletico award rebuild admin map — keeps the visual editor aligned with the live editorial structure. */
 const hasSavedAwardCms=Boolean(localStorage.getItem(KEY)||localStorage.getItem(LEGACY));
+const servicesPage=pages.find(p=>p[0]==='services.html');
+if(servicesPage)servicesPage[1]='Εμπειρίες';
 if(!hasSavedAwardCms){
   state.design.heroFrameRadius=0;
   state.design.cardRadius=0;
