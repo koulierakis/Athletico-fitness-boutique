@@ -4,9 +4,6 @@ if(!hasSavedAwardCms){
   state.design.heroFrameRadius=0;
   state.design.cardRadius=0;
   state.design.contentMaxWidth=1380;
-  document.querySelector('[data-global="heroFrameRadius"]')?.setAttribute('value','0');
-  document.querySelector('[data-global="cardRadius"]')?.setAttribute('value','0');
-  document.querySelector('[data-global="contentMaxWidth"]')?.setAttribute('value','1380');
 }
 sectionMap['index.html']=[
   ['header','Κεφαλίδα / Menu'],
@@ -35,8 +32,11 @@ pages.filter(p=>p[0].startsWith('services/')).forEach(p=>sectionMap[p[0]]=[
   ['.award-experience-nav','Προηγούμενη / επόμενη εμπειρία']
 ]);
 if(!hasSavedAwardCms){
-  document.querySelector('[data-global="heroFrameRadius"]')?.value=0;
-  document.querySelector('[data-global="cardRadius"]')?.value=0;
-  document.querySelector('[data-global="contentMaxWidth"]')?.value=1380;
+  const heroRadius=document.querySelector('[data-global="heroFrameRadius"]');
+  const cardRadius=document.querySelector('[data-global="cardRadius"]');
+  const contentWidth=document.querySelector('[data-global="contentMaxWidth"]');
+  if(heroRadius)heroRadius.value='0';
+  if(cardRadius)cardRadius.value='0';
+  if(contentWidth)contentWidth.value='1380';
 }
 pagesUI();
