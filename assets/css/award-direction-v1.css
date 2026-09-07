@@ -1,0 +1,202 @@
+/* ATHLETICO — Award Direction v1
+   Creative direction: editorial luxury / personal wellness / heritage since 2000 */
+:root{
+  --award-bg:#0a0c0f;
+  --award-bg-2:#101318;
+  --award-ink:#f2efe8;
+  --award-muted:#9da3aa;
+  --award-gold:#c6a978;
+  --award-line:rgba(255,255,255,.10);
+  --award-max:1380px;
+}
+html{background:var(--award-bg)}
+body{background:var(--award-bg);letter-spacing:-.01em}
+body:before{content:"";position:fixed;left:0;top:0;width:100%;height:2px;z-index:9999;background:linear-gradient(90deg,var(--award-gold) var(--scroll-progress,0%),rgba(255,255,255,.08) 0);pointer-events:none}
+.site-header{padding:24px clamp(20px,4vw,64px);background:linear-gradient(180deg,rgba(7,9,12,.88),rgba(7,9,12,.18),transparent);backdrop-filter:blur(14px);transition:background .35s ease,border-color .35s ease}
+.site-header.is-scrolled{background:rgba(8,10,13,.78);border-bottom:1px solid rgba(255,255,255,.06)}
+.brand{font-size:.7rem;letter-spacing:.22em;font-weight:600}
+.menu-trigger{font-size:.66rem;letter-spacing:.22em}
+.overlay{background:radial-gradient(circle at 76% 24%,rgba(198,169,120,.09),transparent 28%),#080a0d;padding:30px clamp(22px,5vw,80px)}
+.overlay nav{max-width:1100px}
+.nav-link{position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06);padding:9px 0}
+.nav-link span{color:var(--award-gold)}
+.nav-link strong{font-size:clamp(2.5rem,6.2vw,6.4rem);font-weight:400;letter-spacing:-.045em;transition:transform .45s cubic-bezier(.16,1,.3,1),color .35s ease}
+.nav-link:after{content:"";position:absolute;left:54px;right:0;bottom:0;height:1px;background:var(--award-gold);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{transform:none;border-color:rgba(255,255,255,.06)}
+.nav-link:hover strong{transform:translateX(18px);color:#fff}
+.nav-link:hover:after{transform:scaleX(1)}
+.overlay-cta{border-color:rgba(255,255,255,.09)}
+
+/* Buttons: precise, understated, premium */
+.btn,.luxury-submit-btn{position:relative;overflow:hidden;border-color:rgba(198,169,120,.52)!important;background:transparent!important;color:var(--award-ink)!important;transition:color .35s ease,border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1)!important}
+.btn:before,.luxury-submit-btn:before{content:"";position:absolute;inset:0;background:var(--award-gold);transform:translateY(102%);transition:transform .35s cubic-bezier(.16,1,.3,1);z-index:-1}
+.btn:hover,.luxury-submit-btn:hover{color:#0a0c0f!important;border-color:var(--award-gold)!important;transform:translateY(-2px)}
+.btn:hover:before,.luxury-submit-btn:hover:before{transform:none}
+
+/* Hero — no gym language, more cinematic and architectural */
+.hero.luxury-split{min-height:100svh!important;padding:128px clamp(20px,4vw,64px) 48px!important;background:radial-gradient(circle at 65% 34%,rgba(198,169,120,.055),transparent 26%),#090b0e!important}
+.luxury-hero-shell{max-width:var(--award-max)!important;min-height:calc(100svh - 176px)!important;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)!important;gap:clamp(38px,5vw,88px)!important}
+.luxury-hero-copy{padding-left:clamp(0px,2vw,28px)!important}
+.luxury-hero-copy:before{height:180px!important;left:-24px!important;opacity:.42!important}
+.luxury-hero-kicker{font-size:.62rem!important;letter-spacing:.38em!important;color:var(--award-gold)!important}
+.hero.luxury-split h1{font-size:clamp(3.7rem,6.15vw,6.75rem)!important;line-height:.92!important;max-width:8.4ch!important;font-weight:400!important;letter-spacing:-.045em!important}
+.hero.luxury-split h1 span{margin-top:.05em;color:var(--award-gold)!important}
+.luxury-hero-copy p{max-width:440px!important;color:#c9cdd0!important;font-weight:300!important}
+.luxury-hero-meta{color:#777f87!important;letter-spacing:.28em!important}
+.luxury-hero-visual{width:100%!important;max-width:none!important;aspect-ratio:1.28/1!important;height:auto!important;top:0!important;border-radius:0!important;box-shadow:none!important;background:#111!important;overflow:hidden!important}
+.luxury-hero-visual:before{z-index:2!important;background:linear-gradient(90deg,rgba(7,9,12,.25),transparent 42%),linear-gradient(180deg,transparent 62%,rgba(7,9,12,.34))!important}
+.luxury-hero-visual:after{inset:20px!important;border:1px solid rgba(198,169,120,.24)!important;border-radius:0!important}
+.luxury-hero-visual img,.luxury-hero-visual img[data-static-asset]{object-position:center center!important;transform:scale(1.025)!important;transition:transform 1.4s cubic-bezier(.16,1,.3,1)!important}
+.luxury-hero-visual:hover img{transform:scale(1.055)!important}
+.luxury-hero-caption{right:28px!important;bottom:24px!important;font-size:.54rem!important;letter-spacing:.3em!important;color:rgba(255,255,255,.62)!important}
+
+/* Editorial manifesto block injected on home */
+.award-manifesto{padding:clamp(110px,13vw,190px) clamp(20px,5vw,76px);background:#0d1014;position:relative;overflow:hidden}
+.award-manifesto:before{content:"2000";position:absolute;right:-.02em;top:-.28em;font-family:var(--serif);font-size:clamp(11rem,27vw,31rem);line-height:1;color:rgba(255,255,255,.025);pointer-events:none}
+.award-manifesto-inner{max-width:var(--award-max);margin:auto;display:grid;grid-template-columns:.34fr 1fr;gap:clamp(40px,8vw,130px);position:relative}
+.award-manifesto-kicker{font-size:.64rem;letter-spacing:.32em;color:var(--award-gold);text-transform:uppercase;padding-top:14px}
+.award-manifesto-copy{max-width:960px}
+.award-manifesto-copy h2{font-family:var(--serif);font-size:clamp(3rem,6vw,6.6rem);line-height:.96;font-weight:400;letter-spacing:-.04em;margin:0 0 42px;color:var(--award-ink)}
+.award-manifesto-copy h2 em{font-style:normal;color:var(--award-gold)}
+.award-manifesto-copy p{font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.85;color:#aeb4ba;max-width:650px;margin-left:auto;font-weight:300}
+.award-manifesto-signature{margin-top:52px;margin-left:auto;max-width:650px;display:flex;align-items:center;gap:20px;color:#7e858d;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase}
+.award-manifesto-signature:before{content:"";width:70px;height:1px;background:var(--award-gold)}
+
+/* Philosophy / generic editorial sections */
+.section{position:relative}
+.section .kicker,.page-hero .kicker{color:var(--award-gold)!important;letter-spacing:.28em!important;font-size:.62rem!important}
+.section h2{font-weight:400!important;letter-spacing:-.035em!important}
+#philosophy{background:#0a0c0f}
+#philosophy .split{align-items:start!important}
+#philosophy .lead{font-family:var(--serif);font-size:clamp(1.7rem,3vw,3rem);line-height:1.18;color:#e8e5df}
+
+/* Services — photographic chapters, not cards */
+.luxury-services{padding:clamp(110px,12vw,175px) clamp(20px,4vw,64px)!important;background:#0a0c0f!important}
+.luxury-services .section-title{margin-bottom:70px!important}
+.luxury-services .section-title span{font-size:.62rem!important;letter-spacing:.34em!important}
+.luxury-services .section-title h2{font-size:clamp(3rem,6vw,6rem)!important;font-weight:400!important;letter-spacing:-.04em!important}
+.luxury-services .bento-grid{gap:18px!important;max-width:var(--award-max)!important}
+.luxury-services .bento-item{border-radius:0!important;box-shadow:none!important;padding:0!important;background:#111!important;isolation:isolate;transform:none!important}
+.luxury-services .bento-item:after{display:none!important}
+.luxury-services .bento-item:before{z-index:1!important;background:linear-gradient(to top,rgba(4,6,9,.94) 0%,rgba(4,6,9,.50) 32%,rgba(4,6,9,.08) 68%,transparent 100%)!important}
+.luxury-services .bento-item>img{z-index:0!important;filter:saturate(.78) contrast(1.06) brightness(.82)!important;transition:transform 1s cubic-bezier(.16,1,.3,1),filter .8s ease!important}
+.luxury-services .bento-content{position:absolute!important;left:0;right:0;bottom:0;z-index:3!important;padding:28px 30px 30px!important;max-width:none!important;transform:translateY(12px);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.luxury-services .bento-number{font-size:.58rem!important;letter-spacing:.28em!important;color:var(--award-gold)!important;margin-bottom:10px!important}
+.luxury-services .bento-content h3{font-family:var(--serif)!important;font-size:clamp(1.65rem,2.5vw,2.8rem)!important;font-weight:400!important;letter-spacing:-.025em!important;margin-bottom:8px!important}
+.luxury-services .bento-content p{font-size:.74rem!important;color:#c7cbd0!important;opacity:.74;max-width:38ch!important;transition:opacity .45s ease!important}
+.luxury-services .bento-item:hover>img{transform:scale(1.055)!important;filter:saturate(.9) contrast(1.05) brightness(.92)!important}
+.luxury-services .bento-item:hover .bento-content{transform:none}
+.luxury-services .bento-item:hover .bento-content p{opacity:1}
+
+/* Parallax as a cinematic interlude */
+.luxury-parallax{min-height:64svh!important;background-attachment:fixed!important}
+.luxury-parallax:before{background:linear-gradient(180deg,rgba(6,8,11,.48),rgba(6,8,11,.76))!important}
+.parallax-content{max-width:930px!important}
+.parallax-sub{font-size:clamp(3rem,7vw,6.3rem)!important;line-height:.94!important;letter-spacing:-.04em!important}
+.parallax-text{max-width:650px;margin:auto!important;font-weight:300!important}
+
+/* Why / timeline: less boxed, more editorial */
+.why-list{border-color:rgba(255,255,255,.08)!important}
+.why-row{padding:28px 0!important;border-color:rgba(255,255,255,.08)!important;transition:padding-left .4s cubic-bezier(.16,1,.3,1),color .3s ease}
+.why-row:hover{padding-left:18px!important}
+.why-row span{color:var(--award-gold)!important}
+.why-row strong{font-weight:400!important}
+.timeline{gap:44px!important}
+.timeline article{border-color:rgba(255,255,255,.09)!important}
+.timeline .year{font-size:clamp(3rem,5vw,5.8rem)!important;color:var(--award-gold);font-weight:400}
+.timeline article p{color:#aeb4ba;max-width:34ch}
+
+/* Team — portraits as editorial features */
+.team-grid{gap:24px!important}
+.team-card{border:0!important;background:transparent!important;padding:0!important}
+.profile-card{padding-bottom:36px!important}
+.profile-photo{border:0!important;height:clamp(620px,58vw,800px)!important;position:relative;background:#101319}
+.profile-photo:after{content:"";position:absolute;inset:0;box-shadow:inset 0 -130px 100px -100px rgba(0,0,0,.7);pointer-events:none}
+.profile-photo img{filter:saturate(.76) contrast(1.04);transition:transform 1s cubic-bezier(.16,1,.3,1),filter .6s ease}
+.profile-card:hover .profile-photo img{transform:scale(1.025);filter:saturate(.9) contrast(1.04)}
+.profile-card>h3{font-family:var(--serif)!important;font-size:clamp(2rem,3.6vw,3.8rem)!important;font-weight:400!important;letter-spacing:-.03em;margin-top:28px!important}
+.profile-card>p{color:#a7adb3}
+.profile-card>.lead{color:#dfe1e2!important;font-size:1rem!important}
+
+/* Reviews: magazine quotes */
+.home-reviews,.section:has([data-google-reviews-feed]){background:#0e1115!important}
+.review-card,[data-google-reviews-feed] .team-card{padding:34px!important;border-top:1px solid rgba(198,169,120,.28)!important}
+.review-card .lead,[data-google-reviews-feed] .lead{font-family:var(--serif)!important;font-size:clamp(1.65rem,2.8vw,2.65rem)!important;line-height:1.24!important;font-weight:400!important}
+
+/* Internal page heroes */
+.page-hero{min-height:62svh;display:flex;flex-direction:column;justify-content:end;padding:170px clamp(20px,5vw,76px) 88px!important;border:0!important;background:radial-gradient(circle at 72% 30%,rgba(198,169,120,.07),transparent 24%),#0a0c0f}
+.page-hero h1{font-size:clamp(4.2rem,9vw,8.7rem)!important;font-weight:400!important;letter-spacing:-.05em!important;line-height:.88!important}
+.page-hero p{font-size:clamp(1.05rem,1.7vw,1.28rem)!important;line-height:1.8!important;font-weight:300;max-width:680px!important}
+
+/* Experience detail pages */
+.detail-hero{min-height:100svh!important;grid-template-columns:.78fr 1.22fr!important;background:#090b0e}
+.detail-copy{padding:160px clamp(24px,5vw,76px) 72px!important;position:relative}
+.detail-copy:after{content:"";position:absolute;left:clamp(24px,5vw,76px);bottom:44px;width:64px;height:1px;background:var(--award-gold)}
+.detail-copy .kicker{color:var(--award-gold)!important;letter-spacing:.26em;font-size:.6rem}
+.detail-copy h1{font-size:clamp(4rem,7.2vw,7.5rem)!important;font-weight:400!important;letter-spacing:-.05em!important;line-height:.9!important}
+.detail-copy .lead{font-family:var(--serif);font-size:clamp(1.4rem,2vw,2rem);line-height:1.25;color:#cfd2d4;max-width:500px}
+.detail-photo.has-image{min-height:100svh!important;border:0!important}
+.detail-photo.has-image img,.detail-photo.has-image img[data-static-asset]{filter:saturate(.8) contrast(1.05) brightness(.88)!important;transition:transform 1.2s cubic-bezier(.16,1,.3,1)!important}
+.detail-photo.has-image:hover img{transform:scale(1.025)!important}
+
+/* Contact / map */
+.luxury-contact-section{background:#0d1014!important}
+.contact-wrapper{max-width:1040px!important}
+.contact-header h2{font-family:var(--serif)!important;font-size:clamp(3rem,6vw,6rem)!important;font-weight:400!important;letter-spacing:-.04em!important}
+.luxury-form input,.luxury-form textarea{background:transparent!important}
+.map-box{border:0!important;padding:0!important;filter:grayscale(1) contrast(.9);transition:filter .5s ease}
+.map-box:hover{filter:grayscale(.25) contrast(.95)}
+
+/* Footer */
+.site-footer{padding:70px clamp(20px,5vw,76px)!important;border-color:rgba(255,255,255,.07)!important;background:#080a0d;gap:44px!important}
+.site-footer h3{font-size:clamp(2rem,4vw,4rem)!important;font-weight:400!important;letter-spacing:-.03em!important}
+.footer-links{font-size:.82rem;letter-spacing:.02em}
+.footer-links a{transition:color .25s ease,transform .25s ease}
+.footer-links a:hover{color:var(--award-gold);transform:translateX(4px)}
+
+/* Reveal system */
+.award-reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.award-reveal.is-visible{opacity:1;transform:none}
+.award-reveal-delay{transition-delay:.12s}
+
+/* Desktop cursor */
+.award-cursor{position:fixed;left:0;top:0;width:12px;height:12px;border:1px solid rgba(198,169,120,.9);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:width .2s ease,height .2s ease,background .2s ease,border-color .2s ease;mix-blend-mode:difference}
+.award-cursor.is-active{width:46px;height:46px;background:rgba(255,255,255,.08);border-color:#fff}
+
+@media(max-width:1050px){
+  .luxury-hero-shell{grid-template-columns:1fr!important;gap:32px!important}
+  .luxury-hero-visual{aspect-ratio:16/10!important}
+  .award-manifesto-inner{grid-template-columns:1fr;gap:28px}
+  .award-manifesto-copy p,.award-manifesto-signature{margin-left:0}
+  .detail-hero{grid-template-columns:1fr!important;min-height:auto!important}
+  .detail-photo.has-image{order:-1;min-height:64svh!important}
+  .detail-copy{min-height:58svh;padding-top:86px!important}
+}
+@media(max-width:680px){
+  .site-header{padding:20px}
+  .brand{max-width:64%;line-height:1.35}
+  .hero.luxury-split{padding:108px 20px 28px!important}
+  .luxury-hero-shell{min-height:auto!important}
+  .hero.luxury-split h1{font-size:clamp(3.15rem,14vw,4.9rem)!important;max-width:9ch!important}
+  .luxury-hero-visual{aspect-ratio:4/5!important}
+  .luxury-hero-visual:after{inset:12px!important}
+  .award-manifesto{padding:100px 20px}
+  .award-manifesto-copy h2{font-size:clamp(2.8rem,13vw,4.5rem)}
+  .award-manifesto:before{font-size:50vw;top:.02em}
+  .luxury-services{padding:90px 20px!important}
+  .luxury-services .bento-grid{gap:10px!important}
+  .luxury-services .bento-content{padding:20px!important;transform:none!important}
+  .luxury-services .bento-content h3{font-size:1.55rem!important}
+  .luxury-services .bento-content p{display:block!important;font-size:.68rem!important;line-height:1.45!important;max-width:30ch!important}
+  .parallax-sub{font-size:clamp(3rem,13vw,4.7rem)!important}
+  .page-hero{min-height:58svh;padding:145px 20px 64px!important}
+  .page-hero h1{font-size:clamp(3.7rem,16vw,5.6rem)!important}
+  .profile-photo{height:560px!important}
+  .detail-photo.has-image{min-height:58svh!important}
+  .detail-copy{min-height:auto;padding:70px 20px 100px!important}
+  .detail-copy:after{left:20px}
+  .detail-copy h1{font-size:clamp(3.5rem,15vw,5.4rem)!important}
+  .award-cursor{display:none}
+  .site-footer{grid-template-columns:1fr!important;padding:56px 20px!important}
+}
+@media(prefers-reduced-motion:reduce){.award-reveal{opacity:1!important;transform:none!important}.award-cursor{display:none!important}.luxury-hero-visual img,.bento-item>img,.profile-photo img{transition:none!important}}
