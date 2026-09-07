@@ -17,16 +17,12 @@
 .home-reviews .review-card+.review-card{margin-top:20px}
 .home-reviews .review-card .lead{max-width:900px;font-size:clamp(2rem,3.5vw,3.6rem)!important;line-height:1.15!important}
 .review-actions{margin-top:54px}
-
-/* Refined editorial scale */
 .page-hero h1{font-size:clamp(3.1rem,6.2vw,6.4rem)!important;line-height:.94!important;max-width:14ch}
 .page-hero p{font-size:clamp(1rem,1.35vw,1.22rem)!important;line-height:1.75!important;max-width:62ch}
 .detail-copy h1{font-size:clamp(3rem,5.8vw,6rem)!important;line-height:.94!important;max-width:12ch}
 .section h2,.luxury-services .section-title h2,.contact-header h2{font-size:clamp(2.5rem,4.6vw,4.8rem)!important;line-height:1!important}
 .detail-copy .lead,.section .lead{font-size:clamp(1.08rem,1.6vw,1.38rem)!important;line-height:1.65!important}
 .luxury-services .bento-content h3{font-size:clamp(1.45rem,2vw,2.15rem)!important;line-height:1.05!important}
-
-/* Heritage — open editorial composition, never carded */
 .heritage-editorial{position:relative;overflow:hidden;background:#090b0e;padding:clamp(120px,14vw,210px) clamp(20px,5vw,76px);border-top:1px solid rgba(255,255,255,.055);border-bottom:1px solid rgba(255,255,255,.055)}
 .heritage-ghost{position:absolute;left:-.035em;top:-.28em;font-family:"Cormorant Garamond",serif;font-size:clamp(16rem,39vw,44rem);line-height:1;color:rgba(243,241,236,.022);pointer-events:none;user-select:none}
 .heritage-inner{position:relative;z-index:1;max-width:1380px;margin:auto;display:grid;grid-template-columns:.3fr 1fr;column-gap:clamp(42px,8vw,130px)}
@@ -39,9 +35,7 @@
 .heritage-line:before{left:0}.heritage-line:after{right:0}
 .heritage-copy{grid-column:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,82px);max-width:950px}
 .heritage-copy p{margin:0;color:#a9afb5;font-size:clamp(1rem,1.25vw,1.13rem);line-height:1.85;font-weight:300}
-
-/* Team on home — portrait-led, editorial */
-.home-team-editorial{background:#0d1014!important;padding-top:clamp(110px,13vw,180px)!important;padding-bottom:clamp(110px,13vw,180px)!important}
+.home-team-editorial{display:block!important;background:#0d1014!important;padding-top:clamp(110px,13vw,180px)!important;padding-bottom:clamp(110px,13vw,180px)!important}
 .home-team-editorial .team-grid{margin-top:70px!important;align-items:start}
 .home-team-editorial .profile-card:nth-child(2){margin-top:clamp(70px,8vw,130px)}
 .home-team-editorial .profile-photo{height:auto!important;aspect-ratio:4/5;overflow:hidden}
@@ -49,19 +43,15 @@
 .editorial-index{margin-top:24px;color:var(--award-gold);font-family:Inter,sans-serif;font-size:.58rem;letter-spacing:.28em}
 .home-team-editorial .profile-card>h3{margin-top:9px!important}
 .team-more{margin-top:48px}
-
-/* Reviews — magazine quotation rhythm */
 .reviews-editorial{max-width:1100px;margin:64px auto 0}
 .reviews-editorial .review-card{background:transparent!important;border:0!important;border-top:1px solid rgba(197,168,128,.32)!important;border-radius:0!important;padding:44px 0 52px!important}
 .reviews-editorial .review-card .eyebrow{font-size:.58rem;letter-spacing:.28em;color:var(--award-gold);margin-bottom:24px}
 .reviews-editorial .review-card .lead{font-family:"Cormorant Garamond",serif!important;font-size:clamp(2rem,3.8vw,4rem)!important;line-height:1.08!important;letter-spacing:-.025em!important;font-weight:400!important;margin:0 0 24px!important;color:var(--award-ink)}
 .reviews-editorial .review-card .muted{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
-
+.review-stars{font-size:.72rem;letter-spacing:.16em;color:var(--award-gold);margin-bottom:12px}
 .home-contact-editorial{background:#090b0e!important;border-top:1px solid rgba(255,255,255,.055)}
 .home-contact-editorial a:not(.btn){color:var(--award-ink);text-decoration:none}
 .home-contact-editorial a:not(.btn):hover{color:var(--award-gold)}
-
-/* The map remains interactive while sharing the restrained palette */
 .map-box{position:relative;overflow:hidden;background:#0d0f12;border:1px solid rgba(197,168,128,.34);box-shadow:0 28px 72px rgba(0,0,0,.28)}
 .map-box:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(243,241,236,.04),inset 0 -90px 100px rgba(13,15,18,.18)}
 .map-box iframe{display:block;min-height:420px;filter:grayscale(.86) sepia(.12) saturate(.62) brightness(.72) contrast(1.12);transition:filter .7s ease}
@@ -70,7 +60,6 @@
 .map-directions span{color:#c5a880;font-size:.7rem;letter-spacing:.18em}
 .map-directions strong{font-size:.78rem;font-weight:500;text-transform:uppercase}
 .map-directions:hover strong,.map-directions:focus-visible strong{color:#c5a880}
-
 @media(max-width:900px){
   .luxury-services .bento-item:nth-child(n){flex-basis:calc(50% - 9px)!important}
   .luxury-services .bento-item:nth-child(1),.luxury-services .bento-item:nth-child(3),.luxury-services .bento-item:nth-child(4){flex-basis:100%!important}
