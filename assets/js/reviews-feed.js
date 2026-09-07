@@ -9,7 +9,7 @@
     const homeKicker = [...document.querySelectorAll('.kicker')]
       .find((node) => node.textContent.trim().toLowerCase() === 'google reviews');
     const homeSection = homeKicker?.closest('.section');
-    feed = homeSection?.querySelector('.team-grid') || null;
+    feed = homeSection?.querySelector('.reviews-editorial,.team-grid') || null;
     if (feed) limit = 2;
   }
 
@@ -29,7 +29,7 @@
   const stars = (rating) => {
     const numeric = Number(rating);
     if (!Number.isFinite(numeric) || numeric < 1) return '';
-    return `<div class="eyebrow" aria-label="${numeric} από 5 αστέρια">${'★'.repeat(Math.min(5, Math.round(numeric)))}</div>`;
+    return `<div class="review-stars" aria-label="${numeric} από 5 αστέρια">${'★'.repeat(Math.min(5, Math.round(numeric)))}</div>`;
   };
 
   fetch(source, { cache: 'no-store' })
@@ -43,7 +43,7 @@
       if (!visible.length) return;
 
       feed.innerHTML = visible.map((review) => `
-        <article class="team-card">
+        <article class="review-card">
           ${stars(review.starRating)}
           <div class="eyebrow">GOOGLE REVIEW</div>
           <p class="lead">«${escapeHtml(review.comment || '')}»</p>
