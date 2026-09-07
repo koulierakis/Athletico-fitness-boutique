@@ -32,6 +32,27 @@
     return `<div class="review-stars" aria-label="${numeric} από 5 αστέρια">${'★'.repeat(Math.min(5, Math.round(numeric)))}</div>`;
   };
 
+  const applyVisualAdminOverrides = () => {
+    try {
+      const cms = JSON.parse(localStorage.getItem('athleticoCMS_v2') || localStorage.getItem('athleticoCMS_v1') || '{}');
+      const parts = location.pathname.split('/').filter(Boolean);
+      const file = (parts[parts.length - 1] || 'index.html').toLowerCase();
+      const pageKey = location.pathname.toLowerCase().includes('/services/') ? `services/${file}` : file;
+      const generic = cms.generic?.[pageKey] || {};
+      Object.entries(generic).forEach(([selector, rule]) => {
+        try {
+          document.querySelectorAll(selector).forEach((node) => {
+            if (rule.text !== undefined) node.textContent = rule.text;
+            Object.entries(rule.style || {}).forEach(([prop, val]) => {
+              if (val === undefined || val === null) return;
+              node.style.setProperty(prop.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase()), String(val), 'important');
+            });
+          });
+        } catch {}
+      });
+    } catch {}
+  };
+
   fetch(source, { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) throw new Error('reviews feed unavailable');
@@ -50,6 +71,8 @@
           <p class="muted">${escapeHtml(review.reviewer || 'Google χρήστης')}</p>
         </article>
       `).join('');
+
+      applyVisualAdminOverrides();
 
       if (status && data.syncedAt) {
         const date = new Date(data.syncedAt);
