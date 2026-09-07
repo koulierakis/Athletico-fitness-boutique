@@ -1,4 +1,4 @@
-/* Athletico award rebuild admin map — keeps the visual editor aligned with the live editorial structure. */
+/* Athletico award rebuild admin map — aligned with Home Award V3. */
 const hasSavedAwardCms=Boolean(localStorage.getItem(KEY)||localStorage.getItem(LEGACY));
 const servicesPage=pages.find(p=>p[0]==='services.html');
 if(servicesPage)servicesPage[1]='Εμπειρίες';
@@ -10,14 +10,13 @@ if(!hasSavedAwardCms){
 sectionMap['index.html']=[
   ['header','Κεφαλίδα / Menu'],
   ['.hero','Hero · reception & τίτλος'],
-  ['#philosophy','Τι είναι το Athletico'],
-  ['.award-manifesto','Manifesto / φιλοσοφία'],
-  ['.luxury-services','Seven Athletico Experiences'],
-  ['.luxury-parallax','Η εμπειρία Athletico'],
-  ['.why-list','Why Athletico'],
+  ['#philosophy','The Athletico Philosophy'],
+  ['.award-manifesto','Manifesto'],
+  ['.luxury-services','Seven Signature Experiences'],
   ['.heritage-editorial','Heritage · 2000 → 2026'],
-  ['.home-team-editorial','Ομάδα · editorial portraits'],
+  ['.home-team-editorial','Ομάδα · Σοφία αριστερά / Γιάννης δεξιά'],
   ['.home-reviews','Google Reviews'],
+  ['.private-invitation','Private Invitation'],
   ['.home-contact-editorial','Προσωπική επίσκεψη'],
   ['.site-footer','Footer']
 ];
