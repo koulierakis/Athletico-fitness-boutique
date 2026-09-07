@@ -17,6 +17,24 @@
 .home-reviews .review-card+.review-card{margin-top:20px}
 .home-reviews .review-card .lead{max-width:900px;font-size:clamp(2rem,3.5vw,3.6rem)!important;line-height:1.15!important}
 .review-actions{margin-top:54px}
+
+/* Refined editorial scale: quieter hierarchy, generous breathing room */
+.page-hero h1{font-size:clamp(3.1rem,6.2vw,6.4rem)!important;line-height:.94!important;max-width:14ch}
+.page-hero p{font-size:clamp(1rem,1.35vw,1.22rem)!important;line-height:1.75!important;max-width:62ch}
+.detail-copy h1{font-size:clamp(3rem,5.8vw,6rem)!important;line-height:.94!important;max-width:12ch}
+.section h2,.luxury-services .section-title h2,.contact-header h2{font-size:clamp(2.5rem,4.6vw,4.8rem)!important;line-height:1!important}
+.detail-copy .lead,.section .lead{font-size:clamp(1.08rem,1.6vw,1.38rem)!important;line-height:1.65!important}
+.luxury-services .bento-content h3{font-size:clamp(1.45rem,2vw,2.15rem)!important;line-height:1.05!important}
+
+/* The map remains fully interactive while sharing the site's restrained palette */
+.map-box{position:relative;overflow:hidden;background:#0d0f12;border:1px solid rgba(197,168,128,.34);box-shadow:0 28px 72px rgba(0,0,0,.28)}
+.map-box:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(243,241,236,.04),inset 0 -90px 100px rgba(13,15,18,.18)}
+.map-box iframe{display:block;min-height:420px;filter:grayscale(.86) sepia(.12) saturate(.62) brightness(.72) contrast(1.12);transition:filter .7s ease}
+.map-box:hover iframe,.map-box:focus-within iframe{filter:grayscale(.65) sepia(.08) saturate(.76) brightness(.82) contrast(1.08)}
+.map-directions{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 2px;color:#f3f1ec;border-bottom:1px solid rgba(197,168,128,.38);font-family:Inter,sans-serif;text-decoration:none;letter-spacing:.08em}
+.map-directions span{color:#c5a880;font-size:.7rem;letter-spacing:.18em}
+.map-directions strong{font-size:.78rem;font-weight:500;text-transform:uppercase}
+.map-directions:hover strong,.map-directions:focus-visible strong{color:#c5a880}
 @media(max-width:900px){
   .luxury-services .bento-item:nth-child(n){flex-basis:calc(50% - 9px)!important}
   .luxury-services .bento-item:nth-child(1),.luxury-services .bento-item:nth-child(3),.luxury-services .bento-item:nth-child(4){flex-basis:100%!important}
@@ -34,5 +52,10 @@
   .luxury-services .bento-item:nth-child(7){aspect-ratio:3/4!important}
   .luxury-services .bento-content p{display:none!important}
   .home-reviews .review-card{padding:34px 0!important}
+  .page-hero h1{font-size:clamp(2.8rem,14vw,4.3rem)!important}
+  .detail-copy h1{font-size:clamp(2.65rem,13vw,4rem)!important}
+  .section h2,.luxury-services .section-title h2,.contact-header h2{font-size:clamp(2.2rem,10vw,3.25rem)!important}
+  .map-box iframe{min-height:340px;height:340px!important}
+  .map-directions{align-items:flex-start;flex-direction:column;gap:10px;padding:18px 0}
 }
 @media(prefers-reduced-motion:reduce){.luxury-hero-visual img[data-static-asset]{transform:none!important;transition:none!important}}
