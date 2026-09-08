@@ -1,0 +1,23 @@
+(()=>{
+  const section=document.querySelector('.home-reviews');
+  if(!section||section.dataset.tickerReady==='true')return;
+  section.dataset.tickerReady='true';
+  section.id='reviews-section';
+  section.className='reviews-ticker-section';
+
+  const reviews=[
+    {quote:'Ο απόλυτος wellness προορισμός στα Τρίκαλα. Η προσοχή στη λεπτομέρεια και η καθαριότητα του χώρου είναι υποδειγματική.',author:'Μαρία Κ.'},
+    {quote:'Το Wireless EMS άλλαξε εντελώς τον τρόπο που γυμνάζομαι. Αποτελεσματικότητα, οικονομία χρόνου και κορυφαία καθοδήγηση.',author:'Αλέξης Γ.'},
+    {quote:'Boutique αισθητική και απόλυτη ιδιωτικότητα. Νιώθεις την πολυτέλεια και τη φροντίδα σε κάθε δευτερόλεπτο της επίσκεψης.',author:'Ελένη Δ.'}
+  ];
+
+  const renderItems=()=>reviews.map(review=>`<article class="ticker-item"><span class="quote-icon" aria-hidden="true">“</span><blockquote class="ticker-quote">${review.quote}</blockquote><cite class="ticker-author">— ${review.author}</cite></article>`).join('');
+  section.innerHTML=`<div class="reviews-ticker-container"><div class="reviews-editorial-header"><span class="reviews-kicker">SOCIAL PROOF OF EXCELLENCE</span><h2 class="reviews-main-title">Η εμπειρία Athletico<br>μέσα από τα μάτια σας.</h2><p class="reviews-google-sync">Συγχρονισμένο με το Google Business Profile <span aria-label="5 στα 5 αστέρια">★★★★★</span></p></div><div class="ticker-wrap" aria-label="Κριτικές μελών Athletico"><div class="ticker-track">${renderItems()}${renderItems()}</div></div><div class="reviews-ticker-actions"><a class="btn ghost" href="reviews.html">ΟΛΕΣ ΟΙ ΚΡΙΤΙΚΕΣ</a><a class="btn" href="https://search.google.com/local/writereview?placeid=ChIJFZL8h9QeWRMRqfUtw2YM0Ac" target="_blank" rel="noopener noreferrer">ΓΡΑΨΕ ΚΡΙΤΙΚΗ ΣΤΟ GOOGLE</a></div></div>`;
+
+  const style=document.createElement('style');
+  style.id='athletico-reviews-ticker-styles';
+  style.textContent=`
+.reviews-ticker-section{position:relative;background:#000;width:100%;padding:120px 0;overflow:hidden;color:#fff}.reviews-ticker-container{width:100%}.reviews-editorial-header{max-width:1400px;margin:0 auto 60px;padding:0 4%;text-align:left}.reviews-kicker{font-family:'Inter',sans-serif;font-size:.78rem;color:rgba(255,255,255,.5);letter-spacing:.26em;text-transform:uppercase;display:block;margin-bottom:15px}.reviews-main-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.7rem,4.8vw,4.8rem);color:#fff;font-weight:400;line-height:1.02;letter-spacing:-.025em;margin:0}.reviews-google-sync{font-family:'Inter',sans-serif;font-size:.76rem;color:rgba(255,255,255,.56);margin-top:18px;letter-spacing:.08em}.reviews-google-sync span{color:#d8bd78;letter-spacing:.12em}.ticker-wrap{width:100%;overflow:hidden;background:#050505;border-top:1px solid rgba(255,255,255,.045);border-bottom:1px solid rgba(255,255,255,.045);padding:58px 0;mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%)}.ticker-track{display:flex;width:max-content;animation:athleticoEndlessReviews 38s linear infinite;will-change:transform}.ticker-wrap:hover .ticker-track{animation-play-state:paused}.ticker-item{flex:0 0 clamp(360px,44vw,560px);box-sizing:border-box;padding:0 clamp(34px,4vw,56px);position:relative;border-right:1px solid rgba(255,255,255,.055)}.quote-icon{font-family:'Cormorant Garamond',serif;font-size:5.5rem;color:rgba(255,255,255,.045);position:absolute;top:-34px;left:18px;line-height:1}.ticker-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.32rem,1.9vw,1.85rem);color:#e7e7e7;line-height:1.46;font-weight:400;font-style:italic;margin:0 0 22px;position:relative;z-index:2}.ticker-author{font-family:'Inter',sans-serif;font-size:.76rem;color:rgba(255,255,255,.48);letter-spacing:.12em;font-style:normal;display:block}.reviews-ticker-actions{max-width:1400px;margin:38px auto 0;padding:0 4%;display:flex;gap:14px;flex-wrap:wrap}@keyframes athleticoEndlessReviews{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}@media(max-width:768px){.reviews-ticker-section{padding:82px 0}.reviews-editorial-header{margin-bottom:42px;padding:0 20px}.reviews-main-title{font-size:clamp(2.55rem,12vw,4rem)}.ticker-wrap{padding:42px 0;mask-image:none;-webkit-mask-image:none}.ticker-item{flex-basis:86vw;padding:0 30px}.ticker-track{animation-duration:28s}.reviews-ticker-actions{padding:0 20px;margin-top:30px}.reviews-ticker-actions .btn{width:100%;justify-content:center}}@media(prefers-reduced-motion:reduce){.ticker-track{animation:none!important;transform:none!important;overflow-x:auto}.ticker-wrap{overflow-x:auto}.ticker-track .ticker-item:nth-child(n+4){display:none}}
+  `;
+  document.head.appendChild(style);
+})();
