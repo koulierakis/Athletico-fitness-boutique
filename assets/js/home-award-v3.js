@@ -5,13 +5,13 @@
   document.body.classList.add('home-award-v3');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Cinematic full-screen hero. Uses the real reception image as poster/fallback until hero-bg.mp4 is present. */
+  /* Cinematic full-screen hero. Uses the cinematic reception image as poster/fallback until hero-bg.mp4 is present. */
   const hero=document.querySelector('.hero.luxury-split');
   if(hero){
     hero.className='athletico-video-hero';
     hero.innerHTML=`
       <div class="athletico-video-layer" aria-hidden="true">
-        <video class="athletico-hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/athletico_hero_reception.jpg?v=20260908-1">
+        <video class="athletico-hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/reception-cinematic-v2.jpg?v=20260908-4">
           <source src="assets/videos/hero-bg.mp4" type="video/mp4">
         </video>
         <div class="athletico-hero-overlay"></div>

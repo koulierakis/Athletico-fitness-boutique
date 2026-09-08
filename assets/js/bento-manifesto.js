@@ -54,7 +54,7 @@
     .bento-manifesto-box.box-large{grid-column:span 2;grid-row:span 2;justify-content:center;background:#0d0d0d}
     .bento-manifesto-box.box-medium{grid-column:span 1;grid-row:span 2}
     .bento-manifesto-box.box-small{grid-column:span 1}
-    .bento-bg-image{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.72)),url('assets/images/athletico_hero_reception.jpg?v=20260908-1');background-size:cover;background-position:center;filter:grayscale(1) brightness(.34);transition:filter .7s cubic-bezier(.25,1,.5,1),transform .7s cubic-bezier(.25,1,.5,1);z-index:0}
+    .bento-bg-image{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.72)),url('assets/images/reception-cinematic-v2.jpg?v=20260908-4');background-size:cover;background-position:center;filter:grayscale(1) brightness(.34);transition:filter .7s cubic-bezier(.25,1,.5,1),transform .7s cubic-bezier(.25,1,.5,1);z-index:0}
     .bento-glow{position:absolute;inset:-20%;background:radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(120,155,190,.12) 0%,rgba(20,35,50,.08) 24%,rgba(0,0,0,0) 62%);pointer-events:none;z-index:1;opacity:0;transition:opacity .45s ease}
     .bento-manifesto-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-start;transform:scale(1);transition:transform .5s cubic-bezier(.25,1,.5,1)}
     .bottom-content{justify-content:flex-end}
