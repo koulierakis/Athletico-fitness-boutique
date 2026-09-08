@@ -1,0 +1,134 @@
+/* Unified Athletico cinematic photography system.
+   Applies to spaces, services, equipment and gallery photography only. */
+:root{
+  --photo-cinematic-filter:brightness(.64) contrast(1.18) saturate(.68) sepia(.055);
+  --photo-cinematic-hover-filter:brightness(.74) contrast(1.15) saturate(.76) sepia(.035);
+  --photo-cinematic-transition:1200ms cubic-bezier(.25,1,.5,1);
+  --photo-cinematic-vignette:linear-gradient(180deg,rgba(3,4,5,.1) 0%,rgba(3,4,5,.08) 38%,rgba(0,0,0,.56) 100%);
+  --photo-cinematic-warmth:linear-gradient(135deg,rgba(214,176,126,.18),rgba(18,22,26,.04) 46%,rgba(0,0,0,.30));
+}
+
+.hero-section,
+.image-container,
+.bento-photo,
+.luxury-hero-visual,
+.luxury-services .bento-item,
+.detail-photo.has-image,
+.award-experience-link,
+.photo-slot.has-image,
+.bento-manifesto-box.box-medium{
+  isolation:isolate;
+}
+
+.hero-video-bg,
+.image-container img,
+.bento-photo img,
+.luxury-hero-visual img[data-static-asset],
+.luxury-services .bento-item>img,
+.detail-photo.has-image img,
+.award-experience-link img,
+.athletico-hero-video{
+  filter:var(--photo-cinematic-filter)!important;
+  transition:transform var(--photo-cinematic-transition),filter var(--photo-cinematic-transition)!important;
+  backface-visibility:hidden;
+  will-change:transform,filter;
+}
+
+.image-container img,
+.bento-photo img,
+.luxury-hero-visual img[data-static-asset],
+.luxury-services .bento-item>img,
+.detail-photo.has-image img,
+.award-experience-link img{
+  transform:scale(1.01)!important;
+}
+
+.hero-video-bg{
+  filter:brightness(.58) contrast(1.2) saturate(.66) sepia(.055)!important;
+}
+
+.hero-section:after,
+.image-container:before,
+.bento-photo:before,
+.luxury-hero-visual:before,
+.luxury-services .bento-item:after,
+.detail-photo.has-image:after,
+.award-experience-link:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  pointer-events:none!important;
+  background:var(--photo-cinematic-warmth),var(--photo-cinematic-vignette)!important;
+  mix-blend-mode:soft-light;
+  opacity:.78;
+  transition:opacity var(--photo-cinematic-transition)!important;
+}
+
+.hero-section:after{
+  z-index:-1!important;
+  opacity:.7;
+}
+
+.image-container:after,
+.luxury-services .bento-item:before,
+.detail-photo.has-image:before,
+.award-experience-link:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:3!important;
+  pointer-events:none!important;
+  background:radial-gradient(circle at 50% 46%,transparent 0 42%,rgba(0,0,0,.20) 72%,rgba(0,0,0,.48) 100%)!important;
+  opacity:.9;
+}
+
+.exp-card:hover .image-container img,
+.bento-photo:hover img,
+.luxury-hero-visual:hover img[data-static-asset],
+.luxury-services .bento-item:hover>img,
+.detail-photo.has-image:hover img,
+.award-experience-link:hover img,
+.award-experience-link:focus-visible img{
+  transform:scale(1.03)!important;
+  filter:var(--photo-cinematic-hover-filter)!important;
+}
+
+.exp-card:hover .image-container:before,
+.bento-photo:hover:before,
+.luxury-hero-visual:hover:before,
+.luxury-services .bento-item:hover:after,
+.detail-photo.has-image:hover:after,
+.award-experience-link:hover:after,
+.award-experience-link:focus-visible:after{
+  opacity:.58;
+}
+
+.luxury-parallax{
+  filter:brightness(.7) contrast(1.16) saturate(.68) sepia(.055)!important;
+}
+
+.bento-bg-image{
+  filter:brightness(.58) contrast(1.2) saturate(.64) sepia(.06)!important;
+  transition:transform var(--photo-cinematic-transition),filter var(--photo-cinematic-transition)!important;
+}
+
+.bento-manifesto-box:hover .bento-bg-image{
+  transform:scale(1.03)!important;
+  filter:var(--photo-cinematic-hover-filter)!important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-video-bg,
+  .image-container img,
+  .bento-photo img,
+  .luxury-hero-visual img[data-static-asset],
+  .luxury-services .bento-item>img,
+  .detail-photo.has-image img,
+  .award-experience-link img,
+  .athletico-hero-video,
+  .bento-bg-image{
+    transition:none!important;
+    transform:none!important;
+  }
+}
