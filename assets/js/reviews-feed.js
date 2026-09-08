@@ -1,4 +1,13 @@
 (() => {
+  /* Autonomous home enhancement: load the Seven Experiences showcase after home-award-v3 has prepared the real cards. */
+  if (!window.__ATHLETICO_EXPERIENCES_LOADER__) {
+    window.__ATHLETICO_EXPERIENCES_LOADER__ = true;
+    const experiencesScript = document.createElement('script');
+    experiencesScript.src = 'assets/js/experiences-showcase.js?v=20260908-1';
+    experiencesScript.defer = true;
+    document.head.appendChild(experiencesScript);
+  }
+
   if (window.__ATHLETICO_REVIEWS_FEED__) return;
   window.__ATHLETICO_REVIEWS_FEED__ = true;
 
