@@ -5,25 +5,68 @@
   document.body.classList.add('home-award-v3');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Hero copy — preserve the real reception image. */
+  /* Cinematic full-screen hero. Uses the real reception image as poster/fallback until hero-bg.mp4 is present. */
   const hero=document.querySelector('.hero.luxury-split');
   if(hero){
-    const kicker=hero.querySelector('.luxury-hero-kicker');
-    const title=hero.querySelector('h1');
-    const copy=hero.querySelector('.luxury-hero-copy>p');
-    const actions=hero.querySelector('.luxury-hero-actions');
-    const meta=hero.querySelector('.luxury-hero-meta');
-    if(kicker)kicker.textContent='ATHLETICO · WELLNESS CENTER · TRIKALA';
-    if(title)title.innerHTML='Η ευεξία,<span>σε προσωπική διάσταση.</span>';
-    if(copy)copy.textContent='Ένας ιδιωτικός προορισμός ευεξίας, όπου η κίνηση, η φροντίδα και η τεχνολογία συναντούν μια βαθιά προσωπική προσέγγιση.';
-    if(actions){
-      actions.innerHTML='<a class="btn" href="#experiences">ΑΝΑΚΑΛΥΨΤΕ ΤΗΝ ΕΜΠΕΙΡΙΑ →</a>';
-      const secondary=document.createElement('p');
-      secondary.className='hero-secondary';
-      secondary.textContent='Από το 2000. Με έναν σκοπό: να αισθάνεστε καλύτερα στο σώμα σας — και στη ζωή σας.';
-      actions.before(secondary);
+    hero.className='athletico-video-hero';
+    hero.innerHTML=`
+      <div class="athletico-video-layer" aria-hidden="true">
+        <video class="athletico-hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/athletico_hero_reception.jpg?v=20260908-1">
+          <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="athletico-hero-overlay"></div>
+        <div class="athletico-hero-vignette"></div>
+      </div>
+      <div class="athletico-hero-content">
+        <div class="athletico-hero-kicker">ATHLETICO · WELLNESS CENTER · TRIKALA</div>
+        <h1 class="athletico-hero-title" data-reveal-title>Η ευεξία στην πιο exclusive εκδοχή της.</h1>
+        <p class="athletico-hero-subtitle">Κίνηση με σκοπό, φροντίδα χωρίς συμβιβασμούς.</p>
+        <a href="contact.html#visit" class="athletico-hero-cta">ΠΡΟΓΡΑΜΜΑΤΙΣΕ ΕΠΙΣΚΕΨΗ</a>
+      </div>
+      <div class="athletico-hero-footnote">THE ART OF PERSONAL WELLNESS</div>`;
+
+    const style=document.createElement('style');
+    style.id='athletico-cinematic-hero-styles';
+    style.textContent=`
+      .athletico-video-hero{position:relative;width:100%;min-height:100svh;height:100vh;display:grid;place-items:center;overflow:hidden;background:#050607;isolation:isolate}
+      .athletico-video-layer,.athletico-hero-overlay,.athletico-hero-vignette{position:absolute;inset:0}
+      .athletico-video-layer{z-index:-2;background:#050607}
+      .athletico-hero-video{width:100%;height:100%;object-fit:cover;object-position:center 52%;filter:saturate(.72) contrast(1.08) brightness(.72);transform:scale(1.015)}
+      .athletico-hero-overlay{background:linear-gradient(180deg,rgba(2,4,6,.70) 0%,rgba(3,5,7,.54) 42%,rgba(1,2,3,.88) 100%);z-index:1}
+      .athletico-hero-vignette{z-index:2;background:radial-gradient(circle at 50% 42%,transparent 0 28%,rgba(0,0,0,.17) 58%,rgba(0,0,0,.62) 100%);box-shadow:inset 0 -22vh 30vh rgba(0,0,0,.35)}
+      .athletico-hero-content{position:relative;z-index:3;text-align:center;width:min(1080px,calc(100% - 48px));margin-inline:auto;padding-top:3vh}
+      .athletico-hero-kicker{font-family:'Inter',sans-serif;font-size:clamp(.64rem,.62vw,.78rem);font-weight:500;letter-spacing:.34em;color:rgba(255,255,255,.63);margin-bottom:clamp(22px,4vh,42px);opacity:0;transform:translateY(10px);animation:athleticoFadeUp .8s ease .1s forwards}
+      .athletico-hero-title{font-family:'Cormorant Garamond','Playfair Display',Georgia,serif;font-size:clamp(3.15rem,6.7vw,7.4rem);font-weight:400;line-height:.91;letter-spacing:-.035em;color:#fff;margin:0 auto;max-width:1050px;text-wrap:balance;text-shadow:0 4px 32px rgba(0,0,0,.28)}
+      .athletico-hero-title .letter{display:inline-block;opacity:0;transform:translateY(28px);filter:blur(6px);animation:athleticoRevealLetter .78s cubic-bezier(.2,.72,.2,1) forwards;will-change:transform,opacity,filter}
+      .athletico-hero-title .space{display:inline-block;width:.24em}
+      .athletico-hero-subtitle{font-family:'Inter',sans-serif;font-size:clamp(.74rem,1vw,.98rem);font-weight:400;line-height:1.5;letter-spacing:.19em;text-transform:uppercase;color:rgba(255,255,255,.66);margin:clamp(28px,4.5vh,46px) 0 clamp(26px,4vh,40px);opacity:0;transform:translateY(12px);animation:athleticoFadeUp .9s cubic-bezier(.2,.72,.2,1) 1.35s forwards}
+      .athletico-hero-cta{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 34px;border:1px solid rgba(255,255,255,.72);background:rgba(255,255,255,.015);color:#fff;text-decoration:none;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.2em;transition:transform .4s cubic-bezier(.25,1,.5,1),background-color .4s,color .4s,box-shadow .4s,border-color .4s;opacity:0;transform:translateY(12px);animation:athleticoFadeUp .9s cubic-bezier(.2,.72,.2,1) 1.55s forwards;backdrop-filter:blur(5px)}
+      .athletico-hero-cta:hover,.athletico-hero-cta:focus-visible{background:#fff;color:#08090a;border-color:#fff;box-shadow:0 0 28px rgba(255,255,255,.18),0 12px 36px rgba(0,0,0,.22);transform:translateY(-3px)}
+      .athletico-hero-footnote{position:absolute;z-index:3;left:clamp(24px,4vw,64px);bottom:clamp(22px,3.6vh,42px);font-family:'Inter',sans-serif;font-size:.63rem;letter-spacing:.28em;color:rgba(255,255,255,.42);writing-mode:horizontal-tb}
+      @keyframes athleticoRevealLetter{to{opacity:1;transform:translateY(0);filter:blur(0)}}
+      @keyframes athleticoFadeUp{to{opacity:1;transform:translateY(0)}}
+      @media(max-width:768px){.athletico-video-hero{min-height:100svh;height:100svh}.athletico-hero-content{width:min(100% - 34px,680px);padding-top:1vh}.athletico-hero-kicker{letter-spacing:.22em;margin-bottom:26px}.athletico-hero-title{font-size:clamp(2.9rem,13vw,5.25rem);line-height:.94;letter-spacing:-.03em}.athletico-hero-subtitle{font-size:.7rem;letter-spacing:.14em;max-width:30ch;margin-inline:auto;margin-top:28px}.athletico-hero-cta{min-height:50px;padding:0 24px;font-size:.66rem;letter-spacing:.16em}.athletico-hero-footnote{left:50%;transform:translateX(-50%);width:max-content;font-size:.55rem;letter-spacing:.2em}.athletico-hero-video{object-position:center center}}
+      @media(max-width:420px){.athletico-hero-content{width:calc(100% - 28px)}.athletico-hero-title{font-size:clamp(2.55rem,12.6vw,4rem)}.athletico-hero-kicker{font-size:.57rem}.athletico-hero-cta{width:min(100%,310px)}}
+      @media(prefers-reduced-motion:reduce){.athletico-hero-kicker,.athletico-hero-subtitle,.athletico-hero-cta,.athletico-hero-title .letter{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}.athletico-hero-video{transform:none}}
+    `;
+    document.head.appendChild(style);
+
+    const title=hero.querySelector('[data-reveal-title]');
+    if(title){
+      const text=title.textContent||'';
+      title.setAttribute('aria-label',text);
+      title.textContent='';
+      [...text].forEach((letter,index)=>{
+        const span=document.createElement('span');
+        if(letter===' '){span.className='space';span.innerHTML='&nbsp;'}
+        else{span.className='letter';span.textContent=letter;span.style.animationDelay=`${0.18+index*.032}s`}
+        span.setAttribute('aria-hidden','true');
+        title.appendChild(span);
+      });
     }
-    if(meta)meta.innerHTML='<span>ΚΙΝΗΣΗ ΜΕ ΣΚΟΠΟ.</span><span>ΦΡΟΝΤΙΔΑ ΜΕ ΣΥΝΕΠΕΙΑ.</span>';
+
+    const video=hero.querySelector('.athletico-hero-video');
+    video?.addEventListener('error',()=>hero.classList.add('video-fallback'));
   }
 
   /* Philosophy becomes a manifesto chapter. */
