@@ -30,4 +30,12 @@
   const desktop=matchMedia('(min-width:769px)');let raf=0;
   const render=()=>{raf=0;if(!desktop.matches||reduced){grid.style.transform='';return}const rect=section.getBoundingClientRect(),scrollable=section.offsetHeight-innerHeight;if(scrollable<=0)return;const progress=Math.max(0,Math.min(1,-rect.top/scrollable)),stickyLeft=innerWidth*.08,available=grid.scrollWidth-innerWidth+stickyLeft+innerWidth*.04;grid.style.transform=`translate3d(${-Math.max(0,available)*progress}px,0,0)`};
   const requestRender=()=>{if(!raf)raf=requestAnimationFrame(render)};addEventListener('scroll',requestRender,{passive:true});addEventListener('resize',requestRender,{passive:true});desktop.addEventListener?.('change',requestRender);render();
+
+  if(!document.querySelector('script[data-bento-manifesto-loader]')){
+    const loader=document.createElement('script');
+    loader.src='assets/js/bento-manifesto.js?v=20260908-1';
+    loader.defer=true;
+    loader.dataset.bentoManifestoLoader='true';
+    document.head.appendChild(loader);
+  }
 })();
