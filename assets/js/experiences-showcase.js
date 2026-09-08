@@ -1,0 +1,117 @@
+(()=>{
+  const section=document.querySelector('.luxury-services#experiences');
+  if(!section||section.dataset.horizontalShowcase==='ready')return;
+  section.dataset.horizontalShowcase='ready';
+  section.classList.add('experiences-pinned-section');
+  section.id='experiences';
+
+  const grid=section.querySelector('.bento-grid');
+  if(!grid)return;
+  grid.classList.add('experiences-horizontal-track');
+  grid.id='horizontal-track';
+
+  const intro=section.querySelector('.section-title');
+  if(intro){
+    intro.classList.add('experiences-intro');
+    intro.innerHTML='<span class="experiences-kicker">THE ART OF PERSONAL WELLNESS</span><h2 class="experiences-main-title">Επτά εμπειρίες.<br>Μία προσωπική προσέγγιση.</h2><p class="experiences-lead">Επτά διαφορετικές διαδρομές ευεξίας. Όλες σχεδιασμένες γύρω από εσάς.</p>';
+  }
+
+  const slugMap={
+    'Personal Performance':'personal-performance',
+    'Core Energy':'core-energy',
+    'Pilates Harmony':'pilates-harmony',
+    'Circuit Balance':'circuit-balance',
+    'Vacu Move':'vacu-move',
+    'Wireless EMS — AQ8':'wireless-ems-aq8',
+    'Solarium':'solarium'
+  };
+  const desired=['Personal Performance','Core Energy','Pilates Harmony','Circuit Balance','Vacu Move','Wireless EMS — AQ8','Solarium'];
+  const cards=[...grid.querySelectorAll('.bento-item')];
+  const byName=new Map(cards.map(card=>[card.querySelector('h3')?.textContent.trim(),card]));
+  desired.forEach(name=>{const card=byName.get(name);if(card)grid.appendChild(card)});
+
+  [...grid.querySelectorAll('.bento-item')].forEach((card,index)=>{
+    const name=card.querySelector('h3')?.textContent.trim()||`Experience ${index+1}`;
+    card.id=slugMap[name]||`experience-${index+1}`;
+    card.classList.add('experience-card',index%2===0?'item-odd':'item-even');
+    const img=card.querySelector('img');
+    if(img){img.classList.add('card-img');const wrap=document.createElement('div');wrap.className='card-image-wrapper';img.before(wrap);wrap.appendChild(img);const overlay=document.createElement('div');overlay.className='card-overlay';wrap.appendChild(overlay)}
+    const content=card.querySelector('.bento-content');
+    if(content){content.classList.add('card-info');content.querySelector('.bento-number')?.classList.add('card-number');content.querySelector('h3')?.classList.add('card-title');content.querySelector('p')?.classList.add('card-subtitle')}
+  });
+
+  const sticky=document.createElement('div');
+  sticky.className='experiences-sticky-wrapper';
+  section.insertBefore(sticky,section.firstChild);
+  if(intro)sticky.appendChild(intro);
+  sticky.appendChild(grid);
+
+  const style=document.createElement('style');
+  style.id='athletico-experiences-showcase-styles';
+  style.textContent=`
+    .experiences-pinned-section{position:relative;width:100%;background:#030405;color:#fff;overflow:clip}
+    .experiences-sticky-wrapper{box-sizing:border-box}
+    .experiences-intro{position:relative;z-index:5;margin:0 0 clamp(24px,4vh,44px);max-width:760px}
+    .experiences-kicker{display:block;font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.28em;color:rgba(255,255,255,.45);margin-bottom:12px}
+    .experiences-main-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.4vw,4.8rem);font-weight:400;line-height:.92;letter-spacing:-.025em;margin:0;color:#fff}
+    .experiences-lead{font-family:'Inter',sans-serif;max-width:54ch;font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.48);margin:16px 0 0}
+    .experiences-horizontal-track{display:flex!important;grid-template-columns:none!important;gap:clamp(24px,3.2vw,58px)!important;width:max-content!important;max-width:none!important;margin:0!important;padding:0 12vw 0 0!important;will-change:transform;transform:translate3d(0,0,0)}
+    .experiences-horizontal-track .experience-card{position:relative!important;display:block!important;flex:0 0 clamp(300px,26vw,430px)!important;width:clamp(300px,26vw,430px)!important;height:min(55vh,590px)!important;min-height:420px!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.08)!important;background:#090b0d!important;text-decoration:none!important;transition:transform .65s cubic-bezier(.2,.75,.2,1),border-color .45s ease!important;isolation:isolate}
+    .experience-card .card-image-wrapper{position:absolute;inset:0;overflow:hidden;z-index:0}
+    .experience-card .card-img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;filter:grayscale(1) saturate(.3) brightness(.52) contrast(1.08)!important;transform:scale(1.01);transition:filter .8s cubic-bezier(.2,.75,.2,1),transform 1s cubic-bezier(.2,.75,.2,1)!important}
+    .experience-card .card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,2,3,.08) 22%,rgba(2,3,4,.2) 48%,rgba(2,3,4,.96) 100%);z-index:1;transition:background .65s ease}
+    .experience-card .card-info{position:absolute!important;inset:auto 0 0!important;z-index:2!important;padding:clamp(24px,2.3vw,38px)!important;background:none!important;transform:none!important}
+    .experience-card .card-number{display:block;font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.22em;color:rgba(255,255,255,.4);margin-bottom:9px}
+    .experience-card .ritual{display:block;font-family:'Inter',sans-serif;font-size:.58rem;letter-spacing:.18em;color:rgba(255,255,255,.42);margin-bottom:10px}
+    .experience-card .card-title{font-family:'Cormorant Garamond',serif!important;font-size:clamp(1.9rem,2.5vw,2.9rem)!important;font-weight:400!important;line-height:.98!important;color:#fff!important;margin:0 0 12px!important;transform:translateY(12px);transition:transform .55s cubic-bezier(.2,.75,.2,1)!important}
+    .experience-card .experience-title{font-family:'Inter',sans-serif;font-size:.72rem;line-height:1.5;color:rgba(255,255,255,.68);margin-bottom:8px}
+    .experience-card .card-subtitle{font-family:'Inter',sans-serif!important;font-size:.76rem!important;line-height:1.55!important;color:rgba(255,255,255,.62)!important;margin:0!important;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.75,.2,1)!important}
+    .experience-card .experience-open{display:none!important}
+    @media(min-width:769px){
+      .experiences-pinned-section{height:430vh!important;padding:0!important}
+      .experiences-sticky-wrapper{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:6vh 0 5vh 8vw}
+      .experiences-horizontal-track .experience-card.item-even{transform:translateY(34px)}
+      .experiences-horizontal-track .experience-card:hover{transform:translateY(-10px) scale(1.018)!important;border-color:rgba(255,255,255,.18)!important}
+      .experiences-horizontal-track .experience-card.item-even:hover{transform:translateY(24px) scale(1.018)!important}
+      .experience-card:hover .card-img{filter:grayscale(.12) saturate(.72) brightness(.65) contrast(1.05)!important;transform:scale(1.065)!important}
+      .experience-card:hover .card-overlay{background:linear-gradient(180deg,rgba(4,8,12,.02) 20%,rgba(5,10,14,.12) 48%,rgba(2,4,6,.93) 100%)}
+      .experience-card:hover .card-title{transform:translateY(0)}
+      .experience-card:hover .card-subtitle{opacity:1;transform:translateY(0)}
+    }
+    @media(max-width:768px){
+      .experiences-pinned-section{height:auto!important;padding:72px 0 78px!important;overflow:hidden!important}
+      .experiences-sticky-wrapper{height:auto!important;overflow:visible!important;padding:0!important}
+      .experiences-intro{padding:0 20px;margin-bottom:28px}
+      .experiences-main-title{font-size:clamp(2.65rem,12vw,4.1rem)}
+      .experiences-lead{font-size:.76rem}
+      .experiences-horizontal-track{width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;scroll-padding-left:20px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;gap:16px!important;padding:0 20px 18px!important;transform:none!important;scrollbar-width:none}
+      .experiences-horizontal-track::-webkit-scrollbar{display:none}
+      .experiences-horizontal-track .experience-card{flex:0 0 82vw!important;width:82vw!important;height:58svh!important;min-height:430px!important;scroll-snap-align:start;scroll-snap-stop:always}
+      .experience-card .card-img{filter:grayscale(.28) saturate(.62) brightness(.6)!important}
+      .experience-card .card-title{transform:none!important}
+      .experience-card .card-subtitle{opacity:1!important;transform:none!important}
+    }
+    @media(max-width:420px){.experiences-horizontal-track .experience-card{flex-basis:86vw!important;width:86vw!important;height:56svh!important}.experience-card .card-info{padding:24px!important}}
+    @media(prefers-reduced-motion:reduce){.experiences-horizontal-track,.experience-card,.card-img,.card-title,.card-subtitle{transition:none!important;scroll-behavior:auto!important}}
+  `;
+  document.head.appendChild(style);
+
+  const desktop=matchMedia('(min-width:769px)');
+  let raf=0;
+  const render=()=>{
+    raf=0;
+    if(!desktop.matches||reduced){grid.style.transform='';return}
+    const rect=section.getBoundingClientRect();
+    const scrollable=section.offsetHeight-innerHeight;
+    if(scrollable<=0)return;
+    const progress=Math.max(0,Math.min(1,-rect.top/scrollable));
+    const stickyLeft=innerWidth*.08;
+    const available=grid.scrollWidth-innerWidth+stickyLeft+innerWidth*.04;
+    grid.style.transform=`translate3d(${-Math.max(0,available)*progress}px,0,0)`;
+  };
+  const requestRender=()=>{if(!raf)raf=requestAnimationFrame(render)};
+  addEventListener('scroll',requestRender,{passive:true});
+  addEventListener('resize',requestRender,{passive:true});
+  desktop.addEventListener?.('change',requestRender);
+  render();
+})();
