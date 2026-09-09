@@ -42,7 +42,7 @@
     @media(max-width:900px){header{padding:26px 5%}.logo{font-size:1.7rem;margin-left:58px}.nav-link{display:none}.menu-toggle{top:20px;left:18px;width:44px;height:44px}.hero-section{padding:0 6%;min-height:100svh;height:100svh}.hero-video-bg{object-position:center}.team-strip{grid-template-columns:1fr;padding:100px 20px}.team-portraits{order:-1;grid-template-columns:1fr 1fr;gap:10px;width:100%}.team-portraits img{min-width:0;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) brightness(.76)!important}.ticker-item{font-size:2rem}.footer-bottom{flex-direction:column;gap:15px;text-align:center}}
   </style>
   <link rel="stylesheet" href="assets/css/cinematic-photography.css?v=20260909-1" data-cinematic-photography="true">
-  <link rel="stylesheet" href="assets/css/home-refresh-20260909.css?v=20260909-6">
+  <link rel="stylesheet" href="assets/css/home-refresh-20260909.css?v=20260909-7">
 </head>
 <body>
   <button class="menu-toggle" id="menuToggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false"><span></span><span></span></button>
@@ -71,8 +71,8 @@
           <a class="luxury-menu-item" href="services/pilates-harmony.html" data-img="assets/images/pilates-harmony-editorial.webp" data-label="03 · Pilates Harmony"><span class="luxury-menu-num">03</span><span class="luxury-menu-name">Pilates Harmony</span></a>
           <a class="luxury-menu-item" href="services/circuit-balance.html" data-img="assets/images/circuit-balance-editorial.webp" data-label="04 · Circuit Balance"><span class="luxury-menu-num">04</span><span class="luxury-menu-name">Circuit Balance</span></a>
           <a class="luxury-menu-item" href="services/vacu-move.html" data-img="assets/images/vacu-move-approved-v3.webp" data-label="05 · Vacu Move"><span class="luxury-menu-num">05</span><span class="luxury-menu-name">Vacu Move</span></a>
-          <a class="luxury-menu-item" href="services/wireless-ems-aq8.html" data-img="assets/images/aq8-ems-athletico-v2.webp" data-label="06 · Wireless EMS · AQ8"><span class="luxury-menu-num">06</span><span class="luxury-menu-name">Wireless EMS · AQ8</span></a>
-          <a class="luxury-menu-item" href="services/solarium.html" data-img="assets/images/solarium-editorial.webp" data-label="07 · Solarium"><span class="luxury-menu-num">07</span><span class="luxury-menu-name">Solarium</span></a>
+          <a class="luxury-menu-item" href="services/wireless-ems-aq8.html" data-img="assets/images/aq8-ems-athletico-v2.webp" data-label="06 · Wireless EMS · AQ8" data-framing="wide"><span class="luxury-menu-num">06</span><span class="luxury-menu-name">Wireless EMS · AQ8</span></a>
+          <a class="luxury-menu-item" href="services/solarium.html" data-img="assets/images/solarium-editorial.webp" data-label="07 · Solarium" data-framing="wide"><span class="luxury-menu-num">07</span><span class="luxury-menu-name">Solarium</span></a>
         </div>
       </div>
     </div>
@@ -117,8 +117,9 @@
       item.classList.add('is-active');
       const src=item.dataset.img;
       const label=item.dataset.label;
+      const wide=item.dataset.framing==='wide';
       expPreview.classList.add('is-changing');
-      expTimer=setTimeout(()=>{expImg.src=src;expImg.alt=label.replace(/^\d+ · /,'');expCaption.textContent=label;expPreview.classList.remove('is-changing')},120);
+      expTimer=setTimeout(()=>{expPreview.classList.toggle('is-wide',wide);expImg.src=src;expImg.alt=label.replace(/^\d+ · /,'');expCaption.textContent=label;expPreview.classList.remove('is-changing')},120);
     }
     expItems.forEach(item=>{item.addEventListener('mouseenter',()=>activateExperience(item));item.addEventListener('focus',()=>activateExperience(item));item.addEventListener('touchstart',()=>activateExperience(item),{passive:true})});
   </script>
