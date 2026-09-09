@@ -11,10 +11,14 @@
   padding-left:max(6vw,calc((100vw - var(--ath-home-max))/2 + 36px));
   padding-right:8vw;
 }
+.hero-video-bg{
+  object-position:center 48%;
+  filter:saturate(.84) contrast(1.10) brightness(.66) sepia(.035)!important;
+}
 .hero-section:before{
   background:
-    linear-gradient(90deg,rgba(5,5,5,.88) 0%,rgba(5,5,5,.52) 38%,rgba(5,5,5,.18) 68%,rgba(5,5,5,.36) 100%),
-    linear-gradient(180deg,rgba(5,5,5,.12) 0%,rgba(5,5,5,.08) 52%,#050505 100%)!important;
+    linear-gradient(90deg,rgba(5,5,5,.76) 0%,rgba(5,5,5,.40) 38%,rgba(5,5,5,.10) 68%,rgba(5,5,5,.24) 100%),
+    linear-gradient(180deg,rgba(5,5,5,.07) 0%,rgba(5,5,5,.05) 52%,#050505 100%)!important;
 }
 .hero-kicker{margin-bottom:22px;color:rgba(255,255,255,.7)}
 .hero-section h1{
@@ -62,24 +66,48 @@
 .team-strip{padding-top:170px;padding-bottom:170px;border-top:1px solid var(--ath-line);border-bottom:1px solid var(--ath-line)}
 .team-strip h2{letter-spacing:-.04em}
 .team-strip p{color:var(--ath-soft)}
+.team-portraits img{display:block;background:#0b0b0b}
 
 .ticker-container{padding:52px 0}
 .ticker-item{font-size:2.25rem;color:rgba(255,255,255,.28)}
 footer{padding-top:100px}
 
 @media(max-width:900px){
-  .hero-section{padding:0 22px;justify-content:flex-end;padding-bottom:110px}
-  .hero-section:before{background:linear-gradient(180deg,rgba(5,5,5,.15) 0%,rgba(5,5,5,.24) 42%,rgba(5,5,5,.9) 86%,#050505 100%)!important}
-  .hero-section h1{font-size:clamp(3.05rem,13vw,4.65rem);line-height:.95;margin-bottom:18px}
-  .hero-copy{font-size:.78rem;max-width:92%}
-  .hero-section:after{left:22px;right:22px;bottom:42px}
+  .hero-section{padding:0 22px;justify-content:flex-end;padding-bottom:94px}
+  .hero-video-bg{
+    object-fit:contain!important;
+    object-position:center 24%!important;
+    background:#050505;
+    filter:saturate(.86) contrast(1.08) brightness(.72)!important;
+  }
+  .hero-section:before{background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.10) 38%,rgba(5,5,5,.70) 72%,#050505 94%)!important}
+  .hero-section h1{font-size:clamp(2.55rem,11.4vw,3.75rem);line-height:.96;margin-bottom:16px;max-width:92%}
+  .hero-copy{font-size:.76rem;max-width:92%;line-height:1.75}
+  .hero-kicker{font-size:.57rem;letter-spacing:.24em;margin-bottom:16px}
+  .hero-section:after{left:22px;right:22px;bottom:34px}
   .section-intro-title{min-width:0;margin:0 0 38px;padding:0 22px}
   .section-intro-title h2{font-size:clamp(2.7rem,12vw,4rem)}
-  .cards-track{gap:14px;padding-left:22px;padding-right:22px}
-  .exp-card{width:84vw}
+  .cards-track{
+    gap:14px;
+    padding-left:22px;
+    padding-right:0;
+    scroll-padding-left:22px;
+    scroll-padding-right:22px;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  .cards-track::after{
+    content:"";
+    flex:0 0 22px;
+    width:22px;
+  }
+  .exp-card{width:84vw;scroll-snap-align:start}
+  .exp-card:last-of-type{scroll-snap-align:end}
   .bento-section{padding:110px 22px}
   .bento-title{display:block;margin-bottom:54px}
   .bento-title .eyebrow{margin-bottom:16px}
   .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
   .team-strip{padding:110px 22px}
+  .team-portraits{grid-template-columns:1fr 1fr;gap:10px;width:100%}
+  .team-portraits img{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover}
 }
