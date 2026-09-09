@@ -63,10 +63,29 @@
 .bento-grid{gap:24px}
 .bento-item{border-color:rgba(255,255,255,.055);background:#090909}
 
+/* Middle TRX image: cooler, quieter and more editorial. */
+html body .bento-photo img{
+  filter:brightness(.66) contrast(1.14) saturate(.34) grayscale(.18) sepia(0)!important;
+  transform:scale(1.045)!important;
+}
+html body .bento-photo:before{
+  background:
+    linear-gradient(180deg,rgba(3,5,7,.12) 0%,rgba(3,5,7,.20) 46%,rgba(3,5,7,.70) 100%),
+    linear-gradient(90deg,rgba(10,17,22,.18),rgba(0,0,0,.04) 55%,rgba(0,0,0,.18))!important;
+  mix-blend-mode:multiply;
+  opacity:.9;
+}
+html body .bento-photo:hover img{
+  filter:brightness(.72) contrast(1.13) saturate(.40) grayscale(.12) sepia(0)!important;
+  transform:scale(1.06)!important;
+}
+
 .team-strip{padding-top:170px;padding-bottom:170px;border-top:1px solid var(--ath-line);border-bottom:1px solid var(--ath-line)}
 .team-strip h2{letter-spacing:-.04em}
 .team-strip p{color:var(--ath-soft)}
 .team-portraits img{display:block;background:#0b0b0b}
+.team-portraits img:first-child{object-position:center 16%!important}
+.team-portraits img:nth-child(2){object-position:center 9%!important}
 
 .ticker-container{padding:52px 0}
 .ticker-item{font-size:2.25rem;color:rgba(255,255,255,.28)}
@@ -107,7 +126,13 @@ footer{padding-top:100px}
   .bento-title{display:block;margin-bottom:54px}
   .bento-title .eyebrow{margin-bottom:16px}
   .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
+  html body .bento-photo img{
+    filter:brightness(.64) contrast(1.15) saturate(.30) grayscale(.20) sepia(0)!important;
+    transform:scale(1.05)!important;
+  }
   .team-strip{padding:110px 22px}
   .team-portraits{grid-template-columns:1fr 1fr;gap:10px;width:100%}
   .team-portraits img{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover}
+  .team-portraits img:first-child{object-position:center 15%!important}
+  .team-portraits img:nth-child(2){object-position:center 8%!important}
 }
