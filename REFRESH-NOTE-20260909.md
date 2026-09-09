@@ -1,0 +1,1 @@
+Homepage refresh applied on 2026-09-09 to main. Existing authentic imagery preserved. Added a separate homepage refinement stylesheet for hero composition, spacing, card rhythm, bento layout, team strip and mobile presentation.
