@@ -1,11 +1,12 @@
-/* Athletico homepage refresh — 2026-09-09
-   Controlled refinement of the existing award/cinematic direction. */
+/* Athletico homepage — consolidated premium refresh 2026-09-09 */
 :root{
-  --ath-home-max: 1520px;
-  --ath-line: rgba(255,255,255,.08);
-  --ath-soft: rgba(255,255,255,.62);
+  --ath-home-max:1520px;
+  --ath-line:rgba(255,255,255,.08);
+  --ath-soft:rgba(255,255,255,.62);
+  --ath-gold:#d4af37;
 }
 
+/* HERO — cinematic arrival */
 .hero-section{
   min-height:100svh;
   padding-left:max(6vw,calc((100vw - var(--ath-home-max))/2 + 36px));
@@ -29,19 +30,8 @@
     linear-gradient(180deg,rgba(5,5,5,.07) 0%,rgba(5,5,5,.05) 52%,#050505 100%)!important;
 }
 .hero-kicker{margin-bottom:22px;color:rgba(255,255,255,.7)}
-.hero-section h1{
-  max-width:860px;
-  font-size:clamp(3.6rem,6.4vw,6.8rem);
-  line-height:.96;
-  letter-spacing:-.035em;
-  margin-bottom:24px;
-}
-.hero-copy{
-  max-width:540px;
-  font-size:.83rem;
-  line-height:1.9;
-  color:rgba(255,255,255,.68);
-}
+.hero-section h1{max-width:860px;font-size:clamp(3.6rem,6.4vw,6.8rem);line-height:.96;letter-spacing:-.035em;margin-bottom:24px}
+.hero-copy{max-width:540px;font-size:.83rem;line-height:1.9;color:rgba(255,255,255,.68)}
 .hero-section:after{
   content:"";
   position:absolute;
@@ -55,81 +45,7 @@
   opacity:1!important;
 }
 
-.horizontal-scroll-outer{background:#050505}
-.section-intro-title{min-width:520px;margin-right:100px}
-.section-intro-title h2{font-size:clamp(3.2rem,5vw,5.1rem);line-height:1.02;letter-spacing:-.03em}
-.cards-track{gap:42px}
-.exp-card{width:420px}
-.card-meta{height:16%;padding-top:10px;border-bottom-color:var(--ath-line)}
-.card-meta h3{font-size:2rem}
-.card-no{color:rgba(255,255,255,.34)}
-
-.bento-section{padding-top:180px;padding-bottom:180px}
-.bento-title{display:grid;grid-template-columns:.72fr 1.28fr;align-items:end;gap:70px;margin-bottom:90px}
-.bento-title .eyebrow{margin:0 0 11px}
-.bento-title h2{font-size:clamp(3.1rem,4.6vw,4.8rem);max-width:760px;letter-spacing:-.03em}
-.bento-grid{gap:24px}
-.bento-item{border-color:rgba(255,255,255,.055);background:#090909}
-
-/* Final TRX image is already graded; show the complete composition instead of cropping it. */
-html body .bento-photo{background:#070707!important}
-html body .bento-photo img{
-  filter:brightness(1.10) contrast(1.02) saturate(1.02)!important;
-  transform:scale(1)!important;
-  object-fit:contain!important;
-  object-position:center center!important;
-  transition:transform 1.4s cubic-bezier(.22,.61,.36,1),filter 1.2s ease!important;
-}
-html body .bento-photo:before{
-  background:linear-gradient(180deg,rgba(3,5,7,.02) 0%,rgba(3,5,7,.05) 55%,rgba(3,5,7,.24) 100%)!important;
-  mix-blend-mode:normal;
-  opacity:.42;
-}
-html body .bento-photo:hover img{
-  filter:brightness(1.13) contrast(1.02) saturate(1.03)!important;
-  transform:scale(1.012)!important;
-}
-html body .gym-image-container:after{
-  opacity:0!important;
-  background:none!important;
-}
-html body .gym-image-container:before{
-  background:linear-gradient(180deg,rgba(5,5,5,.01) 0%,rgba(5,5,5,.06) 100%)!important;
-  opacity:.32!important;
-}
-html body .middle-gym-wrapper:hover .gym-image-container:after,
-html body .middle-gym-wrapper:hover .gym-image-container:before{opacity:0!important}
-
-/* Premium scroll entrance for the middle image — subtle, not theatrical. */
-@supports (animation-timeline:view()){
-  .bento-photo{view-timeline-name:--ath-trx;view-timeline-axis:block}
-  .gym-image-container{
-    animation:athTrxReveal linear both;
-    animation-timeline:--ath-trx;
-    animation-range:entry 5% cover 42%;
-    will-change:transform,opacity,clip-path;
-  }
-  @keyframes athTrxReveal{
-    from{opacity:.42;transform:translateY(26px) scale(.975);clip-path:inset(10% 0 10% 0 round 2px)}
-    to{opacity:1;transform:translateY(0) scale(1);clip-path:inset(0 0 0 0 round 0)}
-  }
-}
-
-.team-strip{padding-top:170px;padding-bottom:170px;border-top:1px solid var(--ath-line);border-bottom:1px solid var(--ath-line)}
-.team-strip h2{letter-spacing:-.04em}
-.team-strip p{color:var(--ath-soft)}
-.team-portraits img{display:block;background:#0b0b0b}
-.team-portraits img:first-child{object-position:center 16%!important}
-.team-portraits img:nth-child(2){object-position:center 9%!important}
-
-.ticker-container{padding:52px 0}
-.ticker-item{font-size:2.25rem;color:rgba(255,255,255,.28)}
-footer{padding-top:100px}
-
-/* ========================================================================== 
-   PREMIUM TYPOGRAPHY EXPERIENCES MENU — NO HORIZONTAL SCROLL
-   Reuses the seven real Athletico service cards and their real images.
-   ========================================================================== */
+/* EXPERIENCES — typography menu with live image preview on desktop */
 @media(min-width:901px){
   .horizontal-scroll-outer{
     height:auto!important;
@@ -137,6 +53,7 @@ footer{padding-top:100px}
     padding:120px 8%!important;
     overflow:hidden!important;
     position:relative!important;
+    background:#050505!important;
   }
   .sticky-viewport{
     position:relative!important;
@@ -150,7 +67,7 @@ footer{padding-top:100px}
     position:relative!important;
     display:block!important;
     width:100%!important;
-    max-width:1520px!important;
+    max-width:var(--ath-home-max)!important;
     margin:0 auto!important;
     padding:0!important;
     transform:none!important;
@@ -205,7 +122,7 @@ footer{padding-top:100px}
   .exp-card .card-no{
     width:30px!important;
     margin:0!important;
-    color:#d4af37!important;
+    color:var(--ath-gold)!important;
     opacity:.42!important;
     font-size:.72rem!important;
     transition:opacity .3s ease!important;
@@ -218,10 +135,7 @@ footer{padding-top:100px}
     color:rgba(255,255,255,.38)!important;
     transition:color .4s ease,transform .4s ease!important;
   }
-  .exp-card:hover .card-meta h3{
-    color:#fff!important;
-    transform:translateX(14px)!important;
-  }
+  .exp-card:hover .card-meta h3{color:#fff!important;transform:translateX(14px)!important}
   .exp-card:hover .card-no{opacity:1!important}
   .exp-card .image-container{
     position:absolute!important;
@@ -257,92 +171,121 @@ footer{padding-top:100px}
     background:linear-gradient(to bottom,rgba(5,5,5,.20),rgba(5,5,5,.64))!important;
     z-index:3!important;
   }
-  .exp-card:first-child .image-container{
-    opacity:1!important;
-    visibility:visible!important;
-  }
-  .cards-track:has(.exp-card:hover) .exp-card:first-child:not(:hover) .image-container{
-    opacity:0!important;
-    visibility:hidden!important;
-  }
-  .exp-card:hover .image-container{
-    opacity:1!important;
-    visibility:visible!important;
-  }
-  .exp-card:hover .image-container img{
-    filter:grayscale(.18) brightness(.62) contrast(1.12)!important;
-    transform:scale(1.035)!important;
-  }
+  .exp-card:first-child .image-container{opacity:1!important;visibility:visible!important}
+  .cards-track:has(.exp-card:hover) .exp-card:first-child:not(:hover) .image-container{opacity:0!important;visibility:hidden!important}
+  .exp-card:hover .image-container{opacity:1!important;visibility:visible!important}
+  .exp-card:hover .image-container img{filter:grayscale(.18) brightness(.62) contrast(1.12)!important;transform:scale(1.035)!important}
 }
 
-/* ========================================================================== 
-   FULL-WIDTH CINEMATIC TRX DIVIDER — NO BOX, NO CROP-FEEL
-   ========================================================================== */
-html body .bento-photo{
-  grid-column:1 / -1!important;
-  width:100vw!important;
-  height:75vh!important;
-  min-height:560px!important;
-  margin:100px 0!important;
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  border:0!important;
+/* PHILOSOPHY — fixed architectural image with text flowing over it */
+.bento-section{
+  position:relative!important;
+  width:100%!important;
+  min-height:180vh!important;
+  padding:160px 10%!important;
   background:#050505!important;
   overflow:hidden!important;
+  isolation:isolate;
+}
+.bento-section:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url('../images/ATHLETICO_TRX_LUXURY_0909.png?v=20260909-2');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  filter:grayscale(.15) brightness(.34) contrast(1.12);
+  z-index:-2;
+  transform:scale(1.01);
+}
+.bento-section:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.42) 15%,rgba(5,5,5,.42) 85%,#050505 100%),
+    linear-gradient(90deg,rgba(5,5,5,.62) 0%,rgba(5,5,5,.20) 58%,rgba(5,5,5,.34) 100%);
+  z-index:-1;
+  pointer-events:none;
+}
+.bento-title{
   position:relative!important;
-  padding:0!important;
-}
-html body .bento-photo .middle-gym-wrapper,
-html body .bento-photo .gym-image-container{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  overflow:hidden!important;
-}
-html body .bento-photo img{
-  width:100%!important;
-  height:100%!important;
-  object-fit:cover!important;
-  object-position:center center!important;
-  filter:grayscale(1) brightness(.48) contrast(1.18)!important;
-  transform:scale(1)!important;
-  transition:transform 1.8s cubic-bezier(.2,1,.2,1),filter 1.2s ease!important;
-}
-html body .bento-photo .gym-image-container:after{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  background:linear-gradient(135deg,#d4af37 0%,#1a130b 100%)!important;
-  mix-blend-mode:color-dodge!important;
-  opacity:.34!important;
-  transition:opacity 1s ease!important;
-  pointer-events:none!important;
-  z-index:2!important;
-}
-html body .bento-photo .gym-image-container:before{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  background:linear-gradient(to bottom,#050505 0%,rgba(5,5,5,0) 20%,rgba(5,5,5,0) 80%,#050505 100%)!important;
-  opacity:1!important;
-  pointer-events:none!important;
   z-index:3!important;
+  display:block!important;
+  max-width:900px!important;
+  margin:0 0 120px!important;
 }
-html body .bento-photo:after{
-  content:"Premium Υποδομές"!important;
-  left:8vw!important;
-  bottom:68px!important;
-  font-size:clamp(2.2rem,3.2vw,4rem)!important;
-  color:#f4f1eb!important;
-  text-shadow:0 5px 30px rgba(0,0,0,.55)!important;
+.bento-title .eyebrow{
+  display:inline-block!important;
+  margin:0 0 22px!important;
+  color:var(--ath-gold)!important;
+  letter-spacing:.28em!important;
+  border-bottom:1px solid rgba(212,175,55,.30)!important;
+  padding-bottom:7px!important;
 }
-html body .bento-photo:hover img{
-  transform:scale(1.02)!important;
-  filter:grayscale(0) brightness(.74) contrast(1.08)!important;
+.bento-title h2{
+  font-size:clamp(2.8rem,4.4vw,4.8rem)!important;
+  line-height:1.08!important;
+  max-width:820px!important;
+  color:#fff!important;
+  letter-spacing:-.03em!important;
 }
-html body .bento-photo:hover .gym-image-container:after{opacity:.12!important}
+.bento-grid{
+  position:relative!important;
+  z-index:3!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:140px!important;
+  max-width:900px!important;
+  width:100%!important;
+}
+.bento-item{
+  display:block!important;
+  width:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  background:transparent!important;
+  overflow:visible!important;
+}
+.bento-item h4{
+  display:inline-block!important;
+  font-family:'Montserrat',sans-serif!important;
+  font-size:.78rem!important;
+  font-weight:300!important;
+  color:var(--ath-gold)!important;
+  letter-spacing:.22em!important;
+  margin-bottom:20px!important;
+  border-bottom:1px solid rgba(212,175,55,.28)!important;
+  padding-bottom:6px!important;
+}
+.bento-item p{
+  font-family:'Montserrat',sans-serif!important;
+  font-size:clamp(1rem,1.35vw,1.18rem)!important;
+  line-height:1.9!important;
+  color:#b9b9b9!important;
+  font-weight:300!important;
+  max-width:600px!important;
+  text-shadow:0 3px 22px rgba(0,0,0,.55)!important;
+}
+/* The photograph is now the fixed architectural canvas, not a separate box. */
+.bento-photo{display:none!important}
 
+/* TEAM / FOOTER refinements */
+.team-strip{padding-top:170px;padding-bottom:170px;border-top:1px solid var(--ath-line);border-bottom:1px solid var(--ath-line)}
+.team-strip h2{letter-spacing:-.04em}
+.team-strip p{color:var(--ath-soft)}
+.team-portraits img{display:block;background:#0b0b0b}
+.team-portraits img:first-child{object-position:center 16%!important}
+.team-portraits img:nth-child(2){object-position:center 9%!important}
+.ticker-container{padding:52px 0}
+.ticker-item{font-size:2.25rem;color:rgba(255,255,255,.28)}
+footer{padding-top:100px}
+
+/* MOBILE */
 @media(max-width:900px){
   .hero-section{padding:0 22px;justify-content:flex-end;padding-bottom:94px}
   .hero-video-bg{
@@ -356,47 +299,36 @@ html body .bento-photo:hover .gym-image-container:after{opacity:.12!important}
   .hero-copy{font-size:.76rem;max-width:92%;line-height:1.75}
   .hero-kicker{font-size:.57rem;letter-spacing:.24em;margin-bottom:16px}
   .hero-section:after{left:22px;right:22px;bottom:34px}
-  .horizontal-scroll-outer{height:auto!important;padding:92px 22px!important}
+
+  .horizontal-scroll-outer{height:auto!important;padding:92px 22px!important;background:#050505!important}
   .sticky-viewport{position:relative!important;height:auto!important;overflow:visible!important;display:block!important}
   .horizontal-layout{display:block!important;padding:0!important;transform:none!important;width:100%!important}
-  .section-intro-title{min-width:0;margin:0 0 42px;padding:0}
-  .section-intro-title h2{font-size:clamp(2.7rem,12vw,4rem)}
-  .cards-track{
-    display:flex!important;
-    flex-direction:column!important;
-    width:100%!important;
-    max-width:none!important;
-    overflow:visible!important;
-    gap:0!important;
-    padding:0!important;
-  }
+  .section-intro-title{min-width:0!important;margin:0 0 42px!important;padding:0!important}
+  .section-intro-title h2{font-size:clamp(2.7rem,12vw,4rem)!important}
+  .cards-track{display:flex!important;flex-direction:column!important;width:100%!important;max-width:none!important;overflow:visible!important;gap:0!important;padding:0!important}
   .cards-track::after{display:none!important}
-  .exp-card{
-    width:100%!important;
-    height:auto!important;
-    min-height:0!important;
-    padding:15px 0!important;
-    border-bottom:1px solid rgba(255,255,255,.07)!important;
-  }
+  .exp-card{width:100%!important;height:auto!important;min-height:0!important;padding:15px 0!important;border-bottom:1px solid rgba(255,255,255,.07)!important}
   .exp-card .image-container{display:none!important}
   .exp-card .card-meta{height:auto!important;min-height:52px!important;border:0!important;padding:0!important}
   .exp-card .card-meta h3{font-size:clamp(1.8rem,8.5vw,2.5rem)!important;color:rgba(255,255,255,.76)!important}
-  .bento-section{padding:110px 22px}
-  .bento-title{display:block;margin-bottom:54px}
-  .bento-title .eyebrow{margin-bottom:16px}
-  .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
-  html body .bento-photo{
-    width:100vw!important;
-    height:52vh!important;
-    min-height:380px!important;
-    margin:70px 0!important;
+
+  .bento-section{
+    min-height:auto!important;
+    padding:90px 24px!important;
   }
-  html body .bento-photo img{
-    object-fit:cover!important;
-    filter:brightness(.74) contrast(1.04) saturate(1.02)!important;
-    transform:scale(1)!important;
+  .bento-section:before{
+    background-attachment:scroll!important;
+    background-position:center center!important;
+    filter:grayscale(.08) brightness(.36) contrast(1.10)!important;
   }
-  html body .bento-photo:after{left:24px!important;bottom:34px!important;font-size:2.25rem!important}
+  .bento-section:after{
+    background:linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.56) 12%,rgba(5,5,5,.56) 88%,#050505 100%)!important;
+  }
+  .bento-title{margin-bottom:78px!important}
+  .bento-title h2{font-size:clamp(2.55rem,11vw,4rem)!important}
+  .bento-grid{gap:82px!important}
+  .bento-item p{font-size:.98rem!important;line-height:1.8!important;color:#c1c1c1!important}
+
   .team-strip{padding:110px 22px}
   .team-portraits{grid-template-columns:1fr 1fr;gap:10px;width:100%}
   .team-portraits img{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover}
@@ -405,6 +337,5 @@ html body .bento-photo:hover .gym-image-container:after{opacity:.12!important}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .hero-video-bg,.gym-image-container{animation:none!important;transform:none!important}
-  .gym-image-container{clip-path:none!important;opacity:1!important}
+  .hero-video-bg{animation:none!important;transform:none!important}
 }
