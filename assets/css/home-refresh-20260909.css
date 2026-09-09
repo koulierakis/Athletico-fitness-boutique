@@ -1,4 +1,4 @@
-/* Athletico homepage — consolidated premium refresh 2026-09-09 */
+/* Athletico homepage — consolidated premium overrides 2026-09-09 */
 :root{
   --ath-home-max:1520px;
   --ath-line:rgba(255,255,255,.08);
@@ -6,7 +6,7 @@
   --ath-gold:#d4af37;
 }
 
-/* HERO — cinematic arrival */
+/* HERO */
 .hero-section{
   min-height:100svh;
   padding-left:max(6vw,calc((100vw - var(--ath-home-max))/2 + 36px));
@@ -45,12 +45,16 @@
   opacity:1!important;
 }
 
-/* EXPERIENCES — typography menu with live image preview on desktop */
+/* ========================================================================== 
+   BESPOKE TYPOGRAPHY EXPERIENCES MENU — NO CARD SCROLL
+   The existing seven real Athletico cards become a pure typography menu.
+   Each real service image appears as the large cinematic preview on hover.
+   ========================================================================== */
 @media(min-width:901px){
   .horizontal-scroll-outer{
     height:auto!important;
     min-height:100vh!important;
-    padding:120px 8%!important;
+    padding:110px 7vw 120px!important;
     overflow:hidden!important;
     position:relative!important;
     background:#050505!important;
@@ -59,7 +63,7 @@
     position:relative!important;
     top:auto!important;
     height:auto!important;
-    min-height:78vh!important;
+    min-height:76vh!important;
     overflow:visible!important;
     display:block!important;
   }
@@ -68,116 +72,165 @@
     display:block!important;
     width:100%!important;
     max-width:var(--ath-home-max)!important;
+    min-height:76vh!important;
     margin:0 auto!important;
     padding:0!important;
     transform:none!important;
   }
+
   .section-intro-title{
-    min-width:0!important;
-    width:46%!important;
-    margin:0 0 44px!important;
     position:relative!important;
-    z-index:6!important;
+    z-index:8!important;
+    width:46%!important;
+    min-width:0!important;
+    margin:0 0 38px!important;
   }
-  .section-intro-title .eyebrow{margin-bottom:18px!important}
+  .section-intro-title .eyebrow{
+    margin:0 0 14px!important;
+    color:rgba(255,255,255,.38)!important;
+  }
   .section-intro-title h2{
-    font-size:1.15rem!important;
-    line-height:1.35!important;
-    text-transform:uppercase!important;
-    letter-spacing:.16em!important;
-    color:#777!important;
-    font-family:'Montserrat',sans-serif!important;
+    margin:0!important;
+    font-family:'Cormorant Garamond',serif!important;
+    font-size:clamp(1.55rem,2.1vw,2.25rem)!important;
+    line-height:1.1!important;
+    letter-spacing:.01em!important;
+    text-transform:none!important;
+    color:rgba(255,255,255,.48)!important;
     font-weight:300!important;
   }
   .section-intro-title h2 br{display:none!important}
+
   .cards-track{
+    position:relative!important;
+    z-index:8!important;
     display:flex!important;
     flex-direction:column!important;
     gap:0!important;
-    width:48%!important;
+    width:49%!important;
+    max-width:760px!important;
     padding:0!important;
-    position:relative!important;
-    z-index:6!important;
+    overflow:visible!important;
   }
   .exp-card{
     position:static!important;
+    display:block!important;
     width:100%!important;
     height:auto!important;
     min-height:0!important;
-    display:block!important;
-    padding:12px 0!important;
+    padding:7px 0!important;
     border-bottom:1px solid rgba(255,255,255,.055)!important;
+    text-decoration:none!important;
   }
   .exp-card .card-meta{
-    height:auto!important;
-    min-height:58px!important;
-    border:0!important;
     display:flex!important;
     flex-direction:row-reverse!important;
     justify-content:flex-end!important;
-    gap:28px!important;
     align-items:center!important;
+    gap:30px!important;
+    height:auto!important;
+    min-height:64px!important;
     padding:0!important;
+    border:0!important;
   }
   .exp-card .card-no{
-    width:30px!important;
+    flex:0 0 34px!important;
+    width:34px!important;
     margin:0!important;
+    font-family:'Montserrat',sans-serif!important;
+    font-size:.72rem!important;
+    letter-spacing:.18em!important;
     color:var(--ath-gold)!important;
     opacity:.42!important;
-    font-size:.72rem!important;
-    transition:opacity .3s ease!important;
+    transition:opacity .28s ease!important;
   }
   .exp-card .card-meta h3{
     margin:0!important;
-    font-size:clamp(2rem,3.1vw,3.15rem)!important;
-    line-height:1!important;
+    font-family:'Cormorant Garamond',serif!important;
+    font-size:clamp(2.35rem,3.45vw,3.8rem)!important;
+    line-height:.98!important;
     font-weight:300!important;
-    color:rgba(255,255,255,.38)!important;
-    transition:color .4s ease,transform .4s ease!important;
+    letter-spacing:-.025em!important;
+    color:rgba(255,255,255,.34)!important;
+    transition:color .32s ease,transform .38s cubic-bezier(.22,.61,.36,1)!important;
   }
-  .exp-card:hover .card-meta h3{color:#fff!important;transform:translateX(14px)!important}
-  .exp-card:hover .card-no{opacity:1!important}
+  .exp-card:hover .card-meta h3,
+  .exp-card:focus-visible .card-meta h3{
+    color:#fff!important;
+    transform:translateX(15px)!important;
+  }
+  .exp-card:hover .card-no,
+  .exp-card:focus-visible .card-no{opacity:1!important}
+
+  /* Large free image layer — not a card. */
   .exp-card .image-container{
     position:absolute!important;
-    top:0!important;
-    right:0!important;
-    width:45vw!important;
-    max-width:690px!important;
-    height:75vh!important;
+    top:50%!important;
+    right:-1vw!important;
+    width:min(47vw,760px)!important;
+    height:min(76vh,760px)!important;
     min-height:560px!important;
+    transform:translateY(-50%)!important;
     overflow:hidden!important;
-    background:#0b0b0b!important;
+    background:#090909!important;
     opacity:0!important;
     visibility:hidden!important;
     pointer-events:none!important;
-    transition:opacity .42s cubic-bezier(.25,1,.5,1),visibility .42s!important;
     z-index:1!important;
+    transition:opacity .22s ease,visibility .22s ease!important;
   }
   .exp-card .image-container img{
     width:100%!important;
     height:100%!important;
     object-fit:cover!important;
-    filter:grayscale(1) brightness(.42) contrast(1.22)!important;
-    transform:scale(1.01)!important;
-    transition:filter .7s ease,transform 1.2s cubic-bezier(.25,1,.5,1)!important;
+    object-position:center!important;
+    filter:grayscale(.78) brightness(.40) contrast(1.20) saturate(.68)!important;
+    transform:scale(1.015)!important;
+    transition:filter .55s ease,transform 1.15s cubic-bezier(.22,.61,.36,1)!important;
   }
   .exp-card .image-container:before{
+    content:""!important;
+    position:absolute!important;
+    inset:0!important;
     background:linear-gradient(135deg,#d4af37 0%,#1a130b 100%)!important;
     mix-blend-mode:color-dodge!important;
-    opacity:.42!important;
+    opacity:.30!important;
     z-index:2!important;
+    pointer-events:none!important;
   }
   .exp-card .image-container:after{
-    background:linear-gradient(to bottom,rgba(5,5,5,.20),rgba(5,5,5,.64))!important;
+    content:""!important;
+    position:absolute!important;
+    inset:0!important;
+    background:
+      linear-gradient(90deg,#050505 0%,rgba(5,5,5,.08) 18%,rgba(5,5,5,.05) 78%,rgba(5,5,5,.45) 100%),
+      linear-gradient(180deg,rgba(5,5,5,.12),rgba(5,5,5,.34))!important;
     z-index:3!important;
+    pointer-events:none!important;
   }
+
+  /* First experience is the resting preview. Hover instantly replaces it. */
   .exp-card:first-child .image-container{opacity:1!important;visibility:visible!important}
-  .cards-track:has(.exp-card:hover) .exp-card:first-child:not(:hover) .image-container{opacity:0!important;visibility:hidden!important}
-  .exp-card:hover .image-container{opacity:1!important;visibility:visible!important}
-  .exp-card:hover .image-container img{filter:grayscale(.18) brightness(.62) contrast(1.12)!important;transform:scale(1.035)!important}
+  .cards-track:has(.exp-card:hover) .exp-card:first-child:not(:hover) .image-container,
+  .cards-track:has(.exp-card:focus-visible) .exp-card:first-child:not(:focus-visible) .image-container{
+    opacity:0!important;
+    visibility:hidden!important;
+  }
+  .exp-card:hover .image-container,
+  .exp-card:focus-visible .image-container{
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  .exp-card:hover .image-container img,
+  .exp-card:focus-visible .image-container img{
+    filter:grayscale(.12) brightness(.64) contrast(1.10) saturate(.92)!important;
+    transform:scale(1.035)!important;
+  }
 }
 
-/* PHILOSOPHY — one continuous fixed photographic scene from headline to team */
+/* ========================================================================== 
+   PHILOSOPHY — one continuous fixed TRX photograph from headline to team.
+   ========================================================================== */
 .bento-section{
   position:relative!important;
   width:100%!important;
@@ -192,22 +245,22 @@
   content:"";
   position:absolute;
   inset:0;
-  background-image:url('../images/ATHLETICO_TRX_LUXURY_0909.png?v=20260909-3');
+  background-image:url('../images/ATHLETICO_TRX_LUXURY_0909.png?v=20260909-4');
   background-size:cover;
   background-position:center center;
   background-repeat:no-repeat;
   background-attachment:fixed;
-  filter:grayscale(.08) brightness(.43) contrast(1.10) saturate(1.02);
+  filter:grayscale(.08) brightness(.45) contrast(1.08) saturate(1.02);
   z-index:-2;
-  transform:scale(1.005);
+  transform:scale(1.004);
 }
 .bento-section:after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.22) 10%,rgba(5,5,5,.26) 72%,rgba(5,5,5,.62) 90%,#050505 100%),
-    linear-gradient(90deg,rgba(5,5,5,.62) 0%,rgba(5,5,5,.14) 58%,rgba(5,5,5,.28) 100%);
+    linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.18) 9%,rgba(5,5,5,.22) 72%,rgba(5,5,5,.62) 90%,#050505 100%),
+    linear-gradient(90deg,rgba(5,5,5,.58) 0%,rgba(5,5,5,.10) 58%,rgba(5,5,5,.26) 100%);
   z-index:-1;
   pointer-events:none;
 }
@@ -273,10 +326,9 @@
   max-width:760px!important;
   text-shadow:0 6px 30px rgba(0,0,0,.70)!important;
 }
-/* The same photograph remains fixed throughout; there is no separate photo box. */
 .bento-photo{display:none!important}
 
-/* TEAM starts immediately after the photographic scene fades to black */
+/* TEAM */
 .team-strip{
   margin-top:0!important;
   padding-top:170px;
@@ -294,7 +346,7 @@
 .ticker-item{font-size:2.25rem;color:rgba(255,255,255,.28)}
 footer{padding-top:100px}
 
-/* MOBILE */
+/* MOBILE — typography list, no horizontal cards */
 @media(max-width:900px){
   .hero-section{padding:0 22px;justify-content:flex-end;padding-bottom:94px}
   .hero-video-bg{
@@ -309,29 +361,27 @@ footer{padding-top:100px}
   .hero-kicker{font-size:.57rem;letter-spacing:.24em;margin-bottom:16px}
   .hero-section:after{left:22px;right:22px;bottom:34px}
 
-  .horizontal-scroll-outer{height:auto!important;padding:92px 22px!important;background:#050505!important}
-  .sticky-viewport{position:relative!important;height:auto!important;overflow:visible!important;display:block!important}
+  .horizontal-scroll-outer{height:auto!important;min-height:0!important;padding:92px 22px!important;background:#050505!important}
+  .sticky-viewport{position:relative!important;height:auto!important;min-height:0!important;overflow:visible!important;display:block!important}
   .horizontal-layout{display:block!important;padding:0!important;transform:none!important;width:100%!important}
-  .section-intro-title{min-width:0!important;margin:0 0 42px!important;padding:0!important}
-  .section-intro-title h2{font-size:clamp(2.7rem,12vw,4rem)!important}
+  .section-intro-title{min-width:0!important;margin:0 0 34px!important;padding:0!important}
+  .section-intro-title h2{font-size:clamp(2.4rem,11vw,3.5rem)!important;line-height:1!important}
   .cards-track{display:flex!important;flex-direction:column!important;width:100%!important;max-width:none!important;overflow:visible!important;gap:0!important;padding:0!important}
   .cards-track::after{display:none!important}
-  .exp-card{width:100%!important;height:auto!important;min-height:0!important;padding:15px 0!important;border-bottom:1px solid rgba(255,255,255,.07)!important}
+  .exp-card{width:100%!important;height:auto!important;min-height:0!important;padding:10px 0!important;border-bottom:1px solid rgba(255,255,255,.07)!important}
   .exp-card .image-container{display:none!important}
-  .exp-card .card-meta{height:auto!important;min-height:52px!important;border:0!important;padding:0!important}
-  .exp-card .card-meta h3{font-size:clamp(1.8rem,8.5vw,2.5rem)!important;color:rgba(255,255,255,.76)!important}
+  .exp-card .card-meta{display:flex!important;flex-direction:row-reverse!important;justify-content:flex-end!important;align-items:center!important;gap:18px!important;height:auto!important;min-height:54px!important;border:0!important;padding:0!important}
+  .exp-card .card-no{width:26px!important;color:var(--ath-gold)!important;opacity:.58!important;font-size:.65rem!important}
+  .exp-card .card-meta h3{font-family:'Cormorant Garamond',serif!important;font-size:clamp(1.9rem,8.8vw,2.65rem)!important;line-height:1!important;color:rgba(255,255,255,.78)!important;font-weight:300!important}
 
-  .bento-section{
-    min-height:auto!important;
-    padding:92px 24px 120px!important;
-  }
+  .bento-section{min-height:auto!important;padding:92px 24px 120px!important}
   .bento-section:before{
     background-attachment:scroll!important;
     background-position:center center!important;
-    filter:grayscale(.04) brightness(.46) contrast(1.08)!important;
+    filter:grayscale(.04) brightness(.47) contrast(1.07)!important;
   }
   .bento-section:after{
-    background:linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.48) 10%,rgba(5,5,5,.48) 82%,#050505 100%)!important;
+    background:linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.46) 10%,rgba(5,5,5,.46) 82%,#050505 100%)!important;
   }
   .bento-title{margin-bottom:90px!important}
   .bento-title h2{font-size:clamp(2.55rem,11vw,4rem)!important}
@@ -347,4 +397,5 @@ footer{padding-top:100px}
 
 @media(prefers-reduced-motion:reduce){
   .hero-video-bg{animation:none!important;transform:none!important}
+  .exp-card .image-container img{transition:none!important}
 }
