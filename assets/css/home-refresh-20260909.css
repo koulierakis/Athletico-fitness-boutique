@@ -126,6 +126,223 @@ html body .middle-gym-wrapper:hover .gym-image-container:before{opacity:0!import
 .ticker-item{font-size:2.25rem;color:rgba(255,255,255,.28)}
 footer{padding-top:100px}
 
+/* ========================================================================== 
+   PREMIUM TYPOGRAPHY EXPERIENCES MENU — NO HORIZONTAL SCROLL
+   Reuses the seven real Athletico service cards and their real images.
+   ========================================================================== */
+@media(min-width:901px){
+  .horizontal-scroll-outer{
+    height:auto!important;
+    min-height:100vh!important;
+    padding:120px 8%!important;
+    overflow:hidden!important;
+    position:relative!important;
+  }
+  .sticky-viewport{
+    position:relative!important;
+    top:auto!important;
+    height:auto!important;
+    min-height:78vh!important;
+    overflow:visible!important;
+    display:block!important;
+  }
+  .horizontal-layout{
+    position:relative!important;
+    display:block!important;
+    width:100%!important;
+    max-width:1520px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    transform:none!important;
+  }
+  .section-intro-title{
+    min-width:0!important;
+    width:46%!important;
+    margin:0 0 44px!important;
+    position:relative!important;
+    z-index:6!important;
+  }
+  .section-intro-title .eyebrow{margin-bottom:18px!important}
+  .section-intro-title h2{
+    font-size:1.15rem!important;
+    line-height:1.35!important;
+    text-transform:uppercase!important;
+    letter-spacing:.16em!important;
+    color:#777!important;
+    font-family:'Montserrat',sans-serif!important;
+    font-weight:300!important;
+  }
+  .section-intro-title h2 br{display:none!important}
+  .cards-track{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:0!important;
+    width:48%!important;
+    padding:0!important;
+    position:relative!important;
+    z-index:6!important;
+  }
+  .exp-card{
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    display:block!important;
+    padding:12px 0!important;
+    border-bottom:1px solid rgba(255,255,255,.055)!important;
+  }
+  .exp-card .card-meta{
+    height:auto!important;
+    min-height:58px!important;
+    border:0!important;
+    display:flex!important;
+    flex-direction:row-reverse!important;
+    justify-content:flex-end!important;
+    gap:28px!important;
+    align-items:center!important;
+    padding:0!important;
+  }
+  .exp-card .card-no{
+    width:30px!important;
+    margin:0!important;
+    color:#d4af37!important;
+    opacity:.42!important;
+    font-size:.72rem!important;
+    transition:opacity .3s ease!important;
+  }
+  .exp-card .card-meta h3{
+    margin:0!important;
+    font-size:clamp(2rem,3.1vw,3.15rem)!important;
+    line-height:1!important;
+    font-weight:300!important;
+    color:rgba(255,255,255,.38)!important;
+    transition:color .4s ease,transform .4s ease!important;
+  }
+  .exp-card:hover .card-meta h3{
+    color:#fff!important;
+    transform:translateX(14px)!important;
+  }
+  .exp-card:hover .card-no{opacity:1!important}
+  .exp-card .image-container{
+    position:absolute!important;
+    top:0!important;
+    right:0!important;
+    width:45vw!important;
+    max-width:690px!important;
+    height:75vh!important;
+    min-height:560px!important;
+    overflow:hidden!important;
+    background:#0b0b0b!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transition:opacity .42s cubic-bezier(.25,1,.5,1),visibility .42s!important;
+    z-index:1!important;
+  }
+  .exp-card .image-container img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    filter:grayscale(1) brightness(.42) contrast(1.22)!important;
+    transform:scale(1.01)!important;
+    transition:filter .7s ease,transform 1.2s cubic-bezier(.25,1,.5,1)!important;
+  }
+  .exp-card .image-container:before{
+    background:linear-gradient(135deg,#d4af37 0%,#1a130b 100%)!important;
+    mix-blend-mode:color-dodge!important;
+    opacity:.42!important;
+    z-index:2!important;
+  }
+  .exp-card .image-container:after{
+    background:linear-gradient(to bottom,rgba(5,5,5,.20),rgba(5,5,5,.64))!important;
+    z-index:3!important;
+  }
+  .exp-card:first-child .image-container{
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  .cards-track:has(.exp-card:hover) .exp-card:first-child:not(:hover) .image-container{
+    opacity:0!important;
+    visibility:hidden!important;
+  }
+  .exp-card:hover .image-container{
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  .exp-card:hover .image-container img{
+    filter:grayscale(.18) brightness(.62) contrast(1.12)!important;
+    transform:scale(1.035)!important;
+  }
+}
+
+/* ========================================================================== 
+   FULL-WIDTH CINEMATIC TRX DIVIDER — NO BOX, NO CROP-FEEL
+   ========================================================================== */
+html body .bento-photo{
+  grid-column:1 / -1!important;
+  width:100vw!important;
+  height:75vh!important;
+  min-height:560px!important;
+  margin:100px 0!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  border:0!important;
+  background:#050505!important;
+  overflow:hidden!important;
+  position:relative!important;
+  padding:0!important;
+}
+html body .bento-photo .middle-gym-wrapper,
+html body .bento-photo .gym-image-container{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+}
+html body .bento-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  filter:grayscale(1) brightness(.48) contrast(1.18)!important;
+  transform:scale(1)!important;
+  transition:transform 1.8s cubic-bezier(.2,1,.2,1),filter 1.2s ease!important;
+}
+html body .bento-photo .gym-image-container:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(135deg,#d4af37 0%,#1a130b 100%)!important;
+  mix-blend-mode:color-dodge!important;
+  opacity:.34!important;
+  transition:opacity 1s ease!important;
+  pointer-events:none!important;
+  z-index:2!important;
+}
+html body .bento-photo .gym-image-container:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(to bottom,#050505 0%,rgba(5,5,5,0) 20%,rgba(5,5,5,0) 80%,#050505 100%)!important;
+  opacity:1!important;
+  pointer-events:none!important;
+  z-index:3!important;
+}
+html body .bento-photo:after{
+  content:"Premium Υποδομές"!important;
+  left:8vw!important;
+  bottom:68px!important;
+  font-size:clamp(2.2rem,3.2vw,4rem)!important;
+  color:#f4f1eb!important;
+  text-shadow:0 5px 30px rgba(0,0,0,.55)!important;
+}
+html body .bento-photo:hover img{
+  transform:scale(1.02)!important;
+  filter:grayscale(0) brightness(.74) contrast(1.08)!important;
+}
+html body .bento-photo:hover .gym-image-container:after{opacity:.12!important}
+
 @media(max-width:900px){
   .hero-section{padding:0 22px;justify-content:flex-end;padding-bottom:94px}
   .hero-video-bg{
@@ -139,33 +356,47 @@ footer{padding-top:100px}
   .hero-copy{font-size:.76rem;max-width:92%;line-height:1.75}
   .hero-kicker{font-size:.57rem;letter-spacing:.24em;margin-bottom:16px}
   .hero-section:after{left:22px;right:22px;bottom:34px}
-  .section-intro-title{min-width:0;margin:0 0 38px;padding:0 22px}
+  .horizontal-scroll-outer{height:auto!important;padding:92px 22px!important}
+  .sticky-viewport{position:relative!important;height:auto!important;overflow:visible!important;display:block!important}
+  .horizontal-layout{display:block!important;padding:0!important;transform:none!important;width:100%!important}
+  .section-intro-title{min-width:0;margin:0 0 42px;padding:0}
   .section-intro-title h2{font-size:clamp(2.7rem,12vw,4rem)}
   .cards-track{
-    gap:14px;
-    padding-left:22px;
-    padding-right:0;
-    scroll-padding-left:22px;
-    scroll-padding-right:22px;
-    overscroll-behavior-x:contain;
-    -webkit-overflow-scrolling:touch;
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    max-width:none!important;
+    overflow:visible!important;
+    gap:0!important;
+    padding:0!important;
   }
-  .cards-track::after{
-    content:"";
-    flex:0 0 22px;
-    width:22px;
+  .cards-track::after{display:none!important}
+  .exp-card{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:15px 0!important;
+    border-bottom:1px solid rgba(255,255,255,.07)!important;
   }
-  .exp-card{width:84vw;scroll-snap-align:start}
-  .exp-card:last-of-type{scroll-snap-align:end}
+  .exp-card .image-container{display:none!important}
+  .exp-card .card-meta{height:auto!important;min-height:52px!important;border:0!important;padding:0!important}
+  .exp-card .card-meta h3{font-size:clamp(1.8rem,8.5vw,2.5rem)!important;color:rgba(255,255,255,.76)!important}
   .bento-section{padding:110px 22px}
   .bento-title{display:block;margin-bottom:54px}
   .bento-title .eyebrow{margin-bottom:16px}
   .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
-  html body .bento-photo img{
-    filter:brightness(1.08) contrast(1.02) saturate(1.02)!important;
-    transform:scale(1)!important;
-    object-fit:contain!important;
+  html body .bento-photo{
+    width:100vw!important;
+    height:52vh!important;
+    min-height:380px!important;
+    margin:70px 0!important;
   }
+  html body .bento-photo img{
+    object-fit:cover!important;
+    filter:brightness(.74) contrast(1.04) saturate(1.02)!important;
+    transform:scale(1)!important;
+  }
+  html body .bento-photo:after{left:24px!important;bottom:34px!important;font-size:2.25rem!important}
   .team-strip{padding:110px 22px}
   .team-portraits{grid-template-columns:1fr 1fr;gap:10px;width:100%}
   .team-portraits img{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover}
