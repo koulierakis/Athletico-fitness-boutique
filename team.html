@@ -15,6 +15,8 @@
         .logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;font-weight:300}
         .back-link{font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:#888;text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:10px}
         .back-link:hover{color:#fff}
+        .menu-toggle{position:fixed;top:34px;left:34px;z-index:1002;width:48px;height:48px;border:1px solid rgba(255,255,255,.24);background:rgba(5,5,5,.62);backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0}.menu-toggle span{display:block;width:19px;height:1px;background:#fff;transition:transform .35s}.menu-toggle.is-open span:first-child{transform:translateY(3px) rotate(45deg)}.menu-toggle.is-open span:last-child{transform:translateY(-3px) rotate(-45deg)}
+        .menu-panel{position:fixed;top:94px;left:34px;z-index:1001;width:min(360px,calc(100vw - 68px));padding:25px 30px 24px;background:rgba(8,8,8,.94);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.09);box-shadow:0 28px 80px rgba(0,0,0,.48);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.985);transform-origin:top left;transition:.28s}.menu-panel.is-open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}.menu-panel nav{display:flex;flex-direction:column;align-items:flex-start;gap:11px}.menu-panel a{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#f3f3f3;text-decoration:none;line-height:1.05;transition:.25s}.menu-panel a:hover{color:#d4af37;transform:translateX(5px)}.menu-panel .home-return{font-family:'Montserrat',sans-serif;font-size:.63rem;letter-spacing:.24em;text-transform:uppercase;color:#d4af37;margin-bottom:9px}.menu-panel .menu-meta{width:100%;margin-top:16px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:#666;line-height:1.7}
         .team-hero{padding:180px 8% 80px;max-width:1200px}
         .team-hero h1{font-size:clamp(3rem,6vw,5.5rem);line-height:1.1;margin-bottom:30px}
         .team-hero h1 em{font-style:italic;color:#d4af37}
@@ -35,14 +37,13 @@
         .footer-teaser h3{font-size:3.5rem;margin-bottom:30px}
         .footer-teaser a{color:#fff;font-size:.85rem;text-transform:uppercase;letter-spacing:3px;text-decoration:none;border-bottom:1px solid #fff;padding-bottom:8px;transition:opacity .3s}
         .footer-teaser a:hover{opacity:.7}
-        @media(max-width:900px){header{padding:28px 6%}.logo{font-size:1.7rem}.back-link{font-size:.62rem;letter-spacing:2px}.team-hero{padding:150px 6% 70px}.editorial-container{padding:0 6% 100px;gap:90px}.profile-row{flex-direction:column!important;gap:42px;align-items:stretch}.profile-image-block{width:100%;flex:none;height:62svh;min-height:480px}.profile-text-block{width:100%;flex:none}.profile-text-block .quote{font-size:1.8rem}.footer-teaser{padding:90px 6%}.footer-teaser h3{font-size:2.6rem}}
+        @media(max-width:900px){header{padding:28px 6%}.logo{font-size:1.7rem;margin-left:58px}.back-link{font-size:.62rem;letter-spacing:2px}.menu-toggle{top:20px;left:18px;width:44px;height:44px}.menu-panel{top:76px;left:18px;width:min(330px,calc(100vw - 36px));padding:24px}.menu-panel a{font-size:1.75rem}.team-hero{padding:150px 6% 70px}.editorial-container{padding:0 6% 100px;gap:90px}.profile-row{flex-direction:column!important;gap:42px;align-items:stretch}.profile-image-block{width:100%;flex:none;height:62svh;min-height:480px}.profile-text-block{width:100%;flex:none}.profile-text-block .quote{font-size:1.8rem}.footer-teaser{padding:90px 6%}.footer-teaser h3{font-size:2.6rem}}
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">Athletico</a>
-        <a href="index.html" class="back-link">← Επιστροφή</a>
-    </header>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false"><span></span><span></span></button>
+    <div class="menu-panel" id="menuPanel" aria-hidden="true"><nav><a class="home-return" href="index.html">← Επιστροφή στην αρχική</a><a href="experiences.html">Εμπειρίες</a><a href="team.html">Η ομάδα</a><a href="contact.html">Επικοινωνία</a><div class="menu-meta">Athletico · Wellness Center · Trikala</div></nav></div>
+    <header><a href="index.html" class="logo">Athletico</a><a href="index.html" class="back-link">← Επιστροφή</a></header>
 
     <section class="team-hero">
         <h1>Οι <em>Αρχιτέκτονες</em><br>της Ευεξίας σας.</h1>
@@ -51,33 +52,22 @@
 
     <main class="editorial-container">
         <div class="profile-row giannis-row">
-            <div class="profile-text-block">
-                <h2>Γιάννης</h2>
-                <span class="subtitle">Bespoke Performance Expert</span>
-                <p class="quote">«Η κίνηση είναι το αντίδοτο στις πιέσεις της καθημερινότητας. Υγεία σημαίνει να είσαι έτοιμος για τη ζωή.»</p>
-                <p class="description">Ο Γιάννης πιστεύει ότι η σωματική κατάσταση είναι άρρηκτα συνδεδεμένη με τον σύγχρονο τρόπο ζωής. Σχεδιάζει την κάθε συνεδρία με σκοπό να αποφορτίσει το σώμα από το καθημερινό άγχος και το στρες, χτίζοντας μια ασπίδα δύναμης και ανθεκτικότητας που σας επιτρέπει να λειτουργείτε στο μέγιστο των δυνατοτήτων σας κάθε μέρα.</p>
-            </div>
-            <div class="profile-image-block">
-                <img src="assets/images/giannis-profile-new2.png?v=20260907-2" alt="Γιάννης Κουλιεράκης">
-            </div>
+            <div class="profile-text-block"><h2>Γιάννης</h2><span class="subtitle">Bespoke Performance Expert</span><p class="quote">«Η κίνηση είναι το αντίδοτο στις πιέσεις της καθημερινότητας. Υγεία σημαίνει να είσαι έτοιμος για τη ζωή.»</p><p class="description">Ο Γιάννης πιστεύει ότι η σωματική κατάσταση είναι άρρηκτα συνδεδεμένη με τον σύγχρονο τρόπο ζωής. Σχεδιάζει την κάθε συνεδρία με σκοπό να αποφορτίσει το σώμα από το καθημερινό άγχος και το στρες, χτίζοντας μια ασπίδα δύναμης και ανθεκτικότητας που σας επιτρέπει να λειτουργείτε στο μέγιστο των δυνατοτήτων σας κάθε μέρα.</p></div>
+            <div class="profile-image-block"><img src="assets/images/giannis-profile-new2.png?v=20260907-2" alt="Γιάννης Κουλιεράκης"></div>
         </div>
-
         <div class="profile-row sofia-row">
-            <div class="profile-image-block">
-                <img src="assets/images/sofia-profile-new.png?v=20260907-2" alt="Σοφία Πολύζου">
-            </div>
-            <div class="profile-text-block">
-                <h2>Σοφία</h2>
-                <span class="subtitle">Movement Architecture Specialist</span>
-                <p class="quote">«Δεν υπάρχουν γενικές λύσεις. Κάθε άνθρωπος είναι μια ξεχωριστή ιστορία που απαιτεί μοναδική φροντίδα.»</p>
-                <p class="description">Για τη Σοφία, η αυθεντική ευεξία κρύβεται στην απόλυτη εξατομίκευση. Αναγνωρίζοντας ότι κάθε σώμα έχει τις δικές του, μοναδικές ανάγκες, προσεγγίζει τον κάθε ασκούμενο ξεχωριστά. Δημιουργεί λύσεις κομμένες και ραμμένες αποκλειστικά για εσάς, προσφέροντας ένα ασφαλές καταφύγιο όπου η λεπτομέρεια στην καθοδήγηση κάνει τη διαφορά.</p>
-            </div>
+            <div class="profile-image-block"><img src="assets/images/sofia-profile-new.png?v=20260907-2" alt="Σοφία Πολύζου"></div>
+            <div class="profile-text-block"><h2>Σοφία</h2><span class="subtitle">Movement Architecture Specialist</span><p class="quote">«Δεν υπάρχουν γενικές λύσεις. Κάθε άνθρωπος είναι μια ξεχωριστή ιστορία που απαιτεί μοναδική φροντίδα.»</p><p class="description">Για τη Σοφία, η αυθεντική ευεξία κρύβεται στην απόλυτη εξατομίκευση. Αναγνωρίζοντας ότι κάθε σώμα έχει τις δικές του, μοναδικές ανάγκες, προσεγγίζει τον κάθε ασκούμενο ξεχωριστά. Δημιουργεί λύσεις κομμένες και ραμμένες αποκλειστικά για εσάς, προσφέροντας ένα ασφαλές καταφύγιο όπου η λεπτομέρεια στην καθοδήγηση κάνει τη διαφορά.</p></div>
         </div>
     </main>
 
-    <section class="footer-teaser">
-        <h3>Your body. Your architect.</h3>
-        <a href="contact.html">Σχεδιάστε το δικό σας session</a>
-    </section>
+    <section class="footer-teaser"><h3>Your body. Your architect.</h3><a href="contact.html">Σχεδιάστε το δικό σας session</a></section>
+    <script>
+      const menuToggle=document.getElementById('menuToggle'),menuPanel=document.getElementById('menuPanel');
+      function setMenu(open){menuToggle.classList.toggle('is-open',open);menuPanel.classList.toggle('is-open',open);menuToggle.setAttribute('aria-expanded',String(open));menuPanel.setAttribute('aria-hidden',String(!open))}
+      menuToggle.addEventListener('click',()=>setMenu(!menuPanel.classList.contains('is-open')));
+      document.addEventListener('click',e=>{if(menuPanel.classList.contains('is-open')&&!menuPanel.contains(e.target)&&!menuToggle.contains(e.target))setMenu(false)});
+      addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+    </script>
 </body>
 </html>
