@@ -1,0 +1,85 @@
+/* Athletico homepage refresh — 2026-09-09
+   Controlled refinement of the existing award/cinematic direction. */
+:root{
+  --ath-home-max: 1520px;
+  --ath-line: rgba(255,255,255,.08);
+  --ath-soft: rgba(255,255,255,.62);
+}
+
+.hero-section{
+  min-height:100svh;
+  padding-left:max(6vw,calc((100vw - var(--ath-home-max))/2 + 36px));
+  padding-right:8vw;
+}
+.hero-section:before{
+  background:
+    linear-gradient(90deg,rgba(5,5,5,.88) 0%,rgba(5,5,5,.52) 38%,rgba(5,5,5,.18) 68%,rgba(5,5,5,.36) 100%),
+    linear-gradient(180deg,rgba(5,5,5,.12) 0%,rgba(5,5,5,.08) 52%,#050505 100%)!important;
+}
+.hero-kicker{margin-bottom:22px;color:rgba(255,255,255,.7)}
+.hero-section h1{
+  max-width:860px;
+  font-size:clamp(3.6rem,6.4vw,6.8rem);
+  line-height:.96;
+  letter-spacing:-.035em;
+  margin-bottom:24px;
+}
+.hero-copy{
+  max-width:540px;
+  font-size:.83rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.68);
+}
+.hero-section:after{
+  content:"";
+  position:absolute;
+  left:max(6vw,calc((100vw - var(--ath-home-max))/2 + 36px));
+  right:8vw;
+  bottom:34px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(255,255,255,.28),rgba(255,255,255,.04));
+  z-index:4!important;
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+}
+
+.horizontal-scroll-outer{background:#050505}
+.section-intro-title{min-width:520px;margin-right:100px}
+.section-intro-title h2{font-size:clamp(3.2rem,5vw,5.1rem);line-height:1.02;letter-spacing:-.03em}
+.cards-track{gap:42px}
+.exp-card{width:420px}
+.card-meta{height:16%;padding-top:10px;border-bottom-color:var(--ath-line)}
+.card-meta h3{font-size:2rem}
+.card-no{color:rgba(255,255,255,.34)}
+
+.bento-section{padding-top:180px;padding-bottom:180px}
+.bento-title{display:grid;grid-template-columns:.72fr 1.28fr;align-items:end;gap:70px;margin-bottom:90px}
+.bento-title .eyebrow{margin:0 0 11px}
+.bento-title h2{font-size:clamp(3.1rem,4.6vw,4.8rem);max-width:760px;letter-spacing:-.03em}
+.bento-grid{gap:24px}
+.bento-item{border-color:rgba(255,255,255,.055);background:#090909}
+
+.team-strip{padding-top:170px;padding-bottom:170px;border-top:1px solid var(--ath-line);border-bottom:1px solid var(--ath-line)}
+.team-strip h2{letter-spacing:-.04em}
+.team-strip p{color:var(--ath-soft)}
+
+.ticker-container{padding:52px 0}
+.ticker-item{font-size:2.25rem;color:rgba(255,255,255,.28)}
+footer{padding-top:100px}
+
+@media(max-width:900px){
+  .hero-section{padding:0 22px;justify-content:flex-end;padding-bottom:110px}
+  .hero-section:before{background:linear-gradient(180deg,rgba(5,5,5,.15) 0%,rgba(5,5,5,.24) 42%,rgba(5,5,5,.9) 86%,#050505 100%)!important}
+  .hero-section h1{font-size:clamp(3.05rem,13vw,4.65rem);line-height:.95;margin-bottom:18px}
+  .hero-copy{font-size:.78rem;max-width:92%}
+  .hero-section:after{left:22px;right:22px;bottom:42px}
+  .section-intro-title{min-width:0;margin:0 0 38px;padding:0 22px}
+  .section-intro-title h2{font-size:clamp(2.7rem,12vw,4rem)}
+  .cards-track{gap:14px;padding-left:22px;padding-right:22px}
+  .exp-card{width:84vw}
+  .bento-section{padding:110px 22px}
+  .bento-title{display:block;margin-bottom:54px}
+  .bento-title .eyebrow{margin-bottom:16px}
+  .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
+  .team-strip{padding:110px 22px}
+}
