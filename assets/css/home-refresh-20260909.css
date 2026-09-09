@@ -63,22 +63,31 @@
 .bento-grid{gap:24px}
 .bento-item{border-color:rgba(255,255,255,.055);background:#090909}
 
-/* Middle TRX image: cooler, quieter and more editorial. */
+/* Final TRX image is already graded; preserve the supplied look. */
 html body .bento-photo img{
-  filter:brightness(.66) contrast(1.14) saturate(.34) grayscale(.18) sepia(0)!important;
-  transform:scale(1.045)!important;
+  filter:none!important;
+  transform:scale(1.01)!important;
+  object-position:center center!important;
 }
 html body .bento-photo:before{
-  background:
-    linear-gradient(180deg,rgba(3,5,7,.12) 0%,rgba(3,5,7,.20) 46%,rgba(3,5,7,.70) 100%),
-    linear-gradient(90deg,rgba(10,17,22,.18),rgba(0,0,0,.04) 55%,rgba(0,0,0,.18))!important;
-  mix-blend-mode:multiply;
-  opacity:.9;
+  background:linear-gradient(180deg,rgba(3,5,7,.04) 0%,rgba(3,5,7,.08) 55%,rgba(3,5,7,.34) 100%)!important;
+  mix-blend-mode:normal;
+  opacity:.55;
 }
 html body .bento-photo:hover img{
-  filter:brightness(.72) contrast(1.13) saturate(.40) grayscale(.12) sepia(0)!important;
-  transform:scale(1.06)!important;
+  filter:none!important;
+  transform:scale(1.025)!important;
 }
+html body .gym-image-container:after{
+  opacity:0!important;
+  background:none!important;
+}
+html body .gym-image-container:before{
+  background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.10) 100%)!important;
+  opacity:.45!important;
+}
+html body .middle-gym-wrapper:hover .gym-image-container:after,
+html body .middle-gym-wrapper:hover .gym-image-container:before{opacity:0!important}
 
 .team-strip{padding-top:170px;padding-bottom:170px;border-top:1px solid var(--ath-line);border-bottom:1px solid var(--ath-line)}
 .team-strip h2{letter-spacing:-.04em}
@@ -127,8 +136,8 @@ footer{padding-top:100px}
   .bento-title .eyebrow{margin-bottom:16px}
   .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
   html body .bento-photo img{
-    filter:brightness(.64) contrast(1.15) saturate(.30) grayscale(.20) sepia(0)!important;
-    transform:scale(1.05)!important;
+    filter:none!important;
+    transform:scale(1.01)!important;
   }
   .team-strip{padding:110px 22px}
   .team-portraits{grid-template-columns:1fr 1fr;gap:10px;width:100%}
