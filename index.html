@@ -14,10 +14,22 @@
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{background:#050505;color:#fff;font-family:'Montserrat',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
     h1,h2,h3,.serif-font{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:-.5px}
     header{padding:40px 8%;display:flex;justify-content:space-between;align-items:center;position:absolute;width:100%;z-index:100}
     .logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;font-weight:300}
     .nav-link{font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:#aaa;text-decoration:none;transition:color .3s}.nav-link:hover{color:#fff}
+    .menu-toggle{position:fixed;top:34px;left:34px;z-index:1002;width:48px;height:48px;border:1px solid rgba(255,255,255,.24);background:rgba(5,5,5,.44);backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0;transition:background .3s,border-color .3s}
+    .menu-toggle:hover{background:rgba(5,5,5,.72);border-color:rgba(255,255,255,.48)}
+    .menu-toggle span{display:block;width:19px;height:1px;background:#fff;transition:transform .35s,opacity .35s}
+    .menu-toggle.is-open span:first-child{transform:translateY(3px) rotate(45deg)}
+    .menu-toggle.is-open span:last-child{transform:translateY(-3px) rotate(-45deg)}
+    .menu-panel{position:fixed;inset:0;z-index:1001;background:rgba(5,5,5,.96);backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+    .menu-panel.is-open{opacity:1;visibility:visible}
+    .menu-panel nav{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+    .menu-panel a{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:300;color:#f3f3f3;text-decoration:none;line-height:1;transition:opacity .25s}
+    .menu-panel a:hover{opacity:.55}
+    .menu-panel .menu-meta{margin-top:22px;font-family:'Montserrat',sans-serif;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:#777}
     .hero-section{height:100vh;min-height:680px;width:100%;position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 8%;overflow:hidden;isolation:isolate}
     .hero-video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;z-index:-2;filter:saturate(.82) contrast(1.16) brightness(.56) sepia(.05)}
     .hero-section:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,5,5,.82) 0%,rgba(5,5,5,.35) 52%,rgba(5,5,5,.48) 100%),linear-gradient(to bottom,rgba(5,5,5,.18) 0%,rgba(5,5,5,.14) 55%,#050505 100%)}
@@ -30,13 +42,15 @@
     .team-strip{padding:150px 8%;display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center;background:#070707}.team-strip h2{font-size:clamp(3.2rem,5vw,5.5rem);line-height:.96;margin-bottom:26px}.team-strip p{color:#8c8c8c;line-height:1.8;max-width:56ch}.team-link{display:inline-block;margin-top:30px;color:#fff;text-decoration:none;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #555;padding-bottom:8px}.team-portraits{display:grid;grid-template-columns:1fr 1fr;gap:18px}.team-portraits img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) brightness(.72);background:#0b0b0b}.team-portraits img:first-child{object-position:center 14%}.team-portraits img:nth-child(2){object-position:center 4%}
     .ticker-container{background:#050505;padding:60px 0;overflow:hidden;display:flex;border-top:1px solid rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.03)}.ticker-wrap{display:flex;white-space:nowrap;animation:tickerAnimation 25s linear infinite}.ticker-item{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-style:italic;color:#555;padding:0 40px}@keyframes tickerAnimation{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     footer{padding:120px 8% 60px;background:#050505;border-top:1px solid rgba(255,255,255,.05)}.footer-main{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:80px}.footer-brand{font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:20px}.footer-brand em{font-style:italic}.footer-tagline{font-size:.8rem;text-transform:uppercase;letter-spacing:4px;color:#666}.footer-cta{display:inline-block;margin-top:34px;padding:15px 25px;border:1px solid #555;color:#fff;text-decoration:none;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase}.footer-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);padding-top:40px;font-size:.75rem;color:#555;letter-spacing:1px}.footer-bottom a{color:#777;text-decoration:none}
-    @media(max-width:900px){header{padding:26px 5%}.logo{font-size:1.7rem}.hero-section{padding:0 6%;min-height:100svh;height:100svh}.hero-video-bg{object-position:center}.horizontal-scroll-outer{height:auto;padding:90px 0}.sticky-viewport{position:relative;height:auto;overflow:visible}.horizontal-layout{display:block;padding-left:0;transform:none!important;width:100%}.section-intro-title{min-width:0;margin:0 0 42px;padding:0 20px}.cards-track{display:flex!important;flex-wrap:nowrap!important;width:100vw!important;max-width:100vw!important;overflow-x:auto!important;overflow-y:hidden!important;gap:18px!important;padding:0 22px 20px!important;scroll-padding:0 22px!important;scroll-snap-type:x proximity!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:auto!important;touch-action:pan-x!important;scrollbar-width:none}.cards-track::-webkit-scrollbar{display:none}.cards-track::after{content:"";display:block;flex:0 0 22px;width:22px}.exp-card{flex:0 0 82vw!important;width:82vw!important;height:60svh;min-height:460px;scroll-snap-align:start}.exp-card:last-of-type{scroll-snap-align:start}.bento-section{padding:100px 20px}.bento-grid{display:block}.bento-item{margin-bottom:20px;min-height:320px;padding:32px}.bento-photo{padding:0;min-height:420px}.bento-photo:after{left:28px;bottom:25px}.team-strip{grid-template-columns:1fr;padding:100px 20px}.team-portraits{order:-1;grid-template-columns:1fr 1fr;gap:10px;width:100%}.team-portraits img{min-width:0;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) brightness(.76)!important}.team-portraits img:first-child{object-position:center 14%!important}.team-portraits img:nth-child(2){object-position:center 4%!important}.ticker-item{font-size:2rem}.footer-bottom{flex-direction:column;gap:15px;text-align:center}}
+    @media(max-width:900px){header{padding:26px 5%}.logo{font-size:1.7rem;margin-left:58px}.nav-link{display:none}.menu-toggle{top:20px;left:18px;width:44px;height:44px}.hero-section{padding:0 6%;min-height:100svh;height:100svh}.hero-video-bg{object-position:center}.horizontal-scroll-outer{height:auto;padding:90px 0}.sticky-viewport{position:relative;height:auto;overflow:visible}.horizontal-layout{display:block;padding-left:0;transform:none!important;width:100%}.section-intro-title{min-width:0;margin:0 0 42px;padding:0 20px}.cards-track{display:flex!important;flex-wrap:nowrap!important;width:100vw!important;max-width:100vw!important;overflow-x:auto!important;overflow-y:hidden!important;gap:18px!important;padding:0 22px 20px!important;scroll-padding:0 22px!important;scroll-snap-type:x proximity!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:auto!important;touch-action:pan-x!important;scrollbar-width:none}.cards-track::-webkit-scrollbar{display:none}.cards-track::after{content:"";display:block;flex:0 0 22px;width:22px}.exp-card{flex:0 0 82vw!important;width:82vw!important;height:60svh;min-height:460px;scroll-snap-align:start}.exp-card:last-of-type{scroll-snap-align:start}.bento-section{padding:100px 20px}.bento-grid{display:block}.bento-item{margin-bottom:20px;min-height:320px;padding:32px}.bento-photo{padding:0;min-height:420px}.bento-photo:after{left:28px;bottom:25px}.team-strip{grid-template-columns:1fr;padding:100px 20px}.team-portraits{order:-1;grid-template-columns:1fr 1fr;gap:10px;width:100%}.team-portraits img{min-width:0;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) brightness(.76)!important}.team-portraits img:first-child{object-position:center 14%!important}.team-portraits img:nth-child(2){object-position:center 4%!important}.ticker-item{font-size:2rem}.footer-bottom{flex-direction:column;gap:15px;text-align:center}}
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.horizontal-layout{transform:none!important}.gym-image-container img{transform:none!important}}
   </style>
   <link rel="stylesheet" href="assets/css/cinematic-photography.css?v=20260909-1" data-cinematic-photography="true">
   <link rel="stylesheet" href="assets/css/home-refresh-20260909.css?v=20260909-3">
 </head>
 <body>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false"><span></span><span></span></button>
+  <div class="menu-panel" id="menuPanel" aria-hidden="true"><nav><a href="index.html">Αρχική</a><a href="#scrollOuter">Εμπειρίες</a><a href="#philosophy">Φιλοσοφία</a><a href="team.html">Η ομάδα</a><a href="contact.html">Επικοινωνία</a><div class="menu-meta">Athletico · Wellness Center · Trikala</div></nav></div>
   <header><a href="index.html" class="logo">Athletico</a><a href="#scrollOuter" class="nav-link">Explore Experiences</a></header>
   <section class="hero-section"><img class="hero-video-bg" src="assets/images/reception-cinematic-v2.jpg?v=20260908-4" alt="Η μπροστινή υποδοχή του Athletico Wellness Center"><div class="hero-kicker">Athletico · Wellness Center · Trikala</div><h1>Η ευεξία στην πιο<br><em>exclusive</em> εκδοχή της.</h1><p class="hero-copy">Κίνηση με σκοπό, προσωπική φροντίδα και σύγχρονες εμπειρίες ευεξίας σε έναν χώρο σχεδιασμένο γύρω από εσάς.</p></section>
   <div class="horizontal-scroll-outer" id="scrollOuter"><div class="sticky-viewport"><div class="horizontal-layout" id="scrollTrack"><div class="section-intro-title"><span class="eyebrow">The Art of Personal Wellness</span><h2>Επτά εμπειρίες.<br>Μία προσωπική<br>προσέγγιση.</h2></div><div class="cards-track">
@@ -48,7 +62,7 @@
     <a class="exp-card" href="services/wireless-ems-aq8.html"><div class="image-container"><img src="assets/images/aq8-ems-athletico-v2.webp" alt="Wireless EMS AQ8"></div><div class="card-meta"><h3>Wireless EMS · AQ8</h3><span class="card-no">06</span></div></a>
     <a class="exp-card" href="services/solarium.html"><div class="image-container"><img src="assets/images/solarium-editorial.webp" alt="Solarium"></div><div class="card-meta"><h3>Solarium</h3><span class="card-no">07</span></div></a>
   </div></div></div></div>
-  <section class="bento-section"><div class="bento-title"><span class="eyebrow">The Athletico Philosophy</span><h2>Περισσότερο από άσκηση.<br>Μια προσωπική εμπειρία ευεξίας.</h2></div><div class="bento-grid">
+  <section class="bento-section" id="philosophy"><div class="bento-title"><span class="eyebrow">The Athletico Philosophy</span><h2>Περισσότερο από άσκηση.<br>Μια προσωπική εμπειρία ευεξίας.</h2></div><div class="bento-grid">
     <div class="bento-item bento-large"><h4>01 · Personal Care</h4><p>Καθοδήγηση που προσαρμόζεται στο σώμα, στον ρυθμό και στους στόχους σας.</p></div>
     <div class="bento-item bento-small bento-photo"><div class="middle-gym-wrapper"><div class="gym-image-container"><img src="assets/images/ATHLETICO_TRX_LUXURY_0909.png?v=20260909-1" alt="Athletico Premium Gym Area"></div></div></div>
     <div class="bento-item bento-small"><h4>02 · Privacy</h4><p>Ένας χώρος με χαρακτήρα boutique, σχεδιασμένος για προσωπικότητα και ηρεμία.</p></div>
@@ -58,6 +72,20 @@
   <section class="ticker-container"><div class="ticker-wrap"><span class="ticker-item">Personal Wellness ·</span><span class="ticker-item">Private Experience ·</span><span class="ticker-item">Movement with Purpose ·</span><span class="ticker-item">Athletico since 2000 ·</span><span class="ticker-item">Personal Wellness ·</span><span class="ticker-item">Private Experience ·</span><span class="ticker-item">Movement with Purpose ·</span><span class="ticker-item">Athletico since 2000 ·</span></div></section>
   <footer><div class="footer-main"><h2 class="footer-brand">Your personal<br><em>wellness space.</em></h2><p class="footer-tagline">Athletico · Trikala</p><a class="footer-cta" href="contact.html">Επικοινωνία</a></div><div class="footer-bottom"><span>© 2026 ATHLETICO WELLNESS CENTER</span><span>Εθνικής Αντιστάσεως 21 · Τρίκαλα · 24310 28284</span><a href="mailto:info@athletico.gr">info@athletico.gr</a></div></footer>
   <script>
+    const menuToggle=document.getElementById('menuToggle');
+    const menuPanel=document.getElementById('menuPanel');
+    function setMenu(open){
+      menuToggle.classList.toggle('is-open',open);
+      menuPanel.classList.toggle('is-open',open);
+      document.body.classList.toggle('menu-open',open);
+      menuToggle.setAttribute('aria-expanded',String(open));
+      menuPanel.setAttribute('aria-hidden',String(!open));
+      menuToggle.setAttribute('aria-label',open?'Κλείσιμο μενού':'Άνοιγμα μενού');
+    }
+    menuToggle.addEventListener('click',()=>setMenu(!menuPanel.classList.contains('is-open')));
+    menuPanel.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
+    addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+
     const outer=document.getElementById('scrollOuter');
     const track=document.getElementById('scrollTrack');
     const mobile=window.matchMedia('(max-width:900px)');
