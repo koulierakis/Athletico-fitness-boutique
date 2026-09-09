@@ -21,7 +21,6 @@
         .team-hero p{font-size:1.1rem;color:#888;max-width:600px;line-height:1.7;font-weight:300}
         .editorial-container{padding:0 8% 160px;display:flex;flex-direction:column;gap:140px}
         .profile-row{display:flex;align-items:center;justify-content:space-between;gap:80px}
-        .profile-row.reverse{flex-direction:row-reverse}
         .profile-image-block{flex:0 0 45%;height:75vh;overflow:hidden;background-color:#050505;position:relative}
         .profile-image-block img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1) brightness(.35) contrast(1.25);transition:transform 1.2s cubic-bezier(.25,1,.5,1),filter 1s ease}
         .profile-image-block::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#d4af37 0%,#221a0f 100%);mix-blend-mode:color-dodge;opacity:.6;transition:opacity .8s ease;z-index:2;pointer-events:none}
@@ -36,7 +35,7 @@
         .footer-teaser h3{font-size:3.5rem;margin-bottom:30px}
         .footer-teaser a{color:#fff;font-size:.85rem;text-transform:uppercase;letter-spacing:3px;text-decoration:none;border-bottom:1px solid #fff;padding-bottom:8px;transition:opacity .3s}
         .footer-teaser a:hover{opacity:.7}
-        @media(max-width:900px){header{padding:28px 6%}.logo{font-size:1.7rem}.back-link{font-size:.62rem;letter-spacing:2px}.team-hero{padding:150px 6% 70px}.editorial-container{padding:0 6% 100px;gap:90px}.profile-row,.profile-row.reverse{flex-direction:column;gap:42px;align-items:stretch}.profile-image-block{width:100%;flex:none;height:62svh;min-height:480px}.profile-text-block{width:100%;flex:none}.profile-text-block .quote{font-size:1.8rem}.footer-teaser{padding:90px 6%}.footer-teaser h3{font-size:2.6rem}}
+        @media(max-width:900px){header{padding:28px 6%}.logo{font-size:1.7rem}.back-link{font-size:.62rem;letter-spacing:2px}.team-hero{padding:150px 6% 70px}.editorial-container{padding:0 6% 100px;gap:90px}.profile-row{flex-direction:column!important;gap:42px;align-items:stretch}.profile-image-block{width:100%;flex:none;height:62svh;min-height:480px}.profile-text-block{width:100%;flex:none}.profile-text-block .quote{font-size:1.8rem}.footer-teaser{padding:90px 6%}.footer-teaser h3{font-size:2.6rem}}
     </style>
 </head>
 <body>
@@ -51,19 +50,19 @@
     </section>
 
     <main class="editorial-container">
-        <div class="profile-row">
-            <div class="profile-image-block">
-                <img src="assets/images/giannis-profile-new2.png?v=20260907-2" alt="Γιάννης Κουλιεράκης">
-            </div>
+        <div class="profile-row giannis-row">
             <div class="profile-text-block">
                 <h2>Γιάννης</h2>
                 <span class="subtitle">Bespoke Performance Expert</span>
                 <p class="quote">«Η κίνηση είναι το αντίδοτο στις πιέσεις της καθημερινότητας. Υγεία σημαίνει να είσαι έτοιμος για τη ζωή.»</p>
                 <p class="description">Ο Γιάννης πιστεύει ότι η σωματική κατάσταση είναι άρρηκτα συνδεδεμένη με τον σύγχρονο τρόπο ζωής. Σχεδιάζει την κάθε συνεδρία με σκοπό να αποφορτίσει το σώμα από το καθημερινό άγχος και το στρες, χτίζοντας μια ασπίδα δύναμης και ανθεκτικότητας που σας επιτρέπει να λειτουργείτε στο μέγιστο των δυνατοτήτων σας κάθε μέρα.</p>
             </div>
+            <div class="profile-image-block">
+                <img src="assets/images/giannis-profile-new2.png?v=20260907-2" alt="Γιάννης Κουλιεράκης">
+            </div>
         </div>
 
-        <div class="profile-row reverse">
+        <div class="profile-row sofia-row">
             <div class="profile-image-block">
                 <img src="assets/images/sofia-profile-new.png?v=20260907-2" alt="Σοφία Πολύζου">
             </div>
