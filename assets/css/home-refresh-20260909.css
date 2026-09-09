@@ -14,6 +14,14 @@
 .hero-video-bg{
   object-position:center 48%;
   filter:saturate(.84) contrast(1.10) brightness(.66) sepia(.035)!important;
+  transform:scale(1.015);
+  animation:athHeroReveal 2.2s cubic-bezier(.22,.61,.36,1) both;
+  will-change:transform,opacity,filter;
+}
+@keyframes athHeroReveal{
+  0%{opacity:.08;transform:scale(1.09);filter:saturate(.72) contrast(1.02) brightness(.40) blur(6px) sepia(.02)!important}
+  42%{opacity:.72}
+  100%{opacity:1;transform:scale(1.015);filter:saturate(.84) contrast(1.10) brightness(.66) blur(0) sepia(.035)!important}
 }
 .hero-section:before{
   background:
@@ -63,31 +71,47 @@
 .bento-grid{gap:24px}
 .bento-item{border-color:rgba(255,255,255,.055);background:#090909}
 
-/* Final TRX image is already graded; preserve the supplied look. */
+/* Final TRX image is already graded; preserve it and lift exposure slightly. */
 html body .bento-photo img{
-  filter:none!important;
+  filter:brightness(1.10) contrast(1.02) saturate(1.02)!important;
   transform:scale(1.01)!important;
   object-position:center center!important;
+  transition:transform 1.4s cubic-bezier(.22,.61,.36,1),filter 1.2s ease!important;
 }
 html body .bento-photo:before{
-  background:linear-gradient(180deg,rgba(3,5,7,.04) 0%,rgba(3,5,7,.08) 55%,rgba(3,5,7,.34) 100%)!important;
+  background:linear-gradient(180deg,rgba(3,5,7,.02) 0%,rgba(3,5,7,.05) 55%,rgba(3,5,7,.24) 100%)!important;
   mix-blend-mode:normal;
-  opacity:.55;
+  opacity:.42;
 }
 html body .bento-photo:hover img{
-  filter:none!important;
-  transform:scale(1.025)!important;
+  filter:brightness(1.13) contrast(1.02) saturate(1.03)!important;
+  transform:scale(1.035)!important;
 }
 html body .gym-image-container:after{
   opacity:0!important;
   background:none!important;
 }
 html body .gym-image-container:before{
-  background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.10) 100%)!important;
-  opacity:.45!important;
+  background:linear-gradient(180deg,rgba(5,5,5,.01) 0%,rgba(5,5,5,.06) 100%)!important;
+  opacity:.32!important;
 }
 html body .middle-gym-wrapper:hover .gym-image-container:after,
 html body .middle-gym-wrapper:hover .gym-image-container:before{opacity:0!important}
+
+/* Premium scroll entrance for the middle image — subtle, not theatrical. */
+@supports (animation-timeline:view()){
+  .bento-photo{view-timeline-name:--ath-trx;view-timeline-axis:block}
+  .gym-image-container{
+    animation:athTrxReveal linear both;
+    animation-timeline:--ath-trx;
+    animation-range:entry 5% cover 42%;
+    will-change:transform,opacity,clip-path;
+  }
+  @keyframes athTrxReveal{
+    from{opacity:.42;transform:translateY(26px) scale(.975);clip-path:inset(10% 0 10% 0 round 2px)}
+    to{opacity:1;transform:translateY(0) scale(1);clip-path:inset(0 0 0 0 round 0)}
+  }
+}
 
 .team-strip{padding-top:170px;padding-bottom:170px;border-top:1px solid var(--ath-line);border-bottom:1px solid var(--ath-line)}
 .team-strip h2{letter-spacing:-.04em}
@@ -136,7 +160,7 @@ footer{padding-top:100px}
   .bento-title .eyebrow{margin-bottom:16px}
   .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
   html body .bento-photo img{
-    filter:none!important;
+    filter:brightness(1.08) contrast(1.02) saturate(1.02)!important;
     transform:scale(1.01)!important;
   }
   .team-strip{padding:110px 22px}
@@ -144,4 +168,9 @@ footer{padding-top:100px}
   .team-portraits img{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover}
   .team-portraits img:first-child{object-position:center 15%!important}
   .team-portraits img:nth-child(2){object-position:center 8%!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-video-bg,.gym-image-container{animation:none!important;transform:none!important}
+  .gym-image-container{clip-path:none!important;opacity:1!important}
 }
