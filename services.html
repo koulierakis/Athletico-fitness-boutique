@@ -1,162 +1,152 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Experiences | Athletico Wellness Center</title>
-  <meta name="description" content="Οι επτά εμπειρίες του Athletico Wellness Center στα Τρίκαλα.">
-  <link rel="icon" href="assets/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&family=Italiana&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#030303;--amber:#ffb03a;--line:rgba(255,255,255,.075);--soft:rgba(255,255,255,.52);--faint:rgba(255,255,255,.28)}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:#f5f5f5;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none} img{display:block} button{font:inherit} ::selection{background:var(--amber);color:#050505}
-
-    .topbar{position:fixed;inset:0 0 auto 0;z-index:50;height:72px;padding:0 clamp(22px,5vw,68px);display:flex;align-items:center;justify-content:space-between;background:rgba(3,3,3,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.04)}
-    .brand{font-family:'Bodoni Moda',serif;font-size:.92rem;letter-spacing:.30em;text-transform:uppercase}.brand span{color:var(--amber)}
-    .home-link{font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.48);display:flex;align-items:center;gap:10px;transition:color .3s}.home-link:hover{color:var(--amber)}
-
-    main{max-width:1360px;margin:0 auto;padding:148px clamp(24px,5vw,68px) 96px}
-    .intro{max-width:760px;margin-bottom:90px}
-    .kicker{display:block;color:var(--amber);font-size:.60rem;letter-spacing:.46em;text-transform:uppercase;margin-bottom:16px}
-    .intro h1{font-family:'Bodoni Moda',serif;font-size:clamp(3.3rem,6.3vw,6.3rem);font-weight:400;line-height:.95;letter-spacing:.018em;margin-bottom:20px}
-    .intro p{max-width:610px;font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.55;color:rgba(255,255,255,.40)}
-
-    .experiences{display:flex;flex-direction:column}
-    .experience{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:clamp(54px,7vw,96px);align-items:center;min-height:430px;padding:64px 0;border-top:1px solid var(--line);transition:grid-template-columns .72s cubic-bezier(.16,1,.3,1)}
-    .experience:nth-child(even){grid-template-columns:190px minmax(0,1fr)}
-    .experience:nth-child(even) .copy{order:2;justify-self:end}
-    .experience:nth-child(even) .preview-wrap{order:1;justify-self:start}
-    .experience:nth-child(odd) .copy{justify-self:start}
-    .experience:nth-child(odd) .preview-wrap{justify-self:end}
-    .experience.preview-active{grid-template-columns:minmax(0,1fr) minmax(430px,42vw)}
-    .experience:nth-child(even).preview-active{grid-template-columns:minmax(430px,42vw) minmax(0,1fr)}
-
-    .copy{width:min(100%,620px);position:relative;z-index:4;text-align:left}
-    .index{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.96rem;color:var(--amber);display:block;margin-bottom:11px}
-    .title{display:inline-block;font-family:'Italiana',serif;font-size:clamp(1.75rem,2.9vw,3.15rem);font-weight:400;line-height:1.08;letter-spacing:.01em;cursor:pointer;transition:color .3s ease,transform .42s cubic-bezier(.16,1,.3,1)}
-    .title:hover,.experience.preview-active .title{color:#fff;transform:translateX(5px)}
-    .description{max-width:570px;margin-top:18px;font-size:.82rem;font-weight:300;line-height:1.82;color:var(--soft)}
-    .micro-link{display:inline-flex;align-items:center;gap:12px;margin-top:23px;padding-bottom:6px;border-bottom:1px solid rgba(255,176,58,.34);font-size:.53rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.66);transition:color .3s,border-color .3s}.micro-link:hover{color:var(--amber);border-color:var(--amber)}
-
-    .preview-wrap{position:relative;width:176px;height:218px;z-index:8;transition:width .72s cubic-bezier(.16,1,.3,1),height .72s cubic-bezier(.16,1,.3,1),transform .72s cubic-bezier(.16,1,.3,1)}
-    .preview{position:absolute;inset:0;overflow:hidden;cursor:zoom-in;background:#080808;border:0;padding:0;box-shadow:0 18px 60px rgba(0,0,0,.30)}
-    .preview img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(1) contrast(1.15) brightness(.69);transition:filter .7s cubic-bezier(.16,1,.3,1),opacity .4s ease}
-    .preview:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.48));pointer-events:none}
-    .plus{position:absolute;left:50%;top:50%;z-index:3;transform:translate(-50%,-50%);width:38px;height:38px;border:1px solid rgba(255,176,58,.56);border-radius:50%;display:grid;place-items:center;color:var(--amber);font-size:1.25rem;font-weight:200;transition:transform .4s ease,background .3s,color .3s}
-    .view-label{position:absolute;z-index:3;left:0;right:0;bottom:12px;text-align:center;font-size:.46rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.58)}
-
-    .experience.preview-active .preview-wrap{width:min(42vw,520px);height:min(58vw,610px);transform:translateY(-2px)}
-    .experience.preview-active .preview{background:#050505}
-    .experience.preview-active .preview img{object-fit:contain;object-position:center;filter:grayscale(.10) contrast(1.04) brightness(.93);padding:0}
-    .experience.preview-active .plus{opacity:0;pointer-events:none}
-    .experience.preview-active .view-label{opacity:0}
-    .experience.ems .preview img,.experience.solarium .preview img{object-fit:contain;background:#080808;padding:8px}
-    .experience.preview-active.ems .preview img,.experience.preview-active.solarium .preview img{padding:0;object-fit:contain}
-    .experience.vacu .preview img{object-position:center 46%}
-
-    .lightbox{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.95);backdrop-filter:blur(7px);padding:28px}.lightbox.active{display:flex}.lightbox img{max-width:94vw;max-height:92vh;object-fit:contain}.lightbox-close{position:absolute;top:24px;right:28px;width:46px;height:46px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.5);color:#fff;font-size:1.7rem;cursor:pointer}
-    .footer{margin-top:54px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;color:var(--faint);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase}
-
-    @media(max-width:900px){
-      .topbar{height:64px;padding:0 18px}.brand{font-size:.76rem;letter-spacing:.21em}.home-link span{display:none}
-      main{padding:108px 20px 68px}.intro{margin-bottom:62px}.intro h1{font-size:clamp(3rem,14vw,4.8rem)}
-      .experience,.experience:nth-child(even),.experience.preview-active,.experience:nth-child(even).preview-active{grid-template-columns:1fr;gap:28px;min-height:auto;padding:54px 0}
-      .experience .copy,.experience:nth-child(even) .copy{order:1;justify-self:start;width:100%}.experience .preview-wrap,.experience:nth-child(even) .preview-wrap{order:2;justify-self:start}
-      .preview-wrap{width:150px;height:188px}.experience.preview-active .preview-wrap{width:min(92vw,500px);height:min(112vw,590px)}
-      .title{font-size:clamp(1.8rem,8.8vw,2.7rem)}.description{font-size:.80rem}
-    }
-    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Experiences | Athletico Wellness Center</title>
+    <meta name="description" content="Οι επτά εμπειρίες του Athletico Wellness Center στα Τρίκαλα.">
+    <link rel="icon" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#030303',
+                        pureblack: '#000000',
+                        cyberamber: '#ffb03a',
+                        luxurygold: '#d4af37',
+                        bordergray: '#161616'
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body{background-color:#030303;color:#f5f5f5;overflow-x:hidden}
+        .editorial-img-wrapper{position:relative;overflow:hidden;background-color:#000;cursor:pointer;width:100%}
+        .editorial-img-wrapper::after{content:'';position:absolute;inset:0;background:rgba(3,3,3,.4);transition:background .5s ease;pointer-events:none}
+        .editorial-block:hover .editorial-img-wrapper::after{background:rgba(3,3,3,.1)}
+        .editorial-img{filter:grayscale(100%) contrast(115%) brightness(75%);transition:all 1.2s cubic-bezier(.16,1,.3,1)}
+        .editorial-block:hover .editorial-img{filter:grayscale(10%) contrast(110%) brightness(85%);transform:scale(1.02)}
+        .editorial-img.contain{object-fit:contain!important;background:#000;padding:10px}
+        .image-plus-indicator{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:20;font-family:'Inter',sans-serif;font-size:24px;font-weight:200;color:#ffb03a;background:rgba(3,3,3,.8);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,176,58,.3);transition:all .4s ease;pointer-events:none}
+        .editorial-img-wrapper:hover .image-plus-indicator{background:#ffb03a;color:#030303;transform:translate(-50%,-50%) scale(1.1)}
+        .luxury-table th{font-family:'Inter',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.3);padding-bottom:12px;border-bottom:1px solid #161616}
+        .luxury-table td{font-family:'Inter',sans-serif;font-size:13px;font-weight:300;padding:16px 0;border-bottom:1px solid #111}
+        .concept-details{max-height:0;overflow:hidden;transition:max-height .7s cubic-bezier(.16,1,.3,1),opacity .5s ease;opacity:0}
+        .concept-details.open{max-height:900px;opacity:1}
+        .editorial-block.is-open .editorial-img{filter:grayscale(8%) contrast(108%) brightness(88%);transform:none;object-fit:contain;background:#000}
+        .editorial-block.is-open .editorial-img-wrapper{min-height:540px}
+        .editorial-block.is-open .image-plus-indicator{transform:translate(-50%,-50%) rotate(45deg);background:#ffb03a;color:#030303}
+        ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#030303}::-webkit-scrollbar-thumb{background:#161616}::-webkit-scrollbar-thumb:hover{background:#ffb03a}
+        @media(max-width:1023px){.editorial-block.is-open .editorial-img-wrapper{min-height:0}}
+    </style>
 </head>
-<body>
-  <header class="topbar">
-    <a href="index.html" class="brand">Athletico <span>Space</span></a>
-    <a href="index.html" class="home-link" aria-label="Επιστροφή στην αρχική"><span>Επιστροφή στην αρχική</span> ←</a>
-  </header>
+<body class="font-sans antialiased selection:bg-cyberamber selection:text-void">
 
-  <main>
-    <header class="intro">
-      <span class="kicker">Private Wellness Collection</span>
-      <h1>The Experiences</h1>
-      <p>Επτά ξεχωριστές εμπειρίες, σχεδιασμένες γύρω από την προσωπική φροντίδα, την κίνηση και την ισορροπία.</p>
+    <header class="fixed top-0 left-0 w-full z-50 px-6 lg:px-16 py-8 flex justify-between items-center bg-void/40 backdrop-blur-md border-b border-white/5">
+        <span class="font-serif text-lg tracking-[0.3em] uppercase text-white">Athletico <span class="text-cyberamber font-light">Space</span></span>
+        <a href="index.html" class="group flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-white/50 hover:text-cyberamber transition-colors duration-300">
+            <svg class="w-3 h-3 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            Επιστροφη στην αρχικη
+        </a>
     </header>
 
-    <section class="experiences">
-      <article class="experience" data-img="assets/images/personal-performance-editorial.webp">
-        <div class="copy"><span class="index">01 / Performance</span><h2 class="title" tabindex="0">Personal Performance Experience</h2><p class="description">Προσωπική καθοδήγηση με συνέπεια και σκοπό, προσαρμοσμένη στον δικό σας ρυθμό, στις ανάγκες και στους προσωπικούς σας στόχους.</p><a class="micro-link" href="services/personal-performance.html">Ανακαλύψτε την εμπειρία</a></div>
-        <div class="preview-wrap"><button class="preview" type="button" aria-label="Μεγέθυνση Personal Performance"><img src="assets/images/personal-performance-editorial.webp" alt="Personal Performance στο Athletico"><span class="plus">+</span><span class="view-label">View</span></button></div>
-      </article>
+    <main class="pt-44 pb-32 px-6 lg:px-16 max-w-6xl mx-auto">
+        <header class="mb-32 max-w-2xl">
+            <span class="text-[10px] tracking-[0.5em] text-cyberamber uppercase block mb-3">Private Wellness Collection</span>
+            <h1 class="font-serif text-5xl md:text-7xl font-light tracking-wide text-white mb-6">The Experiences</h1>
+            <p class="text-white/40 text-sm font-light leading-relaxed">Κάντε κλικ <strong class="text-white/60 font-normal">πάνω στις εικόνες</strong> ή στα κουμπιά ανάπτυξης για να ξεδιπλωθεί η πλήρης ανάλυση κάθε εμπειρίας.</p>
+        </header>
 
-      <article class="experience" data-img="assets/images/circuit-balance-editorial.webp">
-        <div class="copy"><span class="index">02 / Balance</span><h2 class="title" tabindex="0">Circuit Balance</h2><p class="description">Κίνηση, ρυθμός και ισορροπία μέσα από μία οργανωμένη εμπειρία άσκησης που συνδυάζει λειτουργικότητα, έλεγχο και συνέπεια.</p><a class="micro-link" href="services/circuit-balance.html">Ανακαλύψτε την εμπειρία</a></div>
-        <div class="preview-wrap"><button class="preview" type="button" aria-label="Μεγέθυνση Circuit Balance"><img src="assets/images/circuit-balance-editorial.webp" alt="Circuit Balance στο Athletico"><span class="plus">+</span><span class="view-label">View</span></button></div>
-      </article>
+        <div class="space-y-44 lg:space-y-64">
 
-      <article class="experience" data-img="assets/images/core-energy-editorial.webp">
-        <div class="copy"><span class="index">03 / Energy</span><h2 class="title" tabindex="0">Core Energy</h2><p class="description">Μία εμπειρία με επίκεντρο τον έλεγχο, τη σταθερότητα και τη λειτουργική ενέργεια του σώματος.</p><a class="micro-link" href="services/core-energy.html">Ανακαλύψτε την εμπειρία</a></div>
-        <div class="preview-wrap"><button class="preview" type="button" aria-label="Μεγέθυνση Core Energy"><img src="assets/images/core-energy-editorial.webp" alt="Core Energy στο Athletico"><span class="plus">+</span><span class="view-label">View</span></button></div>
-      </article>
+            <div id="block1" class="editorial-block grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-6 editorial-img-wrapper aspect-[4/5]" onclick="toggleConcept('concept1','block1')">
+                    <div class="image-plus-indicator">[ + ]</div>
+                    <img src="assets/images/personal-performance-editorial.webp" alt="Personal Performance" class="editorial-img w-full h-full object-cover">
+                </div>
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="font-serif italic text-cyberamber text-xl block">01 / Performance</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-white font-light tracking-wide">Personal Performance Experience</h2>
+                    <p class="text-white/60 text-sm font-light leading-relaxed">Ατομική καθοδήγηση κορυφαίου επιπέδου, προσαρμοσμένη αποκλειστικά στο δικό σας βιολογικό και κινητικό προφίλ...</p>
+                    <button onclick="toggleConcept('concept1','block1')" class="inline-flex items-center gap-3 text-[10px] tracking-widest uppercase text-cyberamber hover:text-white transition-colors duration-300"><span class="btn-text">Αναπτυξη εμπειριας</span><span class="icon font-mono text-xs">[ + ]</span></button>
+                    <div id="concept1" class="concept-details space-y-6">
+                        <p class="text-white/60 text-sm font-light leading-relaxed pt-2">Στοχευμένη ενδυνάμωση με premium privacy και απόλυτη απομόνωση από τον εξωτερικό κόσμο. Ένα ολοκληρωμένο σύστημα προπόνησης που προσαρμόζεται στις προσωπικές ανάγκες και στον ρυθμό σας.</p>
+                        <div class="pt-4"><table class="w-full luxury-table text-left"><thead><tr><th class="w-16">ID</th><th>Στοχευμενο Αποτελεσμα</th><th class="text-right text-cyberamber">Τυπος</th></tr></thead><tbody>
+                            <tr><td class="font-serif italic text-cyberamber text-base">01</td><td>Πλήρης νευρομυϊκή συναρμογή και αύξηση καθαρής ισχύος</td><td class="text-right text-white/40 text-xs">Bio-Metrics</td></tr>
+                            <tr><td class="font-serif italic text-cyberamber text-base">02</td><td>Αποκατάσταση ασυμμετριών και διόρθωση κινητικών μοτίβων</td><td class="text-right text-white/40 text-xs">Correction</td></tr>
+                            <tr><td class="font-serif italic text-cyberamber text-base">03</td><td>Μεγιστοποίηση της αερόβιας και αναερόβιας αντοχής</td><td class="text-right text-white/40 text-xs">Stamina</td></tr>
+                            <tr><td class="font-serif italic text-cyberamber text-base">04</td><td>Εξατομικευμένο πλάνο για μετρήσιμα αποτελέσματα</td><td class="text-right text-white/40 text-xs">Elite Goal</td></tr>
+                        </tbody></table></div>
+                        <a href="services/personal-performance.html" class="inline-flex text-[10px] tracking-widest uppercase text-cyberamber">Ανακαλύψτε περισσότερα →</a>
+                    </div>
+                </div>
+            </div>
 
-      <article class="experience" data-img="assets/images/pilates-harmony-editorial.webp">
-        <div class="copy"><span class="index">04 / Precision</span><h2 class="title" tabindex="0">Pilates Harmony</h2><p class="description">Αρμονία, ακρίβεια και προσωπικός ρυθμός μέσα από ελεγχόμενη κίνηση και εξατομικευμένη καθοδήγηση.</p><a class="micro-link" href="services/pilates-harmony.html">Ανακαλύψτε την εμπειρία</a></div>
-        <div class="preview-wrap"><button class="preview" type="button" aria-label="Μεγέθυνση Pilates Harmony"><img src="assets/images/pilates-harmony-editorial.webp" alt="Pilates Harmony στο Athletico"><span class="plus">+</span><span class="view-label">View</span></button></div>
-      </article>
+            <div id="block2" class="editorial-block grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="font-serif italic text-cyberamber text-xl block">02 / Balance</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-white font-light tracking-wide">Circuit Balance</h2>
+                    <p class="text-white/60 text-sm font-light leading-relaxed">Κίνηση, ρυθμός και ισορροπία μέσα από μία οργανωμένη εμπειρία άσκησης που συνδυάζει λειτουργικότητα, έλεγχο και συνέπεια.</p>
+                    <button onclick="toggleConcept('concept2','block2')" class="inline-flex items-center gap-3 text-[10px] tracking-widest uppercase text-cyberamber hover:text-white transition-colors duration-300"><span class="btn-text">Αναπτυξη εμπειριας</span><span class="icon font-mono text-xs">[ + ]</span></button>
+                    <div id="concept2" class="concept-details space-y-6"><p class="text-white/60 text-sm font-light leading-relaxed pt-2">Κυκλική προπόνηση ελεγχόμενης έντασης, με έμφαση στη ροή, την αντοχή και την κινητική ισορροπία.</p><a href="services/circuit-balance.html" class="inline-flex text-[10px] tracking-widest uppercase text-cyberamber">Ανακαλύψτε περισσότερα →</a></div>
+                </div>
+                <div class="lg:col-span-6 editorial-img-wrapper aspect-[4/5]" onclick="toggleConcept('concept2','block2')">
+                    <div class="image-plus-indicator">[ + ]</div>
+                    <img src="assets/images/circuit-balance-editorial.webp" alt="Circuit Balance" class="editorial-img w-full h-full object-cover">
+                </div>
+            </div>
 
-      <article class="experience ems" data-img="assets/images/aq8-ems-athletico-v2.webp">
-        <div class="copy"><span class="index">05 / Technology</span><h2 class="title" tabindex="0">Wireless EMS · AQ8</h2><p class="description">Ασύρματη τεχνολογία EMS με εξατομικευμένη καθοδήγηση, σε μία συμπυκνωμένη και σύγχρονη εμπειρία άσκησης.</p><a class="micro-link" href="services/wireless-ems-aq8.html">Ανακαλύψτε την εμπειρία</a></div>
-        <div class="preview-wrap"><button class="preview" type="button" aria-label="Μεγέθυνση Wireless EMS AQ8"><img src="assets/images/aq8-ems-athletico-v2.webp" alt="Wireless EMS AQ8 στο Athletico"><span class="plus">+</span><span class="view-label">View</span></button></div>
-      </article>
+            <div id="block3" class="editorial-block grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-6 editorial-img-wrapper aspect-[4/5]" onclick="toggleConcept('concept3','block3')"><div class="image-plus-indicator">[ + ]</div><img src="assets/images/core-energy-editorial.webp" alt="Core Energy" class="editorial-img w-full h-full object-cover"></div>
+                <div class="lg:col-span-6 space-y-6"><span class="font-serif italic text-cyberamber text-xl block">03 / Energy</span><h2 class="font-serif text-3xl md:text-4xl text-white font-light tracking-wide">Core Energy</h2><p class="text-white/60 text-sm font-light leading-relaxed">Μία εμπειρία με επίκεντρο τον έλεγχο, τη σταθερότητα και τη λειτουργική ενέργεια του σώματος.</p><button onclick="toggleConcept('concept3','block3')" class="inline-flex items-center gap-3 text-[10px] tracking-widest uppercase text-cyberamber hover:text-white"><span class="btn-text">Αναπτυξη εμπειριας</span><span class="icon font-mono text-xs">[ + ]</span></button><div id="concept3" class="concept-details space-y-6"><p class="text-white/60 text-sm font-light leading-relaxed pt-2">Ελεγχόμενη κίνηση με έμφαση στη σταθερότητα του κορμού, την ποιότητα της κίνησης και τη λειτουργική δύναμη.</p><a href="services/core-energy.html" class="inline-flex text-[10px] tracking-widest uppercase text-cyberamber">Ανακαλύψτε περισσότερα →</a></div></div>
+            </div>
 
-      <article class="experience vacu" data-img="assets/images/vacu-move-approved-v3.webp">
-        <div class="copy"><span class="index">06 / Movement</span><h2 class="title" tabindex="0">Vacu Move</h2><p class="description">Μία σύγχρονη εμπειρία κίνησης και προσωπικής φροντίδας σε ένα περιβάλλον σχεδιασμένο για άνεση και καθοδήγηση.</p><a class="micro-link" href="services/vacu-move.html">Ανακαλύψτε την εμπειρία</a></div>
-        <div class="preview-wrap"><button class="preview" type="button" aria-label="Μεγέθυνση Vacu Move"><img src="assets/images/vacu-move-approved-v3.webp" alt="Vacu Move στο Athletico"><span class="plus">+</span><span class="view-label">View</span></button></div>
-      </article>
+            <div id="block4" class="editorial-block grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-6 space-y-6"><span class="font-serif italic text-cyberamber text-xl block">04 / Precision</span><h2 class="font-serif text-3xl md:text-4xl text-white font-light tracking-wide">Pilates Harmony</h2><p class="text-white/60 text-sm font-light leading-relaxed">Αρμονία, ακρίβεια και προσωπικός ρυθμός μέσα από ελεγχόμενη κίνηση και εξατομικευμένη καθοδήγηση.</p><button onclick="toggleConcept('concept4','block4')" class="inline-flex items-center gap-3 text-[10px] tracking-widest uppercase text-cyberamber hover:text-white"><span class="btn-text">Αναπτυξη εμπειριας</span><span class="icon font-mono text-xs">[ + ]</span></button><div id="concept4" class="concept-details space-y-6"><p class="text-white/60 text-sm font-light leading-relaxed pt-2">Μία ήρεμη και ακριβής εμπειρία κίνησης, με έμφαση στον έλεγχο, την ισορροπία και την εξατομικευμένη καθοδήγηση.</p><a href="services/pilates-harmony.html" class="inline-flex text-[10px] tracking-widest uppercase text-cyberamber">Ανακαλύψτε περισσότερα →</a></div></div>
+                <div class="lg:col-span-6 editorial-img-wrapper aspect-[4/5]" onclick="toggleConcept('concept4','block4')"><div class="image-plus-indicator">[ + ]</div><img src="assets/images/pilates-harmony-editorial.webp" alt="Pilates Harmony" class="editorial-img w-full h-full object-cover"></div>
+            </div>
 
-      <article class="experience solarium" data-img="assets/images/solarium-editorial.webp">
-        <div class="copy"><span class="index">07 / Care</span><h2 class="title" tabindex="0">Solarium</h2><p class="description">Χρόνος αφιερωμένος στην προσωπική περιποίηση, μέσα σε ένα ήσυχο και προσεγμένο περιβάλλον ευεξίας.</p><a class="micro-link" href="services/solarium.html">Ανακαλύψτε την εμπειρία</a></div>
-        <div class="preview-wrap"><button class="preview" type="button" aria-label="Μεγέθυνση Solarium"><img src="assets/images/solarium-editorial.webp" alt="Solarium στο Athletico"><span class="plus">+</span><span class="view-label">View</span></button></div>
-      </article>
-    </section>
+            <div id="block5" class="editorial-block grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-6 editorial-img-wrapper aspect-[4/5]" onclick="toggleConcept('concept5','block5')"><div class="image-plus-indicator">[ + ]</div><img src="assets/images/aq8-ems-athletico-v2.webp" alt="Wireless EMS AQ8" class="editorial-img contain w-full h-full"></div>
+                <div class="lg:col-span-6 space-y-6"><span class="font-serif italic text-cyberamber text-xl block">05 / Technology</span><h2 class="font-serif text-3xl md:text-4xl text-white font-light tracking-wide">Wireless EMS · AQ8</h2><p class="text-white/60 text-sm font-light leading-relaxed">Ασύρματη τεχνολογία EMS με εξατομικευμένη καθοδήγηση, σε μία συμπυκνωμένη και σύγχρονη εμπειρία άσκησης.</p><button onclick="toggleConcept('concept5','block5')" class="inline-flex items-center gap-3 text-[10px] tracking-widest uppercase text-cyberamber hover:text-white"><span class="btn-text">Αναπτυξη εμπειριας</span><span class="icon font-mono text-xs">[ + ]</span></button><div id="concept5" class="concept-details space-y-6"><p class="text-white/60 text-sm font-light leading-relaxed pt-2">Η εμπειρία AQ8 συνδυάζει ασύρματη τεχνολογία EMS με προσωπική καθοδήγηση και ελευθερία κίνησης.</p><a href="services/wireless-ems-aq8.html" class="inline-flex text-[10px] tracking-widest uppercase text-cyberamber">Ανακαλύψτε περισσότερα →</a></div></div>
+            </div>
 
-    <footer class="footer"><span>Athletico Wellness Center</span><span>Εθνικής Αντιστάσεως 21 · Τρίκαλα · 24310 28284</span><span>2026</span></footer>
-  </main>
+            <div id="block6" class="editorial-block grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-6 space-y-6"><span class="font-serif italic text-cyberamber text-xl block">06 / Movement</span><h2 class="font-serif text-3xl md:text-4xl text-white font-light tracking-wide">Vacu Move</h2><p class="text-white/60 text-sm font-light leading-relaxed">Μία σύγχρονη εμπειρία κίνησης και προσωπικής φροντίδας σε ένα περιβάλλον σχεδιασμένο για άνεση και καθοδήγηση.</p><button onclick="toggleConcept('concept6','block6')" class="inline-flex items-center gap-3 text-[10px] tracking-widest uppercase text-cyberamber hover:text-white"><span class="btn-text">Αναπτυξη εμπειριας</span><span class="icon font-mono text-xs">[ + ]</span></button><div id="concept6" class="concept-details space-y-6"><p class="text-white/60 text-sm font-light leading-relaxed pt-2">Ελεγχόμενη κίνηση σε ένα σύγχρονο περιβάλλον προσωπικής φροντίδας, με έμφαση στην άνεση και την καθοδήγηση.</p><a href="services/vacu-move.html" class="inline-flex text-[10px] tracking-widest uppercase text-cyberamber">Ανακαλύψτε περισσότερα →</a></div></div>
+                <div class="lg:col-span-6 editorial-img-wrapper aspect-[4/5]" onclick="toggleConcept('concept6','block6')"><div class="image-plus-indicator">[ + ]</div><img src="assets/images/vacu-move-approved-v3.webp" alt="Vacu Move" class="editorial-img w-full h-full object-cover"></div>
+            </div>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true"><button class="lightbox-close" type="button" aria-label="Κλείσιμο">×</button><img id="lightboxImage" src="" alt=""></div>
+            <div id="block7" class="editorial-block grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-6 editorial-img-wrapper aspect-[4/5]" onclick="toggleConcept('concept7','block7')"><div class="image-plus-indicator">[ + ]</div><img src="assets/images/solarium-editorial.webp" alt="Solarium" class="editorial-img contain w-full h-full"></div>
+                <div class="lg:col-span-6 space-y-6"><span class="font-serif italic text-cyberamber text-xl block">07 / Care</span><h2 class="font-serif text-3xl md:text-4xl text-white font-light tracking-wide">Solarium</h2><p class="text-white/60 text-sm font-light leading-relaxed">Χρόνος αφιερωμένος στην προσωπική περιποίηση, μέσα σε ένα ήσυχο και προσεγμένο περιβάλλον ευεξίας.</p><button onclick="toggleConcept('concept7','block7')" class="inline-flex items-center gap-3 text-[10px] tracking-widest uppercase text-cyberamber hover:text-white"><span class="btn-text">Αναπτυξη εμπειριας</span><span class="icon font-mono text-xs">[ + ]</span></button><div id="concept7" class="concept-details space-y-6"><p class="text-white/60 text-sm font-light leading-relaxed pt-2">Μία ήσυχη εμπειρία προσωπικής περιποίησης και χαλάρωσης μέσα στον χώρο του Athletico.</p><a href="services/solarium.html" class="inline-flex text-[10px] tracking-widest uppercase text-cyberamber">Ανακαλύψτε περισσότερα →</a></div></div>
+            </div>
+        </div>
 
-  <script>
-    const rows=document.querySelectorAll('.experience');
-    rows.forEach(row=>{
-      const title=row.querySelector('.title');
-      const preview=row.querySelector('.preview');
-      const activate=()=>row.classList.add('preview-active');
-      const deactivate=()=>row.classList.remove('preview-active');
-      title.addEventListener('mouseenter',activate);
-      title.addEventListener('mouseleave',deactivate);
-      preview.addEventListener('mouseenter',activate);
-      preview.addEventListener('mouseleave',deactivate);
-      title.addEventListener('focus',activate);
-      title.addEventListener('blur',deactivate);
-    });
+        <footer class="mt-32 pt-8 border-t border-white/5 flex flex-wrap justify-between gap-6 text-[9px] tracking-[0.28em] uppercase text-white/25"><span>Athletico Wellness Center</span><span>Εθνικής Αντιστάσεως 21 · Τρίκαλα · 24310 28284</span><span>2026</span></footer>
+    </main>
 
-    const lightbox=document.getElementById('lightbox');
-    const lightboxImage=document.getElementById('lightboxImage');
-    document.querySelectorAll('.preview').forEach(btn=>btn.addEventListener('click',()=>{
-      const row=btn.closest('.experience');
-      lightboxImage.src=row.dataset.img;
-      lightboxImage.alt=btn.querySelector('img').alt;
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
-    }));
-    function closeLightbox(){lightbox.classList.remove('active');lightbox.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-    document.querySelector('.lightbox-close').addEventListener('click',closeLightbox);
-    lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
-  </script>
+    <script>
+        function toggleConcept(conceptId, blockId){
+            const panel=document.getElementById(conceptId);
+            const block=document.getElementById(blockId);
+            const isOpen=panel.classList.contains('open');
+            panel.classList.toggle('open',!isOpen);
+            block.classList.toggle('is-open',!isOpen);
+            const btn=block.querySelector('button .btn-text');
+            const icon=block.querySelector('button .icon');
+            if(btn) btn.textContent=isOpen?'Αναπτυξη εμπειριας':'Κλεισιμο εμπειριας';
+            if(icon) icon.textContent=isOpen?'[ + ]':'[ − ]';
+        }
+    </script>
 </body>
 </html>
