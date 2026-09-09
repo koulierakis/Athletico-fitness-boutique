@@ -12,53 +12,64 @@
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{background:#0a0a0a;color:#f5f5f5;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    :root{--bg:#0a0a0a;--panel:#111;--amber:#ffb03a;--gold:#d4af37;--line:rgba(255,255,255,.07);--soft:rgba(255,255,255,.58)}
+    body{background:var(--bg);color:#f5f5f5;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
-    ::selection{background:#ffb03a;color:#0a0a0a}
-    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0a0a0a}::-webkit-scrollbar-thumb{background:#1a1a1a;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:#ffb03a}
+    ::selection{background:var(--amber);color:var(--bg)}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#242424;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--amber)}
 
-    .services-header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(10,10,10,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);padding:20px clamp(24px,5vw,64px);display:flex;justify-content:space-between;align-items:center}
-    .services-brand{font-family:'Cormorant Garamond',serif;font-size:1.32rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;transition:color .3s}.services-brand span{color:#ffb03a;font-weight:300}.services-brand:hover{color:#ffb03a}
-    .back-link{display:flex;align-items:center;gap:12px;font-size:.67rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.58);transition:color .3s}.back-link:hover{color:#ffb03a}.back-link svg{width:16px;height:16px;transition:transform .3s}.back-link:hover svg{transform:translateX(-4px)}
+    .services-header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(22px,5vw,66px);background:rgba(10,10,10,.78);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+    .services-brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:.20em;text-transform:uppercase;color:#fff;transition:color .3s}.services-brand span{color:var(--amber);font-weight:300}.services-brand:hover{color:var(--amber)}
+    .back-link{display:flex;align-items:center;gap:12px;font-size:.66rem;letter-spacing:.30em;text-transform:uppercase;color:rgba(255,255,255,.56);transition:color .3s}.back-link:hover{color:var(--amber)}.back-link svg{width:16px;height:16px;transition:transform .3s}.back-link:hover svg{transform:translateX(-4px)}
 
-    main{max-width:1280px;margin:0 auto;padding:150px clamp(24px,5vw,64px) 110px}
-    .services-intro{max-width:780px;margin-bottom:120px}
-    .services-kicker{display:block;margin-bottom:16px;font-size:.67rem;letter-spacing:.4em;text-transform:uppercase;color:#ffb03a}
-    .services-intro h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.1rem,6vw,6.2rem);font-weight:300;line-height:.95;letter-spacing:-.02em;margin-bottom:24px}
-    .services-intro p{max-width:650px;color:rgba(255,255,255,.55);font-size:.93rem;font-weight:300;line-height:1.85}
+    main{max-width:1320px;margin:0 auto;padding:154px clamp(24px,5vw,66px) 96px}
+    .services-intro{max-width:800px;margin-bottom:118px}
+    .services-kicker{display:block;margin-bottom:16px;font-size:.66rem;letter-spacing:.40em;text-transform:uppercase;color:var(--amber)}
+    .services-intro h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.3rem,6vw,6.5rem);font-weight:300;line-height:.94;letter-spacing:-.03em;margin-bottom:26px}
+    .services-intro p{max-width:670px;color:rgba(255,255,255,.56);font-size:.92rem;font-weight:300;line-height:1.9}
+    .intro-rule{width:100%;height:1px;background:linear-gradient(90deg,rgba(255,176,58,.38),rgba(255,255,255,.03));margin-top:42px}
 
-    .services-list{display:flex;flex-direction:column;gap:150px}
-    .service-row{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(32px,5vw,64px);align-items:center}
-    .service-media{grid-column:span 7;position:relative;overflow:hidden;background:#151515;aspect-ratio:16/10}
+    .services-list{display:flex;flex-direction:column;gap:132px}
+    .service-row{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(32px,5vw,68px);align-items:center;opacity:0;transform:translateY(34px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+    .service-row.is-visible{opacity:1;transform:none}
+    .service-media{grid-column:span 7;position:relative;overflow:hidden;background:var(--panel);aspect-ratio:16/10;border:1px solid rgba(255,255,255,.035)}
     .service-copy{grid-column:span 5}
     .service-row.reverse .service-copy{order:1}.service-row.reverse .service-media{order:2}
-    .service-media:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.30),rgba(255,176,58,.12));mix-blend-mode:multiply;transition:all .7s cubic-bezier(.25,1,.5,1);pointer-events:none}
-    .service-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.38) contrast(1.10) brightness(.84);transition:transform .8s cubic-bezier(.25,1,.5,1),filter .8s cubic-bezier(.25,1,.5,1)}
-    .service-row:hover .service-media img{transform:scale(1.025);filter:grayscale(.08) contrast(1.12) brightness(.94)}
-    .service-row:hover .service-media:after{background:linear-gradient(135deg,rgba(10,10,10,.18),rgba(255,176,58,.20))}
+    .service-media:before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(10,10,10,.30),rgba(255,176,58,.11));mix-blend-mode:multiply;transition:opacity .7s ease;pointer-events:none}
+    .service-media:after{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.20));pointer-events:none}
+    .service-media img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.36) contrast(1.10) brightness(.84);transform:scale(1.005);transition:transform .9s cubic-bezier(.25,1,.5,1),filter .8s cubic-bezier(.25,1,.5,1)}
+    .service-row:hover .service-media img{transform:scale(1.035);filter:grayscale(.08) contrast(1.11) brightness(.95)}
+    .service-row:hover .service-media:before{opacity:.66}
 
-    .service-index{font-family:'Cormorant Garamond',serif;font-style:italic;color:#ffb03a;font-size:1.2rem;display:block;margin-bottom:14px}
-    .service-copy h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.1rem,3vw,3.3rem);line-height:1.05;letter-spacing:.01em;margin-bottom:18px}
-    .service-copy p{color:rgba(255,255,255,.56);font-size:.89rem;font-weight:300;line-height:1.8;margin-bottom:28px;max-width:470px}
-    .service-link{display:inline-flex;align-items:center;gap:12px;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:8px;transition:color .3s,border-color .3s}.service-link:hover{color:#ffb03a;border-color:#ffb03a}
+    .service-index{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--amber);font-size:1.18rem;display:block;margin-bottom:14px}
+    .service-copy h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,3vw,3.45rem);line-height:1.03;letter-spacing:.005em;margin-bottom:18px}
+    .service-copy p{color:rgba(255,255,255,.56);font-size:.88rem;font-weight:300;line-height:1.85;margin-bottom:28px;max-width:480px}
+    .service-link{display:inline-flex;align-items:center;gap:12px;font-size:.64rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:8px;transition:color .3s,border-color .3s}.service-link:hover{color:var(--amber);border-color:var(--amber)}
 
-    .service-row.ems .service-media img,.service-row.solarium .service-media img{object-fit:contain;background:#111;transform:scale(.92)}
-    .service-row.ems:hover .service-media img,.service-row.solarium:hover .service-media img{transform:scale(.96)}
+    .service-row.vacu .service-media img{object-position:center 46%}
+    .service-row.ems .service-media,.service-row.solarium .service-media{background:#101010}
+    .service-row.ems .service-media img,.service-row.solarium .service-media img{object-fit:contain;object-position:center;transform:scale(.89);filter:grayscale(.24) contrast(1.07) brightness(.88)}
+    .service-row.ems:hover .service-media img,.service-row.solarium:hover .service-media img{transform:scale(.94);filter:grayscale(.04) contrast(1.08) brightness(.96)}
 
-    .services-footer{margin-top:150px;padding-top:50px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;color:rgba(255,255,255,.34);font-size:.72rem;letter-spacing:.08em}
-    .services-footer a{color:rgba(255,255,255,.5)}
+    .services-cta{margin-top:150px;padding:82px 0 54px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.4fr .6fr;gap:50px;align-items:end}
+    .services-cta .eyebrow{display:block;color:var(--amber);font-size:.64rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px}
+    .services-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:300;line-height:.98;max-width:780px}
+    .cta-actions{display:flex;justify-content:flex-end}.cta-button{display:inline-block;padding:14px 20px;border:1px solid rgba(255,176,58,.50);font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:#fff;transition:background .3s,color .3s}.cta-button:hover{background:var(--amber);color:#111}
+
+    .services-footer{padding-top:42px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;color:rgba(255,255,255,.34);font-size:.70rem;letter-spacing:.08em}.services-footer a{color:rgba(255,255,255,.5)}
 
     @media(max-width:900px){
       .services-header{padding:18px 20px}.services-brand{font-size:1rem;letter-spacing:.14em}.back-link span{display:none}
-      main{padding:120px 22px 80px}.services-intro{margin-bottom:80px}.services-list{gap:90px}
-      .service-row{grid-template-columns:1fr;gap:28px}.service-media,.service-copy{grid-column:1}.service-row.reverse .service-media{order:1}.service-row.reverse .service-copy{order:2}.service-media{aspect-ratio:4/3}
+      main{padding:120px 22px 72px}.services-intro{margin-bottom:76px}.services-list{gap:86px}
+      .service-row{grid-template-columns:1fr;gap:26px}.service-media,.service-copy{grid-column:1}.service-row.reverse .service-media{order:1}.service-row.reverse .service-copy{order:2}.service-media{aspect-ratio:4/3}
       .service-copy h2{font-size:clamp(2rem,10vw,3rem)}
-      .service-row.ems .service-media img,.service-row.solarium .service-media img{transform:scale(.9)}
-      .service-row.ems:hover .service-media img,.service-row.solarium:hover .service-media img{transform:scale(.93)}
-      .services-footer{margin-top:100px;flex-direction:column}
+      .service-row.ems .service-media img,.service-row.solarium .service-media img{transform:scale(.86)}
+      .service-row.ems:hover .service-media img,.service-row.solarium:hover .service-media img{transform:scale(.90)}
+      .services-cta{grid-template-columns:1fr;gap:30px;margin-top:110px;padding:64px 0 44px}.cta-actions{justify-content:flex-start}
+      .services-footer{padding-top:34px;flex-direction:column}
     }
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.service-row{opacity:1!important;transform:none!important}}
   </style>
 </head>
 <body>
@@ -75,6 +86,7 @@
       <span class="services-kicker">The Premium Portfolio</span>
       <h1>Οι εμπειρίες μας.</h1>
       <p>Ένας προσεκτικά σχεδιασμένος κύκλος εμπειριών ευεξίας και προσωπικής καθοδήγησης, με έμφαση στην ποιότητα, την ιδιωτικότητα και την εξατομικευμένη προσέγγιση.</p>
+      <div class="intro-rule"></div>
     </section>
 
     <section class="services-list">
@@ -98,7 +110,7 @@
         <a class="service-media" href="services/pilates-harmony.html"><img src="assets/images/pilates-harmony-editorial.webp" alt="Pilates Harmony στο Athletico" loading="lazy"></a>
       </article>
 
-      <article class="service-row">
+      <article class="service-row vacu">
         <a class="service-media" href="services/vacu-move.html"><img src="assets/images/vacu-move-approved-v3.webp" alt="Vacu Move στο Athletico" loading="lazy"></a>
         <div class="service-copy"><span class="service-index">05 / Movement</span><h2>Vacu Move</h2><p>Μία σύγχρονη εμπειρία κίνησης και προσωπικής φροντίδας σε ένα περιβάλλον σχεδιασμένο για άνεση και καθοδήγηση.</p><a class="service-link" href="services/vacu-move.html">Ανακαλύψτε την εμπειρία</a></div>
       </article>
@@ -114,7 +126,20 @@
       </article>
     </section>
 
+    <section class="services-cta">
+      <div><span class="eyebrow">Personal Wellness · Trikala</span><h2>Η σωστή εμπειρία ξεκινά από εσάς.</h2></div>
+      <div class="cta-actions"><a class="cta-button" href="contact.html">Επικοινωνήστε μαζί μας</a></div>
+    </section>
+
     <footer class="services-footer"><span>© 2026 ATHLETICO WELLNESS CENTER</span><span>Εθνικής Αντιστάσεως 21 · Τρίκαλα · 24310 28284</span><a href="mailto:info@athletico.gr">info@athletico.gr</a></footer>
   </main>
+
+  <script>
+    const rows=[...document.querySelectorAll('.service-row')];
+    if('IntersectionObserver' in window){
+      const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{threshold:.14,rootMargin:'0px 0px -5% 0px'});
+      rows.forEach(row=>observer.observe(row));
+    }else{rows.forEach(row=>row.classList.add('is-visible'))}
+  </script>
 </body>
 </html>
