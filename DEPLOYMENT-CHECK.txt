@@ -1,0 +1,1 @@
+Homepage refresh committed to main on 2026-09-09. Deployment URL should be verified from hosting provider; repository alone does not expose the prior temporary preview address.
