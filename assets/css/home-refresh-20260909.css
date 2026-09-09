@@ -71,10 +71,12 @@
 .bento-grid{gap:24px}
 .bento-item{border-color:rgba(255,255,255,.055);background:#090909}
 
-/* Final TRX image is already graded; preserve it and lift exposure slightly. */
+/* Final TRX image is already graded; show the complete composition instead of cropping it. */
+html body .bento-photo{background:#070707!important}
 html body .bento-photo img{
   filter:brightness(1.10) contrast(1.02) saturate(1.02)!important;
-  transform:scale(1.01)!important;
+  transform:scale(1)!important;
+  object-fit:contain!important;
   object-position:center center!important;
   transition:transform 1.4s cubic-bezier(.22,.61,.36,1),filter 1.2s ease!important;
 }
@@ -85,7 +87,7 @@ html body .bento-photo:before{
 }
 html body .bento-photo:hover img{
   filter:brightness(1.13) contrast(1.02) saturate(1.03)!important;
-  transform:scale(1.035)!important;
+  transform:scale(1.012)!important;
 }
 html body .gym-image-container:after{
   opacity:0!important;
@@ -161,7 +163,8 @@ footer{padding-top:100px}
   .bento-title h2{font-size:clamp(2.8rem,12vw,4rem)}
   html body .bento-photo img{
     filter:brightness(1.08) contrast(1.02) saturate(1.02)!important;
-    transform:scale(1.01)!important;
+    transform:scale(1)!important;
+    object-fit:contain!important;
   }
   .team-strip{padding:110px 22px}
   .team-portraits{grid-template-columns:1fr 1fr;gap:10px;width:100%}
