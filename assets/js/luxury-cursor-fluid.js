@@ -11,6 +11,13 @@
 
   const pagePath = location.pathname.toLowerCase();
   if (pagePath.endsWith('/services.html') || pagePath.endsWith('services.html')) {
+    if (!document.querySelector('link[data-athletico-services-utilities]')) {
+      const utilitiesCss = document.createElement('link');
+      utilitiesCss.rel = 'stylesheet';
+      utilitiesCss.href = 'assets/css/services-local-utilities.css?v=20260910-1';
+      utilitiesCss.setAttribute('data-athletico-services-utilities', 'true');
+      document.head.appendChild(utilitiesCss);
+    }
     if (!document.querySelector('link[data-athletico-services-consolidation]')) {
       const servicesCss = document.createElement('link');
       servicesCss.rel = 'stylesheet';
