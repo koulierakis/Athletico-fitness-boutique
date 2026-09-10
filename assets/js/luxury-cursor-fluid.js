@@ -4,7 +4,7 @@
   if (!document.querySelector('link[data-athletico-award-unification]')) {
     const unified = document.createElement('link');
     unified.rel = 'stylesheet';
-    unified.href = 'assets/css/award-unification-20260910.css?v=20260910-1';
+    unified.href = 'assets/css/award-unification-20260910.css?v=20260910-2';
     unified.setAttribute('data-athletico-award-unification', 'true');
     document.head.appendChild(unified);
   }
@@ -15,14 +15,14 @@
     if (!document.querySelector('link[data-athletico-services-utilities]')) {
       const utilitiesCss = document.createElement('link');
       utilitiesCss.rel = 'stylesheet';
-      utilitiesCss.href = 'assets/css/services-local-utilities.css?v=20260910-2';
+      utilitiesCss.href = 'assets/css/services-local-utilities.css?v=20260910-3';
       utilitiesCss.setAttribute('data-athletico-services-utilities', 'true');
       document.head.appendChild(utilitiesCss);
     }
     if (!document.querySelector('link[data-athletico-services-consolidation]')) {
       const servicesCss = document.createElement('link');
       servicesCss.rel = 'stylesheet';
-      servicesCss.href = 'assets/css/services-award-consolidation.css?v=20260910-1';
+      servicesCss.href = 'assets/css/services-award-consolidation.css?v=20260910-2';
       servicesCss.setAttribute('data-athletico-services-consolidation', 'true');
       document.head.appendChild(servicesCss);
     }
