@@ -109,6 +109,21 @@
   `;
   document.head.appendChild(style);
 
+  if (!document.querySelector('script[data-athletico-cookie-consent]')) {
+    const consentScript=document.createElement('script');
+    consentScript.src='assets/js/cookie-consent.js?v=20260910-1';
+    consentScript.defer=true;
+    consentScript.setAttribute('data-athletico-cookie-consent','true');
+    document.head.appendChild(consentScript);
+  }
+  if (/\/(index\.html)?$/.test(location.pathname) && !document.querySelector('script[data-athletico-google-reviews]')) {
+    const reviewsScript=document.createElement('script');
+    reviewsScript.src='assets/js/google-reviews-home.js?v=20260910-1';
+    reviewsScript.defer=true;
+    reviewsScript.setAttribute('data-athletico-google-reviews','true');
+    document.head.appendChild(reviewsScript);
+  }
+
   const canonicalNav = ['index.html','experiences.html','services.html','team.html','contact.html'];
   document.querySelectorAll('.menu-panel nav,.services-menu-panel nav,.contact-menu-nav').forEach((nav) => {
     const links = [...nav.children].filter((el) => el.tagName === 'A');
