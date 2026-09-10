@@ -36,6 +36,9 @@
           const span = doc.createElement('span');
           span.className = 'admin-text-fragment';
           span.dataset.adminFragment = `f${counter}`;
+          // Stable key: admin-v3's selectorFor() already prioritizes data-content-key.
+          // This makes sentence-level font size / family / color overrides survive iframe reloads.
+          span.dataset.contentKey = `admin-fragment-f${counter}`;
           span.textContent = part;
           span.style.cursor = 'text';
           span.style.borderRadius = '2px';
@@ -46,6 +49,8 @@
       el.dataset.adminFragmentized = '1';
     });
 
+    const oldStyle = doc.getElementById('admin-live-fragment-style');
+    if (oldStyle) oldStyle.remove();
     const style = doc.createElement('style');
     style.id = 'admin-live-fragment-style';
     style.textContent = `
@@ -57,6 +62,8 @@
   }
 
   function bindFragmentSelection(doc) {
+    if (doc.documentElement.dataset.adminFragmentSelectionBound === '1') return;
+    doc.documentElement.dataset.adminFragmentSelectionBound = '1';
     doc.addEventListener('click', (event) => {
       const fragment = event.target.closest?.('.admin-text-fragment');
       if (!fragment) return;
@@ -70,12 +77,13 @@
     const doc = preview.contentDocument;
     if (!doc) return;
     fragmentize(doc);
+    // Must run after fragment creation so persisted sentence selectors exist in the DOM.
     if (typeof window.applySaved === 'function') window.applySaved();
     bindFragmentSelection(doc);
     const status = document.getElementById('status');
-    if (status) status.textContent = 'Live preview έτοιμο · κάθε πρόταση επιλέγεται ξεχωριστά';
+    if (status) status.textContent = 'Live preview έτοιμο · οι αλλαγές ανά πρόταση διατηρούνται μετά από refresh';
   }
 
-  preview.addEventListener('load', () => setTimeout(setup, 0));
-  if (preview.contentDocument?.readyState === 'complete') setTimeout(setup, 0);
+  preview.addEventListener('load', () => setTimeout(setup, 25));
+  if (preview.contentDocument?.readyState === 'complete') setTimeout(setup, 25);
 })();
