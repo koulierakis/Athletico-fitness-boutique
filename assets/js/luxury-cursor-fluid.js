@@ -116,6 +116,13 @@
     consentScript.setAttribute('data-athletico-cookie-consent','true');
     document.head.appendChild(consentScript);
   }
+  if (!document.querySelector('script[data-athletico-published-settings]')) {
+    const settingsScript=document.createElement('script');
+    settingsScript.src='assets/js/admin-settings-runtime.js?v=20260910-1';
+    settingsScript.defer=true;
+    settingsScript.setAttribute('data-athletico-published-settings','true');
+    document.head.appendChild(settingsScript);
+  }
   if (/\/(index\.html)?$/.test(location.pathname) && !document.querySelector('script[data-athletico-google-reviews]')) {
     const reviewsScript=document.createElement('script');
     reviewsScript.src='assets/js/google-reviews-home.js?v=20260910-1';
