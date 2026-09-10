@@ -1,6 +1,14 @@
 (() => {
   'use strict';
 
+  if (!document.querySelector('link[data-athletico-award-unification]')) {
+    const unified = document.createElement('link');
+    unified.rel = 'stylesheet';
+    unified.href = 'assets/css/award-unification-20260910.css?v=20260910-1';
+    unified.setAttribute('data-athletico-award-unification', 'true');
+    document.head.appendChild(unified);
+  }
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isDesktop = window.matchMedia('(min-width: 1025px) and (pointer: fine)').matches;
 
