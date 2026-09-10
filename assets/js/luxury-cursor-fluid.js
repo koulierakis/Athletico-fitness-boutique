@@ -10,11 +10,12 @@
   }
 
   const pagePath = location.pathname.toLowerCase();
-  if (pagePath.endsWith('/services.html') || pagePath.endsWith('services.html')) {
+  const isServicesPage = pagePath.endsWith('/services.html') || pagePath.endsWith('services.html');
+  if (isServicesPage) {
     if (!document.querySelector('link[data-athletico-services-utilities]')) {
       const utilitiesCss = document.createElement('link');
       utilitiesCss.rel = 'stylesheet';
-      utilitiesCss.href = 'assets/css/services-local-utilities.css?v=20260910-1';
+      utilitiesCss.href = 'assets/css/services-local-utilities.css?v=20260910-2';
       utilitiesCss.setAttribute('data-athletico-services-utilities', 'true');
       document.head.appendChild(utilitiesCss);
     }
@@ -24,6 +25,66 @@
       servicesCss.href = 'assets/css/services-award-consolidation.css?v=20260910-1';
       servicesCss.setAttribute('data-athletico-services-consolidation', 'true');
       document.head.appendChild(servicesCss);
+    }
+
+    document.title = 'Services | Athletico Wellness Center';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) metaDescription.content = 'Οι επτά υπηρεσίες του Athletico Wellness Center στα Τρίκαλα, με προσωπική καθοδήγηση, κίνηση και σύγχρονη τεχνολογία.';
+
+    const serviceHero = document.querySelector('main > header');
+    if (serviceHero) {
+      const kicker = serviceHero.querySelector('span');
+      const heading = serviceHero.querySelector('h1');
+      const intro = serviceHero.querySelector('p');
+      if (kicker) kicker.textContent = 'Athletico Services';
+      if (heading) heading.textContent = 'Υπηρεσίες';
+      if (intro) intro.innerHTML = 'Επιλέξτε μία υπηρεσία και ανοίξτε την παρουσίασή της για να δείτε την προσέγγιση, τα βασικά οφέλη και περισσότερες πληροφορίες.';
+    }
+
+    const brand = document.querySelector('body > header span.font-serif');
+    if (brand) brand.innerHTML = 'Athletico <span class="text-cyberamber font-light">Wellness</span>';
+
+    const syncServiceAria = (conceptId, blockId) => {
+      const concept = document.getElementById(conceptId);
+      const block = document.getElementById(blockId);
+      if (!concept || !block) return;
+      const expanded = concept.classList.contains('open');
+      block.querySelectorAll('.editorial-img-wrapper, button[onclick*="toggleConcept"]').forEach((control) => {
+        control.setAttribute('aria-expanded', String(expanded));
+        control.setAttribute('aria-controls', conceptId);
+      });
+    };
+
+    document.querySelectorAll('.editorial-block').forEach((block, index) => {
+      const wrapper = block.querySelector('.editorial-img-wrapper');
+      const concept = block.querySelector('.concept-details');
+      if (!wrapper || !concept) return;
+      wrapper.setAttribute('role', 'button');
+      wrapper.setAttribute('tabindex', '0');
+      wrapper.setAttribute('aria-label', `Άνοιγμα λεπτομερειών υπηρεσίας ${index + 1}`);
+      wrapper.setAttribute('aria-controls', concept.id);
+      wrapper.setAttribute('aria-expanded', String(concept.classList.contains('open')));
+      wrapper.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          if (typeof window.toggleConcept === 'function') window.toggleConcept(concept.id, block.id);
+        }
+      });
+      block.querySelectorAll('button[onclick*="toggleConcept"]').forEach((button) => {
+        button.setAttribute('aria-controls', concept.id);
+        button.setAttribute('aria-expanded', String(concept.classList.contains('open')));
+      });
+    });
+
+    if (typeof window.toggleConcept === 'function' && !window.toggleConcept.__athleticoA11yWrapped) {
+      const originalToggleConcept = window.toggleConcept;
+      const wrappedToggleConcept = function(conceptId, blockId) {
+        const result = originalToggleConcept.apply(this, arguments);
+        syncServiceAria(conceptId, blockId);
+        return result;
+      };
+      wrappedToggleConcept.__athleticoA11yWrapped = true;
+      window.toggleConcept = wrappedToggleConcept;
     }
   }
 
@@ -60,6 +121,14 @@
     ordered.forEach((a) => nav.appendChild(a));
     [...nav.children].filter((el) => !links.includes(el)).forEach((el) => nav.appendChild(el));
     admin.forEach((a) => nav.appendChild(a));
+  });
+
+  document.querySelectorAll('.menu-panel nav a,.services-menu-panel nav a,.contact-menu-nav a').forEach((link) => {
+    try {
+      const linkUrl = new URL(link.href, location.href);
+      const currentName = location.pathname.split('/').pop() || 'index.html';
+      if (linkUrl.pathname.split('/').pop() === currentName && !link.classList.contains('home-return') && !link.classList.contains('contact-menu-back')) link.setAttribute('aria-current', 'page');
+    } catch {}
   });
 
   const wipe = document.createElement('div');
