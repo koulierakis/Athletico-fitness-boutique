@@ -9,6 +9,17 @@
     document.head.appendChild(unified);
   }
 
+  const pagePath = location.pathname.toLowerCase();
+  if (pagePath.endsWith('/services.html') || pagePath.endsWith('services.html')) {
+    if (!document.querySelector('link[data-athletico-services-consolidation]')) {
+      const servicesCss = document.createElement('link');
+      servicesCss.rel = 'stylesheet';
+      servicesCss.href = 'assets/css/services-award-consolidation.css?v=20260910-1';
+      servicesCss.setAttribute('data-athletico-services-consolidation', 'true');
+      document.head.appendChild(servicesCss);
+    }
+  }
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isDesktop = window.matchMedia('(min-width: 1025px) and (pointer: fine)').matches;
 
