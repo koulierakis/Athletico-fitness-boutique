@@ -10,17 +10,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 img{image-rendering:auto}
 ::selection{background:var(--ath-gold);color:#050505}
 
-/* Services: bring the older Tailwind-built page into the same Athletico visual system without changing its content or imagery. */
+/* Services: unified visual system. */
 .services-menu-toggle{top:34px!important;left:34px!important;width:48px!important;height:48px!important;border-color:rgba(255,255,255,.24)!important;background:rgba(5,5,5,.62)!important;backdrop-filter:blur(16px)!important;transition:background .28s var(--ath-ease),border-color .28s var(--ath-ease)!important}
 .services-menu-toggle:hover,.services-menu-toggle:focus-visible{background:rgba(10,10,10,.86)!important;border-color:rgba(212,175,55,.55)!important}
 .services-menu-panel{top:94px!important;left:34px!important;width:min(360px,calc(100vw - 68px))!important;padding:28px 30px 24px!important;background:rgba(8,8,8,.94)!important}
 .services-menu-panel nav{align-items:flex-start!important}.services-menu-panel a{font-size:2rem!important;line-height:1.05!important}.services-menu-panel .home-return{font-size:.63rem!important;letter-spacing:.18em!important;color:var(--ath-gold)!important;margin-bottom:9px!important}.services-menu-meta{color:#777!important;letter-spacing:.2em!important}
 .editorial-block{isolation:isolate}.editorial-img-wrapper{border:1px solid rgba(255,255,255,.055)!important;background:#050505!important;transition:width .9s var(--ath-ease),height .9s var(--ath-ease),border-color .4s ease!important}.editorial-img-wrapper:hover{border-color:rgba(212,175,55,.18)!important}.editorial-img-wrapper::after{background:linear-gradient(180deg,rgba(5,5,5,.08),rgba(5,5,5,.28))!important}.editorial-img-wrapper:hover::after{background:rgba(5,5,5,.08)!important}
 .editorial-img{filter:grayscale(1) contrast(1.1) brightness(.72)!important;transition:filter .8s ease,transform .9s var(--ath-ease)!important}.editorial-img-wrapper:hover .editorial-img{filter:grayscale(.12) contrast(1.04) brightness(.9)!important;transform:scale(1.018)!important}.editorial-block.is-open .editorial-img{filter:grayscale(.04) contrast(1.03) brightness(.95)!important;transform:none!important}
-.image-plus-indicator{font-size:0!important;width:46px!important;height:46px!important;border:1px solid rgba(212,175,55,.35)!important;background:rgba(5,5,5,.76)!important;color:var(--ath-gold)!important;box-shadow:0 8px 28px rgba(0,0,0,.24)!important}.image-plus-indicator::before{content:'+';font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;line-height:1}.editorial-img-wrapper:hover .image-plus-indicator{background:var(--ath-gold)!important;color:#050505!important;transform:translate(-50%,-50%) scale(1.05)!important}.editorial-block.is-open .image-plus-indicator{background:var(--ath-gold)!important;color:#050505!important;transform:translate(-50%,-50%) rotate(45deg)!important}
+/* Minimal image control: only a discreet +, and a bare x when open. */
+.image-plus-indicator{font-size:0!important;width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;color:rgba(212,175,55,.88)!important;line-height:1!important}
+.image-plus-indicator::before{content:'+';font-family:'Montserrat',sans-serif;font-size:22px;font-weight:300;line-height:1;text-shadow:0 1px 7px rgba(0,0,0,.7)}
+.editorial-img-wrapper:hover .image-plus-indicator{background:transparent!important;color:#e0c55b!important;transform:translate(-50%,-50%) scale(1.08)!important}
+.editorial-block.is-open .image-plus-indicator{background:transparent!important;color:#e0c55b!important;transform:translate(-50%,-50%) rotate(45deg)!important}
 .results-title{font-size:1.15rem!important;color:var(--ath-text)!important}.results-subtitle{color:rgba(212,175,55,.78)!important;letter-spacing:.18em!important}.results-table tr{border-color:rgba(255,255,255,.075)!important}.results-table td{color:rgba(255,255,255,.68)!important}.results-table td:first-child{color:var(--ath-gold)!important}.results-table tr:hover td:not(:first-child){color:#fff!important}.safety-note{color:rgba(255,255,255,.48)!important}
 
-/* Homepage: override legacy award-layer tokens so every page speaks the same visual language. */
+/* Homepage. */
 body.home-award-v3{--ath-bg:#050505;--ath-bg-deep:#050505;--ath-ivory:#f4f4f2;--ath-gold:#d4af37;--ath-muted:#9a9a96;--ath-sans:'Montserrat',Arial,sans-serif;background:#050505!important}
 body.home-award-v3 .athletico-video-hero,body.home-award-v3 #philosophy,body.home-award-v3 .award-manifesto,body.home-award-v3 .luxury-services,body.home-award-v3 .home-team-editorial,body.home-award-v3 .private-invitation{background:#050505!important}
 body.home-award-v3 .athletico-hero-kicker,body.home-award-v3 .athletico-hero-subtitle,body.home-award-v3 .athletico-hero-cta,body.home-award-v3 .athletico-hero-footnote,body.home-award-v3 #philosophy .concept-copy p,body.home-award-v3 .luxury-services .section-title p,body.home-award-v3 .bento-content p,body.home-award-v3 .home-team-editorial .team-intro-copy p{font-family:'Montserrat',Arial,sans-serif!important}
@@ -28,7 +32,7 @@ body.home-award-v3 .luxury-services .section-title>span,body.home-award-v3 .bent
 body.home-award-v3 .bento-content p,body.home-award-v3 .luxury-services .section-title p,body.home-award-v3 #philosophy .concept-copy p,body.home-award-v3 .home-team-editorial .team-intro-copy p{color:#a7a7a3!important}
 body.home-award-v3 .bento-item+.bento-item,body.home-award-v3 .private-invitation{border-color:rgba(255,255,255,.08)!important}
 
-/* Experiences: keep hotspots usable on touch screens and visually subordinate to the photography. */
+/* Experiences. */
 .experiences-hero .services-bridge{transition:color .25s var(--ath-ease),border-color .25s var(--ath-ease)}
 .experiences-hero .services-bridge:hover,.experiences-hero .services-bridge:focus-visible{color:var(--ath-gold)!important;border-color:var(--ath-gold)!important}
 .hotspot{transition:transform .28s var(--ath-ease),background .28s ease,box-shadow .28s ease}
@@ -37,7 +41,14 @@ body.home-award-v3 .bento-item+.bento-item,body.home-award-v3 .private-invitatio
 .hotspot-tooltip p{color:#d1d1ce!important}
 .grid-item .item-meta{transition:border-color .3s ease}.grid-item:hover .item-meta{border-color:rgba(212,175,55,.28)!important}
 
-/* Current-page treatment: informative but understated. */
+/* Minimal cursor: small ring + center dot, no expanding Explore state. */
+.custom-cursor-dot{width:3px!important;height:3px!important;background:var(--ath-gold)!important;box-shadow:none!important}
+.custom-cursor-circle{width:18px!important;height:18px!important;background:transparent!important;border:1px solid rgba(212,175,55,.58)!important;box-shadow:none!important}
+.custom-cursor-circle::after{content:''!important;display:none!important;opacity:0!important}
+body.cursor-hover-active .custom-cursor-dot{width:3px!important;height:3px!important;background:var(--ath-gold)!important}
+body.cursor-hover-active .custom-cursor-circle{width:20px!important;height:20px!important;background:transparent!important;border-color:rgba(212,175,55,.78)!important}
+
+/* Current-page treatment. */
 .menu-panel a[aria-current='page'],.services-menu-panel a[aria-current='page'],.contact-menu-nav a[aria-current='page']{color:var(--ath-gold)!important;transform:none!important}
 .menu-panel a[aria-current='page']::after,.services-menu-panel a[aria-current='page']::after,.contact-menu-nav a[aria-current='page']::after{content:' ·';color:rgba(212,175,55,.55)}
 .editorial-img-wrapper[role='button']:focus-visible,.hotspot:focus-visible,.grid-item:focus-visible{outline:1px solid var(--ath-gold)!important;outline-offset:5px}
